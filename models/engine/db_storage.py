@@ -49,7 +49,17 @@ class DBStorage:
 
             return objects
 
+    def new(self, obj):
+        """Adds obj to the current session"""
+        self.__session.add(obj)
+
+    def save(self):
+        """Commits all changes to the current database session"""
+        self.__session.commit()
+
 
     def delete(self, obj=None):
-        """Deletes """
-        pass
+        """Deletes obj from the current database session"""
+        if obj:
+            self.__session.delete(obj)
+            self.save()
