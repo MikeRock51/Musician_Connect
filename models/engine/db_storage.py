@@ -5,6 +5,8 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
 from os import getenv
+from models.base_model import BaseModel, Base
+from models.user import User
 
 
 class DBStorage:
@@ -20,3 +22,34 @@ class DBStorage:
         self.__engine = create_engine(
             "mysql+mysqldb://{}:{}@{}/{}"
             .format(user, pwd, host, db), pool_pre_ping=True)
+
+    def reload(self):
+        """Creates all table in the database"""
+        Base.metadata.create_all(self.__engine)
+
+        session_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
+        self.__session = scoped_session(session_factory))
+
+
+    def all(self, obj=None):
+        """Fetches all objects from the database"""
+        objects = {}
+
+        if not obj:
+            queryResults = self.session.query(obj).all()
+            for result in queryResult:
+                key = "{}.{}".format(result.__class__.__name__, result.id)
+                objects[key] = result
+        else:
+            for className in [User, State]:
+                queryResults = self.__session.query(className).all()
+                for result in queryResult:
+                    key = "{}.{}".format(result.__class__.__name__, result.id)
+                    objects[key] = result
+
+            return objects
+
+
+    def delete(self, obj=None):
+        """Deletes """
+        pass
