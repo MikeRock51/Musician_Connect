@@ -2,7 +2,7 @@
 """Base module of the application"""
 
 from sqlalchemy.orm import declarative_base, relationship
-from sqlalchemy import Column, String, Integer, ForeigKey, DateTime
+from sqlalchemy import Column, String, Integer, ForeignKey, DateTime
 from datetime import datetime
 from uuid import uuid4
 from models import storage
@@ -16,8 +16,8 @@ class BaseModel():
     Defines all common attributes that will be inheritted by other models
     """
     id = Column(String(60), nullable=False, primary_key=True)
-    createdAt = Column(Datetime, nullable=False, default=datetime.utcnow())
-    updatedAt = Column(Datetime, nullable=False, default=datetime.utcnow())
+    createdAt = Column(DateTime, nullable=False, default=datetime.utcnow())
+    updatedAt = Column(DateTime, nullable=False, default=datetime.utcnow())
 
     def __init__(self, *args, **kwargs):
         """BaseModel object constructor"""
@@ -28,9 +28,9 @@ class BaseModel():
                         setattr(self, key, datetime.fromisoformat(value))
                     else:
                         setattr(self, key, value)
-        self.id = str(uuid4)
+        self.id = str(uuid4())
         self.createdAt = datetime.now()
-        seld.updatedAt = datetime.now()
+        self.updatedAt = datetime.now()
 
     def __str__(self):
         return ("[{}] ({}) {}".format

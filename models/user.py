@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """Defines the user model"""
 
-from models import storage
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String, ForeignKey, Table, Integer
 from sqlalchemy.orm import relationship
