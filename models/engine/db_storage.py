@@ -38,18 +38,26 @@ class DBStorage:
 
     def allModels(self):
         """Returns all application models"""
-        pass
-
-    def all(self, obj=None):
-        """Fetches all objects from the database"""
         from models.user import User
         from models.review import Review
         from models.city import City
         from models.state import State
         from models.booking import Booking
         from models.instrument import Instrument
-        from models.base_model import Base
 
+        return {
+                'User': User,
+                'Review': Review,
+                'City': City,
+                'State': State,
+                'Booking': Booking,
+                'Instrument': Instrument,
+                }
+
+    def all(self, obj=None):
+        """Fetches all objects from the database"""
+        classes = self.allModels()
+        
         objects = {}
 
         if obj:
@@ -58,7 +66,7 @@ class DBStorage:
                 key = "{}.{}".format(result.__class__.__name__, result.id)
                 objects[key] = result
         else:
-            for className in [User, State, Instrument]:
+            for className in classes.values():
                 queryResult = self.__session.query(className).all()
                 for result in queryResult:
                     key = "{}.{}".format(result.__class__.__name__, result.id)
@@ -80,6 +88,17 @@ class DBStorage:
         if obj:
             self.__session.delete(obj)
             self.save()
+
+    def get(self, cls, id):
+        """Returns an instance of the object with given id"""
+        classes = self.allModels()
+
+        if cls not in classes.values():
+            return None
+        allInstances = self.all(cls)
+        for instance in allInstances.values():
+            if instance.id == id:
+                return instance
 
     def close(self):
         """Removes the current session"""
