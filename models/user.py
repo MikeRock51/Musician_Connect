@@ -22,11 +22,9 @@ class User(BaseModel, Base):
     lastName = Column(String(128), nullable=False)
     email = Column(String(128), nullable=False)
     password = Column(String(128), nullable=False)
-    state_id = Column(String(60), ForeignKey('states.id'), nullable=False)
     city_id = Column(String(60), ForeignKey('cities.id'), nullable=False)
     reviews = relationship('Review', backref='user', cascade='all, delete')
-    if userType == "Musician":
-        alias = Column(String(128), nullable=True)
-        instruments = relationship(
-            'Instrument', secondary='musicianInstruments', backref='players', viewonly=False)
-        price_by_hour = Column(Integer, nullable=False, default=0)
+    alias = Column(String(128), nullable=True)
+    instruments = relationship('Instrument',
+            secondary='musicianInstruments', backref='players', viewonly=False)
+    price_by_hour = Column(Integer, nullable=False, default=0)
