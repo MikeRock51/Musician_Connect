@@ -8,7 +8,7 @@ from uuid import uuid4
 from models import storage
 
 
-base = declarative_base()
+Base = declarative_base()
 
 
 class BaseModel():
