@@ -6,6 +6,7 @@ from sqlalchemy import Column, String, Integer, ForeignKey, DateTime
 from datetime import datetime
 from uuid import uuid4
 from models import storage
+from copy import copy
 
 
 Base = declarative_base()
@@ -47,8 +48,8 @@ class BaseModel():
         """Generates a dictionary representation of an instance"""
         instance = copy(self.__dict__)
         instance['__class__'] = type(self).__name__
-        instance['created_at'] = instance['created_at'].isoformat()
-        instance['updated_at'] = instance['updated_at'].isoformat()
+        instance['createdAt'] = instance['createdAt'].isoformat()
+        instance['updatedAt'] = instance['updatedAt'].isoformat()
         if instance.get('_sa_instance_state'):
             del (instance['_sa_instance_state'])
 
