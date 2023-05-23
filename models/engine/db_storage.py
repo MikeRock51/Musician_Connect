@@ -100,6 +100,14 @@ class DBStorage:
             if instance.id == id:
                 return instance
 
+    def count(self, cls):
+        """Returns the number of instances of an object in storage"""
+        classes = self.allModels()
+
+        if cls not in classes.values():
+            return None
+        return len(self.all(cls)) 
+
     def close(self):
         """Removes the current session"""
         self.__session.remove()
