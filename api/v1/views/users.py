@@ -40,7 +40,7 @@ def createUser():
     """Creates a new User"""
     userData = request.get_json()
     if not userData:
-        abort(400, description="Not a JSON")
+        return make_response(jsonify({"error": "Not a JSON"}), 400)
 
     if 'firstName' not in userData:
         return make_response(jsonify({"error": "Missing First Name"}), 400)
@@ -70,7 +70,7 @@ def updateUser(user_id):
     userData = request.get_json()
 
     if not userData:
-        abort(400, description="Not a JSON")
+        return make_response(jsonify({"error": "Not a JSON"}), 400)
 
     ignoredKeys = ['createdAt', 'updatedAt', 'id', 'userType']
 
@@ -81,3 +81,13 @@ def updateUser(user_id):
     user.save()
 
     return make_response(jsonify(user.toDict()), 200)
+
+@app_views.route('/users/<user_id>', methods=['DELETE'], strict_slashes=False)
+def deleteUser(user_id):
+    """Deletes the specified user from storage"""
+    user = storage.get(User, user_id)
+    if not user:
+        abort(404)
+
+    storage.delete(user)
+    return make_response(jsonify({}), 200)
