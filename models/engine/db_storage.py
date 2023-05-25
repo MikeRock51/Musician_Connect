@@ -22,12 +22,7 @@ class DBStorage:
 
     def reload(self):
         """Creates all table in the database"""
-        from models.user import User
-        from models.review import Review
-        from models.city import City
-        from models.state import State
-        from models.booking import Booking
-        from models.instrument import Instrument
+        allModels = self.allModels()
         from models.base_model import Base
 
         Base.metadata.create_all(self.__engine)
@@ -38,7 +33,7 @@ class DBStorage:
 
     def allModels(self):
         """Returns all application models"""
-        from models.user import User
+        from models.user import User, musicianInstruments
         from models.review import Review
         from models.city import City
         from models.state import State

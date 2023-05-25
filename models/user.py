@@ -2,6 +2,8 @@
 """Defines the user model"""
 
 from models.base_model import BaseModel, Base
+from models.review import Review
+from models.booking import Booking
 from sqlalchemy import Column, String, ForeignKey, Table, Integer
 from sqlalchemy.orm import relationship
 
@@ -10,7 +12,7 @@ musicianInstruments = Table('musicianInstruments', Base.metadata,
                             Column('user_id', String(60), ForeignKey(
                                 'users.id'), nullable=False, primary_key=True),
                             Column('instrument_id', String(60), ForeignKey(
-                                'instruments.id'), nullable=False, primary_key=True))
+                                'instruments.id'), nullable=False, primary_key=True), extend_existing=True)
 
 
 class User(BaseModel, Base):
@@ -23,7 +25,10 @@ class User(BaseModel, Base):
     email = Column(String(128), nullable=False)
     password = Column(String(128), nullable=False)
     city_id = Column(String(60), ForeignKey('cities.id'), nullable=False)
-    reviews = relationship('Review', backref='user', cascade='all, delete')
+    clientReviews = relationship('Review', backref='client', cascade='all, delete', foreign_keys=[Review.client_id])
+    musicianReviews = relationship('Review', backref='Musician', cascade='all, delete', foreign_keys=[Review.musician_id])
+    clientBookings = relationship('Booking', foreign_keys=[Booking.client_id])
+    musicianBookings = relationship('Booking', foreign_keys=[Booking.musician_id]) 
     alias = Column(String(128), nullable=True)
     instruments = relationship('Instrument',
             secondary='musicianInstruments', backref='players', viewonly=False)

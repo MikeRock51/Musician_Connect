@@ -12,6 +12,7 @@ class Review(BaseModel, Base):
 
     title = Column(String(128), nullable=False)
     text = Column(String(1024), nullable=False)
-    email = Column(String(128), nullable=False)
-    user_id = Column(String(60), ForeignKey('users.id'), nullable=False)
+    client_id = Column(String(60), ForeignKey('users.id'), nullable=False)
+    musician_id = Column(String(60), ForeignKey('users.id'), nullable=False)
+    booking_id = Column(String(60), ForeignKey('bookings.id'), nullable=False)
     rating = Column(Integer, nullable=False, default=1)
