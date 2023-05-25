@@ -22,17 +22,17 @@ def fetchUserBookings(user_id, user_type):
     if not user:
         abort(404)
 
-    userReviews = []
+    userBookings = []
 
     if user_type == 'musician':
-        reviews = user.musicianBookings
+        bookings = user.musicianBookings
     else: 
-        reviews = user.clientBookings
+        bookings = user.clientBookings
 
-    for review in reviews:
-        userReviews.append(Booking(review).toDict())
+    for booking in bookings:
+        userBookings.append(booking.toDict())
 
-    return make_response(jsonify(userReviews), 200)
+    return make_response(jsonify(userBookings), 200)
 
 @app_views.route('/bookings', strict_slashes=False)
 def fetchAllBookings():
