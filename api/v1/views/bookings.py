@@ -24,7 +24,7 @@ def fetchUserBookings(user_id, user_type):
 
     userBookings = []
 
-    if user_type == 'musician':
+    if user_type.lower() == 'musician':
         bookings = user.musicianBookings
     else: 
         bookings = user.clientBookings
