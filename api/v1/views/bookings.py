@@ -111,3 +111,15 @@ def createBooking():
     booking.save()
 
     return make_response(jsonify(booking.toDict()), 201)
+
+@app_views.route('/bookings/<booking_id>', methods=['DELETE'], strict_slashes=False)
+def deleteBooking(booking_id):
+    """Deletes the booking with the specified id"""
+    booking = storage.get(Booking, booking_id)
+
+    if not booking:
+        abort(404)
+
+    storage.delete(booking)
+
+    return make_response(jsonify({}), 200)
