@@ -2,12 +2,44 @@
 
 import random
 import string
-from models import storage
+from os import getenv
+from models.user import User
+from models.review import Review
+from models.city import City
+from models.state import State
+from models.booking import Booking
 from models.instrument import Instrument
+from models.base_model import Base, BaseModel
+from models import storage
+
+user = getenv('MCC_SQL_USER')
+host = getenv('MCC_SQL_HOST')
+pwd = getenv('MCC_SQL_PWD')
+db = getenv('MCC_SQL_DB')
+
 
 # List of random first names and last names
-first_names = ["John", "Jane", "David", "Linda", "Michael", "Ade", "Chidi", "Amina", "Emeka", "Fatima", "Kodili", "Steven", "Zikiwe", "Nnamdi", "Jane", "Mercy", "Eniola", "Angela"]
-last_names = ["Smith", "Johnson", "Williams", "Okafor", "Abubakar", "Okonkwo", "Bello", "Eze", "Mohammed", "Nwosu", "Okolo", "Adebayo", "Isichie", "Nnaemeka", "Abalaka", "Godwin", "Ojo"]
+first_names = [
+    "John", "Jane", "David", "Linda", "Michael", "Ade", "Chidi", "Amina",
+    "Emeka", "Fatima", "Kodili", "Steven", "Zikiwe", "Nnamdi", "Jane",
+    "Mercy", "Eniola", "Angela", "Oliver", "Grace", "Daniel", "Blessing",
+    "Peter", "Sandra", "Joseph", "Chioma", "Charles", "Faith", "Samuel",
+    "Halima", "Andrew", "Abigail", "Emmanuel", "Rebecca", "Joshua",
+    "Ebere", "Victor", "Ifunanya", "Benjamin", "Jennifer", "Patrick",
+    "Nkechi", "Timothy", "Aisha", "Collins", "Mojisola", "Isaac", "Ijeoma",
+    "Raymond", "Ruth", "Stanley", "Loveth", "Emmanuel"
+]
+
+last_names = [
+    "Smith", "Johnson", "Williams", "Okafor", "Abubakar", "Okonkwo",
+    "Bello", "Eze", "Mohammed", "Nwosu", "Okolo", "Adebayo", "Isichie",
+    "Nnaemeka", "Abalaka", "Godwin", "Ojo", "Okaeme", "Ekele", "Okoro",
+    "Onyeka", "Ejiofor", "Okeke", "Adams", "Ibrahim", "Adewale", "Ajayi",
+    "Adeleke", "Ogunleye", "Olawale", "Okezie", "Ezeagu", "Obi", "Okoye",
+    "Uzor", "Ejikeme", "Ugwu", "Okorie", "Nnaji", "Okafor", "Ejike",
+    "Ezeji", "Onuoha", "Ejim", "Opara", "Ejiofor", "Ejike", "Okwudili",
+    "Okoye", "Obiageli", "Onyinye"
+]
 
 # Retrieve a list of Instruments from database
 instruments = storage.all(Instrument)
@@ -84,16 +116,15 @@ def generate_email(first_name, last_name):
 
 # Generate sample musician data
 sample_users = []
-for _ in range(50):  # Number of users to generate
+for _ in range(50):
     first_name = random.choice(first_names)
     last_name = random.choice(last_names)
     email = generate_email(first_name, last_name)
     password = ''.join(random.choices(string.ascii_letters + string.digits, k=8))
-    price_by_hour = random.randint(30, 50)
+    price_by_hour = random.randint(3, 50)
     instruments = []
     for _ in range(2):
         instruments.append(random.choice(instrumentList))
-
 
     musician = {
         "firstName": first_name,
@@ -105,11 +136,15 @@ for _ in range(50):  # Number of users to generate
         "instruments": instruments,
         "userType": "Musician"
     }
-    sample_user.append(musician)
+
+    sample_users.append(musician) # Append generated user data
+    newMusician = User(**musician) # Create new user object
+    newMusician.save() # Add and commit user object
+
+    print(f"{newMusician.toDict()} object added successfully")
 
 # Generate sample client data
-sample_users = []
-for _ in range(40):  # Number of users to generate
+for _ in range(50):
     first_name = random.choice(first_names)
     last_name = random.choice(last_names)
     email = generate_email(first_name, last_name)
@@ -123,6 +158,12 @@ for _ in range(40):  # Number of users to generate
         "city_id": random.choice(city_ids),
         "userType": "Client"
     }
-    sample_users.append(client)
 
-print(sample_users)
+    newClient = User(**client) # Create new user object
+    newClient.save() # Add and commit user object
+    sample_users.append(newClient.toDict()) # Append generated user data
+
+    print(f"{newClient.toDict()} object added successfully")
+
+
+print("Mission Accomplished")

@@ -5,6 +5,7 @@ from models import storage
 from models.user import User
 from api.v1.views import app_views
 from flask import jsonify, make_response, request, abort
+from models.instrument import Instrument
 
 
 @app_views.route('/users', strict_slashes=False)
@@ -91,3 +92,14 @@ def deleteUser(user_id):
 
     storage.delete(user)
     return make_response(jsonify({}), 200)
+
+@app_views.route('/instruments', strict_slashes=False)
+def fetchUserInstruments():
+    """Retrives a list of all instrument object from storage"""
+    instruments = storage.all(Instrument)
+    instrumentList = []
+
+    for instrument in instruments.values():
+        instrumentList.append(instrument.toDict())
+
+    return make_response(jsonify(instrumentList), 200)
