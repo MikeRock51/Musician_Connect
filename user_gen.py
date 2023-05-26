@@ -82,14 +82,14 @@ def generate_email(first_name, last_name):
     username = first_name.lower() + last_name.lower() + ''.join(random.choices(string.digits, k=4))
     return f"{username}@{domain}"
 
-# Generate sample user data
+# Generate sample musician data
 sample_users = []
 for _ in range(50):  # Number of users to generate
     first_name = random.choice(first_names)
     last_name = random.choice(last_names)
     email = generate_email(first_name, last_name)
     password = ''.join(random.choices(string.ascii_letters + string.digits, k=8))
-    price_by_hour = random.randint(3000, 50000)
+    price_by_hour = random.randint(30, 50)
     instruments = []
     for _ in range(2):
         instruments.append(random.choice(instrumentList))
@@ -105,6 +105,15 @@ for _ in range(50):  # Number of users to generate
         "instruments": instruments,
         "userType": "Musician"
     }
+    sample_user.append(musician)
+
+# Generate sample client data
+sample_users = []
+for _ in range(40):  # Number of users to generate
+    first_name = random.choice(first_names)
+    last_name = random.choice(last_names)
+    email = generate_email(first_name, last_name)
+    password = ''.join(random.choices(string.ascii_letters + string.digits, k=8))
 
     client = {
         "firstName": first_name,
@@ -114,7 +123,6 @@ for _ in range(50):  # Number of users to generate
         "city_id": random.choice(city_ids),
         "userType": "Client"
     }
-    sample_users.append(musician)
     sample_users.append(client)
 
 print(sample_users)
