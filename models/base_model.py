@@ -50,8 +50,15 @@ class BaseModel():
         instance['__class__'] = type(self).__name__
         instance['createdAt'] = instance['createdAt'].isoformat()
         instance['updatedAt'] = instance['updatedAt'].isoformat()
+        
         if instance.get('_sa_instance_state'):
             del (instance['_sa_instance_state'])
+
+        if type(self).__name__ == 'User' and self.userType.lower() == 'musician':
+            instruments = []
+            for instrument in self.instruments:
+                instruments.append(instrument.toDict())
+            instance['instruments'] = instruments
 
         return instance
 

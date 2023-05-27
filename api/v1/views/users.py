@@ -17,7 +17,7 @@ def allUsers():
     for user in allUsers.values():
         usersList.append(user.toDict())
 
-    return jsonify(usersList)
+    return make_response(jsonify(usersList), 200)
 
 @app_views.route('/users/type/<userType>', strict_slashes=False)
 def getUserByType(userType):
@@ -29,13 +29,18 @@ def getUserByType(userType):
         if user.toDict()['userType'].lower() == userType.lower():
             usersList.append(user.toDict())
 
-    return jsonify(usersList)
+    return make_response(jsonify(usersList), 200)
 
 @app_views.route('/users/<userId>', strict_slashes=False)
 def getUserById(userId):
     """Retrieves a user from storage by ID"""
-    return jsonify(storage.get(User, userId).toDict())
+    user = storage.get(User, userId)
 
+    if not user:
+        abort(404)
+
+    return make_response(jsonify(user.toDict()), 200)
+    
 @app_views.route('/users', methods=['POST'], strict_slashes=False)
 def createUser():
     """Creates a new User"""
