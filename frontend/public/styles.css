@@ -11,10 +11,20 @@ a {
   }
 
 .carousel-container {
-  width: 50%;
+  width: 30%;
   text-align: center;
   margin: 0 auto;
 }
+
+.teal {
+  color: teal;
+}
+
+.text-outline {
+  color: #ECFFB0;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
 
 /* nav.navbar.sunglow {
   background-color: #FFC857 !important;
