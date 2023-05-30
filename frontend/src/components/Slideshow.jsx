@@ -6,7 +6,7 @@ function Slideshow() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="holder.js/800x400?text=First slide&bg=f5f5f5"
+          src="https://avatars.githubusercontent.com/u/111021729?v=4"
           alt="First slide"
         />
         <Carousel.Caption>
@@ -17,7 +17,7 @@ function Slideshow() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="holder.js/800x400?text=Second slide&bg=eee"
+          src="https://lh3.googleusercontent.com/ogw/AOLn63EIdidZfdc_I9RNUE7EpINxl-OgPw16WRJIx2RB=s32-c-mo"
           alt="Second slide"
         />
         <Carousel.Caption>
@@ -28,7 +28,7 @@ function Slideshow() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="holder.js/800x400?text=Third slide&bg=e5e5e5"
+          src="https://scontent.fabv2-1.fna.fbcdn.net/v/t1.6435-9/127536440_680998232855827_8401588747317748180_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeG7uHj-jxQnxeprZYwHZoKp5FiR_Ra_NpjkWJH9Fr82mLQxOhcV1FZyNErOGI8c5yK8aLTlx7S3tN6hruuEM7I4&_nc_ohc=-cntwUr1u6cAX-ROQ-Z&_nc_oc=AQkTqGTR3v_O5lim_c3LK2zH3t06Q7bkHr8_f2OifQ3PqKw0-z4M7jozYfMww7Z5IkQ&_nc_ht=scontent.fabv2-1.fna&oh=00_AfASiNiWyjwb4jpGRz8_LTnica17dRIlQAkwaylFKaXK8Q&oe=649D5465"
           alt="Third slide"
         />
         <Carousel.Caption>

@@ -5,7 +5,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.js';
 
 function Navbar() {
     return (
-        <nav className="navbar navbar-expand-lg bg-body-tertiary">
+        <nav className="navbar navbar-expand-lg bg-body-tertiary ">
             <div className="container-fluid">
                 <a className="navbar-brand" href="#">
                     <h1 className='cinnabar'>Musician Connect</h1>
@@ -23,7 +23,7 @@ function Navbar() {
                 </button>
 
                 <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                    <ul className="navbar-nav ms-auto me-0 mb-2 mb-lg-0">
                         <li className="nav-item">
                             <a className="nav-link active" aria-current="page" href="#">
                                 Home

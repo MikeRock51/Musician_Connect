@@ -1,7 +1,21 @@
+html body {
+  /* background-color: #aebb733f; */
+}
+
 .cinnabar {
     color: #FF5E0E;
   }
 
 a {
     color: #008575 !important;
+  }
+
+.carousel-container {
+  width: 50%;
+  text-align: center;
+  margin: 0 auto;
 }
+
+/* nav.navbar.sunglow {
+  background-color: #FFC857 !important;
+} */

@@ -9,9 +9,11 @@ function App() {
       <Navbar />
       <div className='my-5 text-center'>
         <h1 className='display-4'>Welcome to Musician Connect!</h1>
-
+        <h4>The best musicians of Abuja at your fingertips</h4>
       </div>
-      <Slideshow />
+      <div className="carousel-container">
+        <Slideshow />
+      </div>
     </div>
   );
 }
