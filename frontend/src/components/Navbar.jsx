@@ -1,13 +1,14 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.bundle.js';
+// import "../index.css";
 
 function Navbar() {
     return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
             <div className="container-fluid">
                 <a className="navbar-brand" href="#">
-                    <h1>Musician Connect</h1>
+                    <h1 className='cinnabar'>Musician Connect</h1>
                 </a>
                 <button
                     className="navbar-toggler"
@@ -39,7 +40,7 @@ function Navbar() {
                             </a>
                         </li>
                     </ul>
-                    <form className="d-flex" role="search">
+                    {/* <form className="d-flex" role="search">
                         <input
                             className="form-control me-2"
                             type="search"
@@ -49,7 +50,7 @@ function Navbar() {
                         <button className="btn btn-outline-success" type="submit">
                             Search
                         </button>
-                    </form>
+                    </form> */}
                 </div>
             </div>
         </nav>

@@ -7,9 +7,9 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <div className='mb-5'>
+      <div className='my-5 text-center'>
         <h1 className='display-4'>Welcome to Musician Connect!</h1>
-        
+
       </div>
       <Slideshow />
     </div>
