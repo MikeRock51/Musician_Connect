@@ -54,11 +54,15 @@ class BaseModel():
         if instance.get('_sa_instance_state'):
             del (instance['_sa_instance_state'])
 
-        if type(self).__name__ == 'User' and self.userType.lower() == 'musician':
-            instruments = []
-            for instrument in self.instruments:
-                instruments.append(instrument.toDict())
-            instance['instruments'] = instruments
+        if type(self).__name__ == 'User':
+            from models.city import City
+
+            instance['city'] = storage.get(City, instance['city_id']).name
+            if self.userType.lower() == 'musician':
+                instruments = []
+                for instrument in self.instruments:
+                    instruments.append(instrument.toDict())
+                instance['instruments'] = instruments
 
         return instance
 
