@@ -25,7 +25,8 @@ a {
   }
 
 .carousel-container {
-  width: 50%;
+  width: 40%;
+  overflow: hidden;
   text-align: center;
   margin: 0 auto;
   box-shadow: 4px 3px 7px 2px #00000040;

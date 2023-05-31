@@ -1,13 +1,21 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.bundle.js';
-import { useState } from 'react';
-import Home from "./Home";
+import Home from "./pages/Home";
+import Navbar from './Navbar';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <Home />
-    </div>
+    <Router>
+      <div className='App'>
+        <div className='nav-container container-fluid'>
+          <Navbar />
+        </div>
+        <Routes>
+          <Route path='/' element={<Home />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
