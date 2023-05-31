@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.bundle.js';
 import Home from "./pages/Home";
 import Navbar from './Navbar';
+import Signup from "./pages/Signup";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
         </div>
         <Routes>
           <Route path='/' element={<Home />} />
+          <Route path='/register' element={<Signup />} />
         </Routes>
       </div>
     </Router>
