@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
 
-function useFetch(url) {
+
+function usePost(url) {
     const [data, setData] = useState(null);
     const [isPending, setIsPending] = useState(true);
     const [error, setError] = useState(null);
  
     useEffect(() => {
-        fetch(url)
+        const abort = new AbortController();
+
+        fetch(url, { signal: abort})
         .then((res) => {
             if (!res.ok) {
                 throw Error("Failed to fetch requested data");
@@ -17,12 +20,18 @@ function useFetch(url) {
         setIsPending(false);
         setError(null);
     }).catch(error => {
-        setError(error.message);
-        setIsPending(false);
+        if (error.name !== 'Abort Error') {
+            setError(error.message);
+            setIsPending(false);
+        }
     })
+    
+    return () => {
+        abort.abort();
+    }
     }, [url]);
 
     return {data, isPending, error};
 }
 
-export default useFetch;
+export default usePost;
