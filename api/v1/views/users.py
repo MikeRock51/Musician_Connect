@@ -92,7 +92,7 @@ def authenticateUser():
     authPassword = authData.get('password').encode('utf-8')
 
     if bcrypt.checkpw(authPassword, dbPassword):
-        return make_response(jsonify({"message": "Authenticated"}), 200)
+        return make_response(jsonify(user.toDict()), 200)
     
     return make_response(jsonify({"message": "Unauthorized"}), 401)
 

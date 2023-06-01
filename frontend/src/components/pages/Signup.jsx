@@ -21,36 +21,46 @@ function Signup() {
             </div>
             <div className="col-md-6">
                 <label for="inputPassword4" className="form-label">Password</label>
-                <input type="password" name="password" className="form-control" id="inputPassword4" placeholder="Password" />
+                <input type="password" name="password"
+                className="form-control" id="inputPassword4"
+                placeholder="Password" required />
             </div>
-            <div className="col-md-4">
+            <div className="col-md-6">
+                <label for="inputPassword4" className="form-label">Confirm Password</label>
+                <input type="password" name="confirm-password"
+                className="form-control" id="inputPassword4"
+                placeholder="Confirm Password" required />
+            </div>
+            <div className="col-md-6">
                 <label for="inputState" className="form-label">State</label>
                 <select id="inputState" className="form-select">
-                    <option selected>Choose...</option>
+                    <option disabled selected hidden>Choose...</option>
                     <option>Abuja</option>
                 </select>
             </div>
             <div className="col-md-6">
                 <label for="inputCity" className="form-label">City</label>
                 <select id="inputState" className="form-select">
-                    <option selected>Choose...</option>
+                    <option disabled selected hidden>Choose...</option>
                     <option>Dustse-Alhaji</option>
                 </select>
             </div>
-            <div className="col-md-2">
-                <label for="inputZip" className="form-label">Zip</label>
-                <input type="text" className="form-control" id="inputZip" />
+            <div className="col-md-6">
+                <label for="inputUsertype" className="form-label">Account Type</label>
+                <select id="inputUsertype" className="form-select"
+                name="userType">
+                    <option disabled selected hidden>Choose...</option>
+                    <option>Client</option>
+                    <option>Musician</option>
+                </select>
+            </div>
+            <div className="col-md-6">
+                <label className="form-label">Price Per Hour</label>
+                <input type="text" className="form-control" name="price_by_hour"
+                id="inputZip" placeholder="How much do you charge per hour?"/>
             </div>
             <div className="col-12">
-                <div className="form-check">
-                    <input className="form-check-input" type="checkbox" id="gridCheck" />
-                    <label className="form-check-label" for="gridCheck">
-                        Check me out
-                    </label>
-                </div>
-            </div>
-            <div className="col-12">
-                <button type="submit" className="btn btn-primary">Sign in</button>
+                <button type="submit" className="btn">Create my account</button>
             </div>
         </form>
     )
