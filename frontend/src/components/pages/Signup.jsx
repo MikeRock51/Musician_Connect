@@ -22,14 +22,14 @@ function Signup() {
             <div className="col-md-6">
                 <label for="inputPassword4" className="form-label">Password</label>
                 <input type="password" name="password"
-                className="form-control" id="inputPassword4"
-                placeholder="Password" required />
+                    className="form-control" id="inputPassword4"
+                    placeholder="Password" required />
             </div>
             <div className="col-md-6">
                 <label for="inputPassword4" className="form-label">Confirm Password</label>
                 <input type="password" name="confirm-password"
-                className="form-control" id="inputPassword4"
-                placeholder="Confirm Password" required />
+                    className="form-control" id="inputPassword4"
+                    placeholder="Confirm Password" required />
             </div>
             <div className="col-md-6">
                 <label for="inputState" className="form-label">State</label>
@@ -48,7 +48,7 @@ function Signup() {
             <div className="col-md-6">
                 <label for="inputUsertype" className="form-label">Account Type</label>
                 <select id="inputUsertype" className="form-select"
-                name="userType">
+                    name="userType">
                     <option disabled selected hidden>Choose...</option>
                     <option>Client</option>
                     <option>Musician</option>
@@ -57,7 +57,11 @@ function Signup() {
             <div className="col-md-6">
                 <label className="form-label">Price Per Hour</label>
                 <input type="text" className="form-control" name="price_by_hour"
-                id="inputZip" placeholder="How much do you charge per hour?"/>
+                    id="inputZip" placeholder="How much do you charge per hour?" />
+            </div>
+            <div class="mb-3">
+                <label for="media" class="form-label">Upload profile picture:</label>
+                <input type="file" class="form-control" id="media" name="dp" accept="image/*" />
             </div>
             <div className="col-12">
                 <button type="submit" className="btn">Create my account</button>
