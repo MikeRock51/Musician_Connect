@@ -23,14 +23,17 @@ class User(BaseModel, Base):
     firstName = Column(String(128), nullable=False)
     lastName = Column(String(128), nullable=False)
     email = Column(String(128), nullable=False)
-    #phoneNumber = Column(String(60), nullable=False)
+    # phoneNumber = Column(String(60), nullable=False)
     password = Column(String(128), nullable=False)
     city_id = Column(String(60), ForeignKey('cities.id'), nullable=False)
-    clientReviews = relationship('Review', backref='client', cascade='all, delete', foreign_keys=[Review.client_id])
-    musicianReviews = relationship('Review', backref='musician', cascade='all, delete', foreign_keys=[Review.musician_id])
+    clientReviews = relationship(
+        'Review', backref='client', cascade='all, delete', foreign_keys=[Review.client_id])
+    musicianReviews = relationship(
+        'Review', backref='musician', cascade='all, delete', foreign_keys=[Review.musician_id])
     clientBookings = relationship('Booking', foreign_keys=[Booking.client_id])
-    musicianBookings = relationship('Booking', foreign_keys=[Booking.musician_id]) 
+    musicianBookings = relationship(
+        'Booking', foreign_keys=[Booking.musician_id])
     alias = Column(String(128), nullable=True)
     instruments = relationship('Instrument',
-            secondary='musicianInstruments', backref='players', viewonly=False)
+                               secondary='musicianInstruments', backref='players', viewonly=False)
     price_by_hour = Column(Integer, nullable=False, default=0)

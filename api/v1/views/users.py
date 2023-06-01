@@ -6,6 +6,7 @@ from models.user import User
 from api.v1.views import app_views
 from flask import jsonify, make_response, request, abort
 from models.instrument import Instrument
+import bcrypt
 
 
 @app_views.route('/users', strict_slashes=False)
@@ -61,10 +62,39 @@ def createUser():
     if 'userType' not in userData:
         return make_response(jsonify({"error": "Missing userType"}), 400)
 
+    hashedPassword = bcrypt.hashpw(userData.get('password').encode('utf-8'), bcrypt.gensalt())
+    userData['password'] = str(hashedPassword, 'utf-8')
+
     newUser = User(**userData)
     newUser.save()
 
     return make_response(jsonify(newUser.toDict()), 201)
+
+@app_views.route('/users/auth', methods=['POST'], strict_slashes=False)
+def authenticateUser():
+    """Verifies the user credentials"""
+    authData = request.get_json()
+
+    if not authData:
+        return make_response(jsonify({"error": "Not a JSON"}), 400)
+
+    if 'email' not in authData:
+        return make_response(jsonify({"error": "Missing Email"}), 400)
+    if 'password' not in authData:
+        return make_response(jsonify({"error": "Missing Password"}), 400)
+
+    user = storage.getEmailUser(authData.get('email'))
+
+    if not user:
+        abort(404)
+
+    dbPassword = user.password.encode('utf-8')
+    authPassword = authData.get('password').encode('utf-8')
+
+    if bcrypt.checkpw(authPassword, dbPassword):
+        return make_response(jsonify({"message": "Authenticated"}), 200)
+    
+    return make_response(jsonify({"message": "Unauthorized"}), 401)
 
 @app_views.route('/users/<user_id>', methods=['PUT'], strict_slashes=False)
 def updateUser(user_id):

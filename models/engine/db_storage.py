@@ -95,6 +95,15 @@ class DBStorage:
             if instance.id == id:
                 return instance
 
+    def getEmailUser(self, email):
+        """Returns an instance of the user with the given email"""
+        User = self.allModels()['User']
+
+        users = self.all(User)
+        for user in users.values():
+            if user.email == email:
+                return user
+
     def count(self, cls):
         """Returns the number of instances of an object in storage"""
         classes = self.allModels()
