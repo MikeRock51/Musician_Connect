@@ -1,5 +1,12 @@
+import { useState } from "react";
 
 function Input(props) {
+    const [input, setInput] = useState({[props.name]: ""});
+
+    function handleChange(event) {
+        const {value} = event.target;
+        setInput({ [props.name]: value });
+    }
 
     return (
         <div className="col-md-6">
@@ -10,11 +17,9 @@ function Input(props) {
                 className="form-control"
                 placeholder={props.name === 'price_by_hour' ? 'How much do you charge per hour?' : props.text}
                 required={props.mandatory ? true : false}
-                
-                onChange={(event) => {
-                    props.onChange(event.target.value);
-                    console.log(props.value);
-                }}
+                value={input}
+                onChange={handleChange}
+                onSubmit={props.onSubmit(input)}
                 />
         </div>
     )
