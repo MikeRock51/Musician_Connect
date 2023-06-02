@@ -31,7 +31,10 @@ function App() {
             element={<Usertype onComplete={retrieveInput} />}
           />
           <Route path='/register'
-            element={<Register userType={userData.userType} />} />
+            element={<Register
+              userType={userData.userType}
+              onComplete={retrieveInput}
+               />} />
         </Routes>
       </div>
     </Router>
