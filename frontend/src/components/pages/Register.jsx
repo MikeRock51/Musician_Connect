@@ -2,8 +2,10 @@ import { useState } from "react";
 import Input from "../form_pieces/Input";
 import Select from "../form_pieces/Select";
 
-function Register() {
+function Register(props) {
     const [userData, setUserData] = useState({});
+
+    console.log(props.userType);
 
     function retrieveInput(key, value) {
         setUserData((prevData) => {
@@ -26,8 +28,8 @@ function Register() {
                 mandatory={true} onComplete={retrieveInput} />
             <Input type="text" name="lastName" text="Last Name"
                 mandatory={true} onComplete={retrieveInput} />
-            <Input type="text" name="alias" text="Alias"
-                mandatory={false} onComplete={retrieveInput} />
+            {props.userType === 'Musician' && <Input type="text" name="alias" text="Alias"
+                mandatory={false} onComplete={retrieveInput} />}
             <Input type="email" name="email" text="Email"
                 mandatory={true} onComplete={retrieveInput} />
             <Input type="password" name="password" text="Password"
@@ -38,8 +40,8 @@ function Register() {
                 onComplete={retrieveInput} />
             <Select name="city" items={['Dutse-Alhaji', 'Gwarinpa', 'Kubwa']}
                 onComplete={retrieveInput} text="City" />
-            <Input type="text" name="price_by_hour" text="Price Per Hour"
-                mandatory={true} onComplete={retrieveInput} />
+            {props.userType === 'Musician' && <Input type="text" name="price_by_hour" text="Price Per Hour"
+                mandatory={true} onComplete={retrieveInput} />}
 
             <div className="mb-3">
                 <label className="form-label">Upload profile picture:</label>
