@@ -4,9 +4,23 @@
 from models import storage
 from models.user import User
 from api.v1.views import app_views
-from flask import jsonify, make_response, request, abort
+from flask import jsonify, make_response, request, abort, url_for
 from models.instrument import Instrument
 import bcrypt
+from werkzeug.utils import secure_filename
+
+
+def allowedFile(filename):
+    """Checks is file format is supported"""
+    ALLOWED_EXTENSIONS = {'jpg', 'jpeg', 'png', 'gif'}
+
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+def validateFileSize(file):
+    """Validates that uploaded file doesn't exceed the max size"""
+    MAX_CONTENT_LENGTH = 16 * 1000 * 1000
+    return file.content_length <= MAX_CONTENT_LENGTH 
 
 
 @app_views.route('/users', strict_slashes=False)
@@ -55,6 +69,19 @@ def createUser():
         if key not in userData:
             return make_response(jsonify({"error": f"Missing {key}"}), 400)
 
+    dpFile = request.files['dp']
+    if dpFile and dpFile.filename != '':
+        if not validateFileSize(dpFile):
+            return make_response(jsonify({"error": "File too large"}), 400)
+        if not allowedFile(dpFile.filename):
+            return make_response(jsonifiy({"error": "Format not supported"}), 400)
+
+        secureDpName = secure_filename(dpFile.filename)
+
+        userData['profilePicture'] = secureDpName
+        UPLOAD_FOLDER = f"{url_for('static')}/images"
+        dpFile.save(os.path.join(app_views.root_path, UPLOAD_FOLDER, secureDpName))
+
     hashedPassword = bcrypt.hashpw(userData.get('password').encode('utf-8'), bcrypt.gensalt())
     userData['password'] = str(hashedPassword, 'utf-8')
 
@@ -101,10 +128,23 @@ def updateUser(user_id):
     if not userData:
         return make_response(jsonify({"error": "Not a JSON"}), 400)
 
-    ignoredKeys = ['createdAt', 'updatedAt', 'id', 'userType']
+    ignoredKeys = ['createdAt', 'updatedAt', 'id', 'userType', 'profilePicture']
 
     for key, value in userData.items():
         if key not in ignoredKeys:
+            if key == 'profilePicture':
+                dpFile = request.files['dp']
+            if dpFile and dpFile.filename != '':
+                if not validateFileSize(dpFile):
+                    return make_response(jsonify({"error": "File too large"}), 400)
+                if not allowedFile(dpFile.filename):
+                    return make_response(jsonifiy({"error": "Format not supported"}), 400)
+
+                secureDpName = secure_filename(dpFile.filename)
+                setattr(user, key,secureDpName)
+                UPLOAD_FOLDER = f"{url_for('static')}/images"
+                dpFile.save(os.path.join(app_views.root_path, UPLOAD_FOLDER, secureDpName))
+
             setattr(user, key, value)
 
     user.save()
