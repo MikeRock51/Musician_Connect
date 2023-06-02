@@ -1,12 +1,29 @@
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap/dist/js/bootstrap.bundle.js';
+import { useState } from "react";
 import Home from "./pages/Home";
 import Navbar from './Navbar';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Register from './pages/Register';
 import Usertype from './pages/Usertype';
 
+
 function App() {
+  const [userData, setUserData] = useState({});
+
+  function retrieveInput(key, value) {
+      setUserData((prevData) => {
+          return {
+              ...prevData,
+              [key]: value
+          }
+
+      });
+  }
+
+  function handleSubmit(event) {
+      // event.preventDefault();
+      console.log(userData);
+  }
+
   return (
     <Router>
       <div className='App'>
@@ -15,7 +32,8 @@ function App() {
         </div>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/register' element={<Usertype />} />
+          <Route path='/register/user-type' element={<Usertype />} />
+          <Route path='/register' element={<Register />} />
         </Routes>
       </div>
     </Router>
