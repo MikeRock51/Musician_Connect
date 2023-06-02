@@ -1,6 +1,8 @@
-
+import { useState } from "react";
 
 function Select(props) {
+    const [input, setInput] = useState('');
+
     return (
         <div className="col-md-6">
             <label className="form-label">{props.text}</label>

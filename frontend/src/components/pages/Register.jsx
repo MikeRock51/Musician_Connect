@@ -5,30 +5,44 @@ import Select from "../form_pieces/Select";
 function Register() {
     const [userData, setUserData] = useState({});
 
-    function retriveData(data) {
-        setUserData({...data});
+    function retrieveInput(key, value) {
+        console.log(userData)
+        setUserData((prevData) => {
+            return {
+                ...prevData,
+                [key]: value
+            }
+
+        })
     }
 
     return (
         <form className="row g-3 mx-5">
             <Input type="text" name="firstName" text="First Name"
-                mandatory={true} onSubmit={retriveData} />
-            {/* <Input type="text" name="lastName" text="Last Name" mandatory={true} />
+                mandatory={true} onComplete={retrieveInput} />
+            <Input type="text" name="lastName" text="Last Name"
+            mandatory={true} onComplete={retrieveInput} />
             <Select name="userType" items={['Client', 'Musician']} text="Account Type" />
-            <Input type="text" name="alias" text="Alias" mandatory={false} />
-            <Input type="email" name="email" text="Email" mandatory={true} />
-            <Input type="password" name="password" text="Password" mandatory={true} />
+            <Input type="text" name="alias" text="Alias" 
+            mandatory={false} onComplete={retrieveInput}/>
+            <Input type="email" name="email" text="Email"
+            mandatory={true} onComplete={retrieveInput} />
+            <Input type="password" name="password" text="Password"
+            mandatory={true} onComplete={retrieveInput} />
             <Input type="password" name="confirm-password" text="Confirm Password"
-                mandatory={true} />
-            <Select name="State" items={['Abuja']} text="State" />
-            <Select name="city" items={['Dutse-Alhaji', 'Gwarinpa', 'Kubwa']} text="City" />
-            <Input type="text" name="price_by_hour" text="Price Per Hour" mandatory={true} /> */}
+                mandatory={true} onComplete={retrieveInput} />
+            <Select name="State" items={['Abuja']} text="State"
+            onComplete={retrieveInput}/>
+            <Select name="city" items={['Dutse-Alhaji', 'Gwarinpa', 'Kubwa']}
+            onComplete={retrieveInput} text="City" />
+            <Input type="text" name="price_by_hour" text="Price Per Hour"
+            mandatory={true} onComplete={retrieveInput} />
 
-            {/* <div className="mb-3">
+            <div className="mb-3">
                 <label className="form-label">Upload profile picture:</label>
                 <input type="file" className="form-control form-control-sm"
                     id="formFileSm" name="dp" accept="image/*" />
-            </div> */}
+            </div>
             <div className="col-12">
                 <button type="submit" className="btn">Create my account</button>
             </div>

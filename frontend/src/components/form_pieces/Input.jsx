@@ -2,10 +2,10 @@ import { useState } from "react";
 
 function Input(props) {
     const [input, setInput] = useState("");
-    const [data, setData] = useState({});
 
     function handleChange(event) {
-        const {value} = event.target;
+        const value = event.target.value;
+        props.onComplete(props.name, value);
         setInput(value);
     }
 
@@ -20,7 +20,7 @@ function Input(props) {
                 required={props.mandatory ? true : false}
                 value={input}
                 onChange={handleChange}
-                onSubmit={props.onSubmit(input)}
+                // onSubmit={props.onComplete(props.name, input)}
                 />
         </div>
     )
