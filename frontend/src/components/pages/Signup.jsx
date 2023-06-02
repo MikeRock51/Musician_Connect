@@ -57,11 +57,12 @@ function Signup() {
             <div className="col-md-6">
                 <label className="form-label">Price Per Hour</label>
                 <input type="text" className="form-control" name="price_by_hour"
-                    id="inputZip" placeholder="How much do you charge per hour?" />
+                    id="inputPrice" placeholder="How much do you charge per hour?" />
             </div>
             <div class="mb-3">
                 <label for="media" class="form-label">Upload profile picture:</label>
-                <input type="file" class="form-control" id="media" name="dp" accept="image/*" />
+                <input type="file" class="form-control form-control-sm"
+                id="formFileSm" name="dp" accept="image/*" />
             </div>
             <div className="col-12">
                 <button type="submit" className="btn">Create my account</button>
