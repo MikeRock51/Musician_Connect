@@ -10,18 +10,13 @@ function App() {
   const [userData, setUserData] = useState({});
 
   function retrieveInput(key, value) {
-      setUserData((prevData) => {
-          return {
-              ...prevData,
-              [key]: value
-          }
-
-      });
-  }
-
-  function handleSubmit(event) {
-      // event.preventDefault();
-      console.log(userData);
+    console.log(userData);
+    setUserData((prevData) => {
+      return {
+        ...prevData,
+        [key]: value
+      }
+    });
   }
 
   return (
@@ -32,7 +27,9 @@ function App() {
         </div>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/register/user-type' element={<Usertype />} />
+          <Route path='/register/user-type'
+             element={<Usertype onComplete={retrieveInput}/>}
+          />
           <Route path='/register' element={<Register />} />
         </Routes>
       </div>
