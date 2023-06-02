@@ -6,14 +6,18 @@ function Register() {
     const [userData, setUserData] = useState({});
 
     function retrieveInput(key, value) {
-        console.log(userData)
         setUserData((prevData) => {
             return {
                 ...prevData,
                 [key]: value
             }
 
-        })
+        });
+    }
+
+    function handleSubmit(event) {
+        // event.preventDefault();
+        console.log(userData);
     }
 
     return (
@@ -21,22 +25,21 @@ function Register() {
             <Input type="text" name="firstName" text="First Name"
                 mandatory={true} onComplete={retrieveInput} />
             <Input type="text" name="lastName" text="Last Name"
-            mandatory={true} onComplete={retrieveInput} />
-            <Select name="userType" items={['Client', 'Musician']} text="Account Type" />
-            <Input type="text" name="alias" text="Alias" 
-            mandatory={false} onComplete={retrieveInput}/>
+                mandatory={true} onComplete={retrieveInput} />
+            <Input type="text" name="alias" text="Alias"
+                mandatory={false} onComplete={retrieveInput} />
             <Input type="email" name="email" text="Email"
-            mandatory={true} onComplete={retrieveInput} />
+                mandatory={true} onComplete={retrieveInput} />
             <Input type="password" name="password" text="Password"
-            mandatory={true} onComplete={retrieveInput} />
+                mandatory={true} onComplete={retrieveInput} />
             <Input type="password" name="confirm-password" text="Confirm Password"
                 mandatory={true} onComplete={retrieveInput} />
             <Select name="State" items={['Abuja']} text="State"
-            onComplete={retrieveInput}/>
+                onComplete={retrieveInput} />
             <Select name="city" items={['Dutse-Alhaji', 'Gwarinpa', 'Kubwa']}
-            onComplete={retrieveInput} text="City" />
+                onComplete={retrieveInput} text="City" />
             <Input type="text" name="price_by_hour" text="Price Per Hour"
-            mandatory={true} onComplete={retrieveInput} />
+                mandatory={true} onComplete={retrieveInput} />
 
             <div className="mb-3">
                 <label className="form-label">Upload profile picture:</label>
@@ -44,7 +47,11 @@ function Register() {
                     id="formFileSm" name="dp" accept="image/*" />
             </div>
             <div className="col-12">
-                <button type="submit" className="btn">Create my account</button>
+                <button type="submit" className="btn"
+                    onClick={handleSubmit}
+                >
+                    Create my account
+                </button>
             </div>
         </form>
     )

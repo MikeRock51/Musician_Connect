@@ -1,7 +1,13 @@
 import { useState } from "react";
 
 function Select(props) {
-    const [input, setInput] = useState('');
+    const [choice, setChoice] = useState('');
+
+    function handleChange(event) {
+        const value = event.target.value;
+        props.onComplete(props.name, value);
+        setChoice(value);
+    }
 
     return (
         <div className="col-md-6">
@@ -9,10 +15,12 @@ function Select(props) {
             <select
                 className="form-select"
                 name={props.name}
+                value={choice}
+                onChange={handleChange}
                 required>
-                <option disabled selected hidden>Choose...</option>
-                {props.items.map((item) => {
-                    return <option>{item}</option>
+                <option value=''>Choose...</option>
+                {props.items.map((item, index) => {
+                    return <option value={item} key={index}>{item}</option>
                 })}
             </select>
         </div>

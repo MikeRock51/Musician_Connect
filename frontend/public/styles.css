@@ -37,6 +37,13 @@ a {
   border-radius: 20px !important;
 }
 
+.middle {
+  /* text-align: center; */
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+}
+
 .teal {
   color: teal;
 }

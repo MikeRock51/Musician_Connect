@@ -20,8 +20,7 @@ function Input(props) {
                 required={props.mandatory ? true : false}
                 value={input}
                 onChange={handleChange}
-                // onSubmit={props.onComplete(props.name, input)}
-                />
+            />
         </div>
     )
 }
