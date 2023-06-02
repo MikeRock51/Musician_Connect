@@ -49,18 +49,11 @@ def createUser():
     if not userData:
         return make_response(jsonify({"error": "Not a JSON"}), 400)
 
-    if 'firstName' not in userData:
-        return make_response(jsonify({"error": "Missing First Name"}), 400)
-    if 'lastName' not in userData:
-        return make_response(jsonify({"error": "Missing Last Name"}), 400)
-    if 'email' not in userData:
-        return make_response(jsonify({"error": "Missing Email"}), 400)
-    if 'password' not in userData:
-        return make_response(jsonify({"error": "Missing Password"}), 400)
-    if 'city_id' not in userData:
-        return make_response(jsonify({"error": "Missing City Id"}), 400)
-    if 'userType' not in userData:
-        return make_response(jsonify({"error": "Missing userType"}), 400)
+    requiredKeys = ['firstName', 'lastName', 'email', 'city_id', 'userType']
+
+    for key in requiredKeys:
+        if key not in userData:
+            return make_response(jsonify({"error": f"Missing {key}"}), 400)
 
     hashedPassword = bcrypt.hashpw(userData.get('password').encode('utf-8'), bcrypt.gensalt())
     userData['password'] = str(hashedPassword, 'utf-8')
