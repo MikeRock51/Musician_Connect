@@ -1,11 +1,12 @@
 import { useState } from "react";
 
 function Input(props) {
-    const [input, setInput] = useState({[props.name]: ""});
+    const [input, setInput] = useState("");
+    const [data, setData] = useState({});
 
     function handleChange(event) {
         const {value} = event.target;
-        setInput({ [props.name]: value });
+        setInput(value);
     }
 
     return (
