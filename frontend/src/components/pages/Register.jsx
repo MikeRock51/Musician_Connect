@@ -25,7 +25,7 @@ function Register(props) {
     return (
         <form className="row g-3 mx-5">
             <Input type="text" name="firstName" text="First Name"
-                mandatory={true} onComplete={retrieveInput} />
+                mandatory={true} onComplete={props.onComplete} />
             <Input type="text" name="lastName" text="Last Name"
                 mandatory={true} onComplete={retrieveInput} />
             {props.userType === 'Musician' && <Input type="text" name="alias" text="Alias"
