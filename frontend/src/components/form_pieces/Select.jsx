@@ -3,14 +3,14 @@ import { useNavigate } from "react-router-dom";
 
 function Select(props) {
     const [choice, setChoice] = useState('');
-    const [error, setError] = useState(true);
+    const [error, setError] = useState('');
     const navigate = useNavigate();
 
     function handleChange(event) {
         const value = event.target.value;
+        setError(value.length === 0 ? true : false);
         props.onChange(props.name, value);
         setChoice(value);
-        setError(choice === '' ? true : false);
     }
 
     return (
@@ -27,12 +27,13 @@ function Select(props) {
                     return <option value={item} key={index}>{item}</option>
                 })}
             </select>
-            {!error && <h6 className="pt-2 cinnabar">Please select a value</h6>}
+            {error && <h6 className="pt-2 cinnabar">Please select a value</h6>}
             {props.addButton && <div className="col-sm-12 pt-3">
                 <button
                     type="submit"
                     className="btn col-4"
                     onClick={() => {
+                        alert(error)
                         if (!error) {
                             navigate("/register");   
                         }

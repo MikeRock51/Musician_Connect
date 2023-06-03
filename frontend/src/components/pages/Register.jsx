@@ -33,7 +33,7 @@ function Register(props) {
             <div className="mb-3">
                 <label className="form-label">Upload profile picture:</label>
                 <input type="file" className="form-control form-control-sm"
-                    id="formFileSm" name="dp" accept="image/*" />
+                    id="formFileSm" name="profilePicture" accept="image/*" />
             </div>
             <div className="col-12">
                 <button type="submit" className="btn"
