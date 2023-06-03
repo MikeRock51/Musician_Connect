@@ -64,6 +64,14 @@ class BaseModel():
                     instruments.append(instrument.toDict())
                 instance['instruments'] = instruments
 
+        if type(self).__name__ == 'State':
+            cities = []
+
+            for city in self.cities:
+                cities.append(city.toDict())
+
+            instance['cities'] = sorted(cities, key=lambda x: x['name'])
+
         return instance
 
     def delete(self):
