@@ -35,7 +35,7 @@ function Register(props) {
             <Select name="city"
             items={cities}
                 onChange={props.onChange} text="City" />
-            <Checklist/>
+            <Checklist onChange={props.onChange} />
             {props.userData.userType === 'Musician' && <Input type="text" name="price_by_hour" text="Price Per Hour"
                 mandatory={true} onChange={props.onChange} />}
 

@@ -2,18 +2,27 @@ import { useState } from "react";
 import useFetch from "../utilities/useFetch";
 
 function Checklist(props) {
-    const [choice, setChoice] = useState([]);
-    const [error, setError] = useState('');
+    const [userInstruments, setUserInstruments] = useState([]);
+    // const [isChecked, setIsChecked] = useState(false);
     const url = 'http://127.0.0.1:7000/api/v1/instruments';
     const { data: instruments, isPending, error: fetchError } = useFetch(url);
 
-    // console.log(instruments[1].id)
-
-    function handleChange(event) {
+    function handleCheck(event) {
         const value = event.target.value;
-        setError(value.length === 0 ? true : false);
-        props.onChange(props.name, value);
-        setChoice(value);
+        const isChecked = event.target.checked;
+
+        isChecked && setUserInstruments((prevValue) => {
+            return [...prevValue, value];
+        });
+        !isChecked && setUserInstruments((prevValue) => {
+            return prevValue.filter((val) => {
+                return val !== value;
+            });
+        });
+        console.log(userInstruments);
+        // setError(value.length === 0 ? true : false);
+        // props.onChange(props.name, value);
+        // setChoice(value);
     }
 
     return (
@@ -29,7 +38,8 @@ function Checklist(props) {
                         <li key={instrument.id} className="px-3">
                             <div className="form-check">
                                 <input className="form-check-input" type="checkbox"
-                                    value={JSON.stringify(instrument)} id={instrument.id} />
+                                    value={JSON.stringify(instrument)} id={instrument.id}
+                                     onChange={handleCheck} />
                                 <label className="form-check-label" htmlFor={instrument.id}>
                                     {instrument.name}
                                 </label>
