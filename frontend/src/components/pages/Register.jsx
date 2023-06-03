@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Input from "../form_pieces/Input";
 import Select from "../form_pieces/Select";
+import Checklist from "../form_pieces/Checklist";
 
 function Register(props) {
 
@@ -27,6 +28,9 @@ function Register(props) {
                 onChange={props.onChange} />
             <Select name="city" items={['Dutse-Alhaji', 'Gwarinpa', 'Kubwa']}
                 onChange={props.onChange} text="City" />
+            <Checklist />
+            {props.userType === 'Musician' && <Input type="text" name="price_by_hour" text="Price Per Hour"
+                mandatory={true} onChange={props.onChange} />}
             {props.userType === 'Musician' && <Input type="text" name="price_by_hour" text="Price Per Hour"
                 mandatory={true} onChange={props.onChange} />}
 

@@ -56,7 +56,10 @@ class DBStorage:
         objects = {}
 
         if obj:
-            queryResult = self.__session.query(obj).all()
+            if obj == classes['Instrument']:
+                queryResult = self.__session.query(obj).order_by(obj.name).all()
+            else:
+                queryResult = self.__session.query(obj).all()
             for result in queryResult:
                 key = "{}.{}".format(result.__class__.__name__, result.id)
                 objects[key] = result
