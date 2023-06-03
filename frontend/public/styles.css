@@ -68,6 +68,7 @@ a {
   -moz-box-shadow: 0px 1px 3px #666666;
   box-shadow: 0px 1px 3px #666666;
   color: #ffffff;
+  background-color: #ECFFB0 !important;
   font-size: 20px;
   padding: 10px 20px 10px 20px;
   text-decoration: none;
@@ -75,6 +76,23 @@ a {
 }
 
 .btn:hover {
+  animation: buttonAnimation 0.5s infinite !important;
+  background-color: #25cff2 !important;
+}
+
+@keyframes buttonAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* .btn:hover {
   background: #ff5e0ed3;
   background-image: -webkit-linear-gradient(top, #ff5e0ed3, #edffb0a9);
   background-image: -moz-linear-gradient(top, #ff5e0ed3, #edffb0a9);
@@ -82,4 +100,4 @@ a {
   background-image: -o-linear-gradient(top, #ff5e0ed3, #edffb0a9);
   background-image: linear-gradient(to bottom, #ff5e0ed3, #edffb0a9);
   text-decoration: none;
-}
+} */

@@ -17,8 +17,10 @@ function Checklist(props) {
     }
 
     return (
-        <div className="dropdown col-12">
-            <button className="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+        <div className="dropdown col-6">
+            <label className="pb-2">Instruments Played</label>
+            <br />
+            <button className="btn dropdown-toggle btn-info col-12" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                 Select options
             </button>
             <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
