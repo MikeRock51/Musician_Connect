@@ -13,7 +13,7 @@ function Register(props) {
 
     function handleSubmit(event) {
         // event.preventDefault();
-        // console.log(userData);
+        console.log("Total Submission " + props.userData);
     }
 
     return (
