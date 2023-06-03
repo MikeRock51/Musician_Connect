@@ -4,6 +4,9 @@ import Select from "../form_pieces/Select";
 import Checklist from "../form_pieces/Checklist";
 
 function Register(props) {
+    const citiesUrl = 'http://127.0.0.1:7000/api/v1/cities';
+    const stateUrl = 'http://127.0.0.1:7000/api/v1/states';
+    const { data: cities, isPending, error: fetchError } = useFetch(cityUrl);
 
     function handleSubmit(event) {
         // event.preventDefault();
