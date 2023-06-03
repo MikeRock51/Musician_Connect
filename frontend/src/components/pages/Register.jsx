@@ -2,11 +2,13 @@ import { useState } from "react";
 import Input from "../form_pieces/Input";
 import Select from "../form_pieces/Select";
 import Checklist from "../form_pieces/Checklist";
+import useFetch from "../utilities/useFetch";
 
 function Register(props) {
     const citiesUrl = 'http://127.0.0.1:7000/api/v1/cities';
-    const stateUrl = 'http://127.0.0.1:7000/api/v1/states';
-    const { data: cities, isPending, error: fetchError } = useFetch(cityUrl);
+    const statesUrl = 'http://127.0.0.1:7000/api/v1/states';
+    const { data: cities } = useFetch(citiesUrl);
+    const { data: states } = useFetch(statesUrl);
 
     function handleSubmit(event) {
         // event.preventDefault();
@@ -27,7 +29,7 @@ function Register(props) {
                 mandatory={true} onChange={props.onChange} />
             <Input type="password" name="confirm-password" text="Confirm Password"
                 mandatory={true} onChange={props.onChange} />
-            <Select name="State" items={['Abuja']} text="State"
+            <Select name="State" items={states} text="State"
                 onChange={props.onChange} />
             <Select name="city" items={['Dutse-Alhaji', 'Gwarinpa', 'Kubwa']}
                 onChange={props.onChange} text="City" />

@@ -75,9 +75,9 @@ ul.dropdown-menu {
   -webkit-border-radius: 14;
   -moz-border-radius: 14;
   border-radius: 14px;
-  -webkit-box-shadow: 0px 1px 3px #25cff2;
-  -moz-box-shadow: 0px 1px 3px #25cff2;
-  box-shadow: 0px 1px 3px #25cff2;
+  -webkit-box-shadow: 0px 1px 3px #666666;
+  -moz-box-shadow: 0px 1px 3px #666666;
+  box-shadow: 0px 1px 3px #666666;
   color: #ffffff;
   background-color: #ECFFB0 !important;
   font-size: 20px;

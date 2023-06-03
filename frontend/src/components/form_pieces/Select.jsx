@@ -23,8 +23,8 @@ function Select(props) {
                 onChange={handleChange}
                 required>
                 <option value=''>Choose...</option>
-                {props.items.map((item, index) => {
-                    return <option value={item} key={index}>{item}</option>
+                {props.items && props.items.map((item) => {
+                    return <option value={item} key={item}>{item}</option>
                 })}
             </select>
             {error && <h6 className="pt-2 cinnabar">Please select a value</h6>}
@@ -33,7 +33,7 @@ function Select(props) {
                     type="submit"
                     className="btn col-4"
                     onClick={() => {
-                        alert(error)
+                        // alert(error)
                         if (!error) {
                             navigate("/register");   
                         }
