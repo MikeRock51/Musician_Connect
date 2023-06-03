@@ -5,7 +5,7 @@ function Checklist(props) {
     const [choice, setChoice] = useState([]);
     const [error, setError] = useState('');
     const url = 'http://127.0.0.1:7000/api/v1/instruments';
-    const {data: instruments, isPending, error: fetchError} = useFetch(url);
+    const { data: instruments, isPending, error: fetchError } = useFetch(url);
 
     // console.log(instruments[1].id)
 
@@ -28,8 +28,9 @@ function Checklist(props) {
                     return (
                         <li key={instrument.id} className="px-3">
                             <div className="form-check">
-                                <input className="form-check-input" type="checkbox" value="option1" id="check1" />
-                                <label className="form-check-label" htmlFor="check1">
+                                <input className="form-check-input" type="checkbox"
+                                    value={JSON.stringify(instrument)} id={instrument.id} />
+                                <label className="form-check-label" htmlFor={instrument.id}>
                                     {instrument.name}
                                 </label>
                             </div>

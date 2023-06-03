@@ -7,13 +7,9 @@ import useFetch from "../utilities/useFetch";
 function Register(props) {
     const statesUrl = 'http://127.0.0.1:7000/api/v1/states';
     const { data: states } = useFetch(statesUrl);
-    const state = props.userData.State && JSON.parse(props.userData.State);
-    const stateId = state && state.id;
-    const citiesUrl = stateId && `http://127.0.0.1:7000/api/v1/states/${stateId}/cities`;
-    state && console.log(stateId)
-
-    const { data: cities, error } = useFetch(citiesUrl);
-    console.log(cities);
+    const cities = props.userData.State && JSON.parse(props.userData.State).cities;
+    // console.log(cities);
+    console.log(props.userData)
 
     function handleSubmit(event) {
         // event.preventDefault();
@@ -39,7 +35,7 @@ function Register(props) {
             <Select name="city"
             items={cities}
                 onChange={props.onChange} text="City" />
-            <Checklist />
+            <Checklist/>
             {props.userData.userType === 'Musician' && <Input type="text" name="price_by_hour" text="Price Per Hour"
                 mandatory={true} onChange={props.onChange} />}
 
