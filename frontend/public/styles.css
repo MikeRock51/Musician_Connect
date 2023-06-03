@@ -54,6 +54,17 @@ a {
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
+.dropdown-menu::-webkit-scrollbar {
+  width: 0px;
+}
+
+ul.dropdown-menu {
+  overflow: scroll;
+  height: 30vh;
+  width: 80%;
+  overflow: auto;
+}
+
 .btn {
   background-color: #008575;
   /* background-image: -webkit-linear-gradient(top, #008575, #edffb0a9);
@@ -64,15 +75,22 @@ a {
   -webkit-border-radius: 14;
   -moz-border-radius: 14;
   border-radius: 14px;
-  -webkit-box-shadow: 0px 1px 3px #666666;
-  -moz-box-shadow: 0px 1px 3px #666666;
-  box-shadow: 0px 1px 3px #666666;
+  -webkit-box-shadow: 0px 1px 3px #25cff2;
+  -moz-box-shadow: 0px 1px 3px #25cff2;
+  box-shadow: 0px 1px 3px #25cff2;
   color: #ffffff;
   background-color: #ECFFB0 !important;
   font-size: 20px;
   padding: 10px 20px 10px 20px;
   text-decoration: none;
   border: none;
+}
+
+.btn.dropdown-toggle {
+  -webkit-box-shadow: 0px 0px 0px #666666;
+  -moz-box-shadow: 0px 0px 0px #666666;
+  box-shadow: 0px 0px 0px #666666;
+  border-color: #66666633;
 }
 
 .btn:hover {
