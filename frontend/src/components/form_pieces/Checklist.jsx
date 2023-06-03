@@ -11,25 +11,27 @@ function Checklist(props) {
     function handleCheck(event) {
         const value = event.target.value;
         const isChecked = event.target.checked;
-        const name = event.target.name;
+        const instrument = JSON.parse(event.target.getAttribute("data-instrument"));
+
+        // console.log("Instreum " + instrument.name);
 
         isChecked && setUserInstruments((prevValue) => {
-            return [...prevValue, value];
+            return [...prevValue, instrument];
         });
         !isChecked && setUserInstruments((prevValue) => {
             return prevValue.filter((val) => {
-                return val !== value;
+                return val !== instrument;
             });
         });
         setError(userInstruments.length < 2 ? true : false);
-        props.onChange(name, userInstruments);
+        props.onChange(props.name, userInstruments);
     }
 
     return (
         <div className="dropdown col-md-6">
             <label className="pb-2">Instruments Played: [ 
                 {userInstruments.map((instrument, index) => {
-                    instrument = JSON.parse(instrument);
+                    instrument = instrument;
                     return (
                         <React.Fragment key={index}>
                             {instrument.name}
@@ -47,8 +49,9 @@ function Checklist(props) {
                         <li key={instrument.id} className="px-3">
                             <div className="form-check">
                                 <input className="form-check-input" type="checkbox"
-                                    value={JSON.stringify(instrument)}
-                                    id={instrument.id} name='instruments'
+                                    value={instrument.name}
+                                    data-instrument={JSON.stringify(instrument)}
+                                    id={instrument.id} name={props.name}
                                     onChange={handleCheck} required />
                                 <label className="form-check-label" htmlFor={instrument.id}>
                                     {instrument.name}
