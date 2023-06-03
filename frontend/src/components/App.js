@@ -28,12 +28,12 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/register/user-type'
-            element={<Usertype onComplete={retrieveInput} />}
+            element={<Usertype onChange={retrieveInput} />}
           />
           <Route path='/register'
             element={<Register
               userType={userData.userType}
-              onComplete={retrieveInput}
+              onChange={retrieveInput}
                />} />
         </Routes>
       </div>

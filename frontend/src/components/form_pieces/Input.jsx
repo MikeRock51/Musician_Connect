@@ -5,7 +5,7 @@ function Input(props) {
 
     function handleChange(event) {
         const value = event.target.value;
-        props.onComplete(props.name, value);
+        props.onChange(props.name, value);
         setInput(value);
     }
 

@@ -3,45 +3,32 @@ import Input from "../form_pieces/Input";
 import Select from "../form_pieces/Select";
 
 function Register(props) {
-    const [userData, setUserData] = useState({});
-
-    console.log(props.userType);
-
-    function retrieveInput(key, value) {
-        setUserData((prevData) => {
-            return {
-                ...prevData,
-                [key]: value
-            }
-
-        });
-    }
 
     function handleSubmit(event) {
         // event.preventDefault();
-        console.log(userData);
+        // console.log(userData);
     }
 
     return (
         <form className="row g-3 mx-5">
             <Input type="text" name="firstName" text="First Name"
-                mandatory={true} onComplete={props.onComplete} />
+                mandatory={true} onChange={props.onChange} />
             <Input type="text" name="lastName" text="Last Name"
-                mandatory={true} onComplete={retrieveInput} />
+                mandatory={true} onChange={props.onChange} />
             {props.userType === 'Musician' && <Input type="text" name="alias" text="Alias"
-                mandatory={false} onComplete={retrieveInput} />}
+                mandatory={false} onChange={props.onChange} />}
             <Input type="email" name="email" text="Email"
-                mandatory={true} onComplete={retrieveInput} />
+                mandatory={true} onChange={props.onChange} />
             <Input type="password" name="password" text="Password"
-                mandatory={true} onComplete={retrieveInput} />
+                mandatory={true} onChange={props.onChange} />
             <Input type="password" name="confirm-password" text="Confirm Password"
-                mandatory={true} onComplete={retrieveInput} />
+                mandatory={true} onChange={props.onChange} />
             <Select name="State" items={['Abuja']} text="State"
-                onComplete={retrieveInput} />
+                onChange={props.onChange} />
             <Select name="city" items={['Dutse-Alhaji', 'Gwarinpa', 'Kubwa']}
-                onComplete={retrieveInput} text="City" />
+                onChange={props.onChange} text="City" />
             {props.userType === 'Musician' && <Input type="text" name="price_by_hour" text="Price Per Hour"
-                mandatory={true} onComplete={retrieveInput} />}
+                mandatory={true} onChange={props.onChange} />}
 
             <div className="mb-3">
                 <label className="form-label">Upload profile picture:</label>

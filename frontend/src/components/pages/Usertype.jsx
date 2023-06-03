@@ -9,17 +9,9 @@ function Usertype(props) {
         <form className='row g-3 mx-5'>
             <Select name="userType" items={['Client', 'Musician']}
                 text="Account Type"
-                onComplete={props.onComplete}
+                onChange={props.onChange}
+                addButton={true}
             />
-            <div className="col-12">
-                <button
-                    type="submit"
-                    className="btn col-4"
-                    onClick={() => {
-                        navigate("/register");
-                    }}
-                >Confirm</button>
-            </div>
         </form>
     )
 }
