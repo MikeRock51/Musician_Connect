@@ -5,7 +5,8 @@ function Usertype(props) {
 
     return (
         <form className='row g-3 mx-5'>
-            <Select name="userType" items={['Client', 'Musician']}
+            <Select name="userType"
+                items={[{ 'name': 'Client' }, { "name": 'Musician' }]}
                 text="Account Type"
                 onChange={props.onChange}
                 addButton={true}

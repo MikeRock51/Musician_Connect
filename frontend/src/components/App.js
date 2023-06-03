@@ -10,7 +10,7 @@ function App() {
   const [userData, setUserData] = useState({});
 
   function retrieveInput(key, value) {
-    console.log(userData);
+    // console.log(userData);
     setUserData((prevData) => {
       return {
         ...prevData,
@@ -32,7 +32,8 @@ function App() {
           />
           <Route path='/register'
             element={<Register
-              userType={userData.userType}
+              userData={userData}
+              // state={userData.state ? userData.State : null}
               onChange={retrieveInput}
                />} />
         </Routes>

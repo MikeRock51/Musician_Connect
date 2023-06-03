@@ -22,7 +22,8 @@ def fetchStateCities(state_id):
     for city in cities:
         stateCities.append(city.toDict())
 
-    return make_response(jsonify(stateCities), 200)
+    return make_response(jsonify(sorted(stateCities,
+        key=lambda x: x['name'])), 200)
 
 @app_views.route('/cities/<city_id>', strict_slashes=False)
 def fetchCity(city_id):
