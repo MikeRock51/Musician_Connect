@@ -5,6 +5,7 @@ from os import getenv
 from models.user import User
 from models.instrument import Instrument
 from models.city import City
+from models.state import State
 from models import storage
 
 user = getenv('MCC_SQL_USER')

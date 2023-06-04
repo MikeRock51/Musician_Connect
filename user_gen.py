@@ -51,7 +51,10 @@ for instrument in instruments.values():
 # List of city ids in database
 city_ids = []
 cities = storage.all(City)
-for city in cities
+for city in cities.values():
+    city_ids.append(city.id)
+
+print('Retrieved City ids successfully')
 
 # Generate random email address
 def generate_email(first_name, last_name):
