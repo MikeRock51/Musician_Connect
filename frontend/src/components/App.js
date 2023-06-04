@@ -8,14 +8,16 @@ import Usertype from './pages/Usertype';
 
 function App() {
   const [userData, setUserData] = useState({});
-  const [userInstruments, setUserInstruments] = useState([]);
+  let [userInstruments, setUserInstruments] = useState([]);
 
   function retrieveInput(key, value, isChecked = false) {
     key === 'instruments' && isChecked && userInstruments.push(value);
-    key === 'instruments' && !isChecked && setUserInstruments((prevValue) => {
-          return prevValue.filter((val) => {
-              return val.id !== value.id;
-          })});
+    if (key === 'instruments' && !isChecked) {
+      userInstruments = userInstruments.filter((val) => {
+          return val.id !== value.id;
+        });
+      setUserInstruments(userInstruments);
+    }
 
     setUserData((prevData) => {
       return {

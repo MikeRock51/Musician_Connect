@@ -22,9 +22,9 @@ function Register(props) {
                 mandatory={true} onChange={props.onChange} />
             <Input type="text" name="lastName" text="Last Name"
                 mandatory={true} onChange={props.onChange} />
-            {props.userData.userType === 'Musician' && <Input type="text" name="alias" text="Alias"
-                mandatory={false} onChange={props.onChange} />}
             <Input type="email" name="email" text="Email"
+                mandatory={true} onChange={props.onChange} />
+            <Input type="tel" name="phone" text="Phone Number"
                 mandatory={true} onChange={props.onChange} />
             <Input type="password" name="password" text="Password"
                 mandatory={true} onChange={props.onChange} />
@@ -35,16 +35,20 @@ function Register(props) {
             <Select name="city"
                 items={cities}
                 onChange={props.onChange} text="City" />
-            <Checklist onChange={props.onChange}
+            {props.userData.userType === 'Musician' && <Input
+                type="text" name="alias" text="Alias"
+                mandatory={false} onChange={props.onChange} />}
+            {props.userData.userType === 'Musician' && <Checklist
+                onChange={props.onChange}
                 name='instruments'
                 checkedItems={props.userData.instruments}
-            />
+            />}
             {props.userData.userType === 'Musician' && <Input type="text" name="price_by_hour" text="Price Per Hour"
                 mandatory={true} onChange={props.onChange} />}
 
-            <div className="mb-3">
+            <div className="mb-3 col-lg-6">
                 <label className="form-label">Upload profile picture:</label>
-                <input type="file" className="form-control form-control-sm"
+                <input type="file" className="form-control form-control"
                     id="formFileSm" name="profilePicture" accept="image/*" />
             </div>
             <div className="col-12">

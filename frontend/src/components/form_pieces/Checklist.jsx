@@ -5,30 +5,15 @@ import useFetch from "../utilities/useFetch";
 function Checklist(props) {
     const url = 'http://127.0.0.1:7000/api/v1/instruments';
     const { data: instruments, isPending, error: fetchError } = useFetch(url);
-    const [error, setError] = useState(true);
-    // const [userInstruments, setUserInstruments] = useState([]);
-    // const [instrument, setInstruments] = useState({});
+    const [error, setError] = useState('');
 
     function handleCheck(event) {
         const instrument = JSON.parse(event.target.value);
         const isChecked = event.target.checked;
 
         props.onChange(props.name, instrument, isChecked);
-
-        // console.log(isChecked ? "Checked instrumental" + instrument.name : "Mba!!");
-        // const userInstruments = [];
-
-        // isChecked && setUserInstruments((prevValue) => {
-        //     return [...prevValue, value];
-        // });
-        // !isChecked && setUserInstruments((prevValue) => {
-        //     return prevValue.filter((val) => {
-        //         return val !== value;
-        //     });
-        // });
+        setError(props.checkedItems && props.checkedItems.length < 2 ? true : false);
     }
-
-    // setError(userInstruments.length < 2 ? true : false);
 
     return (
         <div className="dropdown col-md-6">
