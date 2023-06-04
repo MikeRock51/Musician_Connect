@@ -9,7 +9,7 @@ function Register(props) {
     const { data: states } = useFetch(statesUrl);
     const cities = props.userData.State && JSON.parse(props.userData.State).cities;
     // console.log(cities);
-    console.log(props.userData)
+    // console.log(props.userData)
 
     function handleSubmit(event) {
         // event.preventDefault();
@@ -30,13 +30,14 @@ function Register(props) {
                 mandatory={true} onChange={props.onChange} />
             <Input type="password" name="confirm-password" text="Confirm Password"
                 mandatory={true} onChange={props.onChange} />
-            <Select name="State" items={states} text="State"
+            <Select name="state" items={states} text="State"
                 onChange={props.onChange} />
             <Select name="city"
                 items={cities}
                 onChange={props.onChange} text="City" />
             <Checklist onChange={props.onChange}
                 name='instruments'
+                checkedItems={props.userData.instruments}
             />
             {props.userData.userType === 'Musician' && <Input type="text" name="price_by_hour" text="Price Per Hour"
                 mandatory={true} onChange={props.onChange} />}

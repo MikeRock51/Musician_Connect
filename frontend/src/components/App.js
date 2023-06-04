@@ -8,13 +8,15 @@ import Usertype from './pages/Usertype';
 
 function App() {
   const [userData, setUserData] = useState({});
+  const [userInstruments, setUserInstruments] = useState([]);
 
   function retrieveInput(key, value) {
-    // console.log(userData);
+    key === 'instruments' && userInstruments.push(value);
+
     setUserData((prevData) => {
       return {
         ...prevData,
-        [key]: value
+        [key]: key === 'instruments' ? userInstruments : value
       }
     });
   }
