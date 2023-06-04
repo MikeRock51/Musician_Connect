@@ -5,10 +5,12 @@ import useFetch from "../utilities/useFetch";
 function Checklist(props) {
     const url = 'http://127.0.0.1:7000/api/v1/instruments';
     const { data: instruments, isPending, error: fetchError } = useFetch(url);
-    const [error, setError] = useState('');
+    const [error, setError] = useState(true);
 
     function handleCheck(event) {
-        const instrument = JSON.parse(event.target.value);
+        // const instrument = JSON.parse(event.target.value);
+        const instrument = JSON.parse(event.target.getAttribute('data-instrument'));
+        console.log(instrument.name);
         const isChecked = event.target.checked;
 
         props.onChange(props.name, instrument, isChecked);
@@ -37,8 +39,10 @@ function Checklist(props) {
                         <li key={instrument.id} className="px-3">
                             <div className="form-check">
                                 <input className="form-check-input" type="checkbox"
-                                    value={JSON.stringify(instrument)}
-                                    id={instrument.id} name={props.name}
+                                    // value={JSON.stringify(instrument)}
+                                    value={instrument.name}
+                                    data-instrument={JSON.stringify(instrument)}
+                                    key={instrument.id} name={props.name}
                                     onChange={handleCheck} required />
                                 <label className="form-check-label" htmlFor={instrument.id}>
                                     {instrument.name}

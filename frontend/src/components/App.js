@@ -27,6 +27,14 @@ function App() {
     });
   }
 
+  function handleSubmit(event) {
+    // event.preventDefault();
+    // console.log(props.userData);
+    alert("Clicked");
+    // userData.password !== userData.confirmPassword ? alert('Password Mismatch') : console.log(userData);
+
+}
+
   return (
     <Router>
       <div className='App'>
@@ -41,6 +49,7 @@ function App() {
           <Route path='/register'
             element={<Register
               userData={userData}
+              handleSubmit={handleSubmit}
               // state={userData.state ? userData.State : null}
               onChange={retrieveInput}
             />} />

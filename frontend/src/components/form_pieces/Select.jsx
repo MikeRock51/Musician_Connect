@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 function Select(props) {
     const [choice, setChoice] = useState('');
-    const [error, setError] = useState('');
+    const [error, setError] = useState(true);
     const navigate = useNavigate();
 
     function handleChange(event) {

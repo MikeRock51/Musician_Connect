@@ -11,11 +11,6 @@ function Register(props) {
     // cities && console.log(cities);
     // console.log(props.userData)
 
-    function handleSubmit(event) {
-        // event.preventDefault();
-        console.log(props.userData);
-    }
-
     return (
         <form className="row g-3 mx-5">
             <Input type="text" name="firstName" text="First Name"
@@ -28,7 +23,7 @@ function Register(props) {
                 mandatory={true} onChange={props.onChange} />
             <Input type="password" name="password" text="Password"
                 mandatory={true} onChange={props.onChange} />
-            <Input type="password" name="confirm-password" text="Confirm Password"
+            <Input type="password" name="confirmPassword" text="Confirm Password"
                 mandatory={true} onChange={props.onChange} />
             <Select name="state" items={states} text="State"
                 onChange={props.onChange} />
@@ -58,7 +53,7 @@ function Register(props) {
             </div>
             <div className="col-12">
                 <button type="submit" className="btn"
-                    onClick={handleSubmit}
+                    onClick={props.handleSubmit}
                 >
                     Create my account
                 </button>

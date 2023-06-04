@@ -6,15 +6,16 @@ function Slideshow(props) {
 
   return (
     <Carousel variant="dark" className="curvy carousel">
-      {musicians.map((musician) => {
-        if (!musician.imageUrl) {
-          musician.imageUrl = pictures[Math.floor(Math.random() * pictures.length)];
+      {musicians.map((musician) => 
+      {
+        if (!musician.profilePicture) {
+          musician.profilePicture = pictures[Math.floor(Math.random() * pictures.length)];
         }
         return (
           <Carousel.Item key={musician.id}>
             <img
               className="d-block w-100"
-              src={musician.imageUrl}
+              src={musician.profilePicture}
               alt={`${musician.firsName} ${musician.lastName}`}
             />
             <Carousel.Caption className="carousel-caption">
