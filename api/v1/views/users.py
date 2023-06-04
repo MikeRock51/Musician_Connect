@@ -63,7 +63,7 @@ def createUser():
     if not userData:
         return make_response(jsonify({"error": "Not a JSON"}), 400)
 
-    requiredKeys = ['firstName', 'lastName', 'email', 'city_id', 'userType']
+    requiredKeys = ['firstName', 'lastName', 'email', 'city_id', 'userType', 'phone', 'password']
 
     for key in requiredKeys:
         if key not in userData:
@@ -128,7 +128,7 @@ def updateUser(user_id):
     if not userData:
         return make_response(jsonify({"error": "Not a JSON"}), 400)
 
-    ignoredKeys = ['createdAt', 'updatedAt', 'id', 'userType', 'profilePicture']
+    ignoredKeys = ['createdAt', 'updatedAt', 'id', 'userType']
 
     for key, value in userData.items():
         if key not in ignoredKeys:
