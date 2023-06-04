@@ -10,8 +10,12 @@ function App() {
   const [userData, setUserData] = useState({});
   const [userInstruments, setUserInstruments] = useState([]);
 
-  function retrieveInput(key, value) {
-    key === 'instruments' && userInstruments.push(value);
+  function retrieveInput(key, value, isChecked = false) {
+    key === 'instruments' && isChecked && userInstruments.push(value);
+    key === 'instruments' && !isChecked && setUserInstruments((prevValue) => {
+          return prevValue.filter((val) => {
+              return val.id !== value.id;
+          })});
 
     setUserData((prevData) => {
       return {
@@ -37,7 +41,7 @@ function App() {
               userData={userData}
               // state={userData.state ? userData.State : null}
               onChange={retrieveInput}
-               />} />
+            />} />
         </Routes>
       </div>
     </Router>

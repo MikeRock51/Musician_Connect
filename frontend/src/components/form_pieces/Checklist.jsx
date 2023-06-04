@@ -13,7 +13,7 @@ function Checklist(props) {
         const instrument = JSON.parse(event.target.value);
         const isChecked = event.target.checked;
 
-        isChecked && props.onChange(props.name, instrument);
+        props.onChange(props.name, instrument, isChecked);
 
         // console.log(isChecked ? "Checked instrumental" + instrument.name : "Mba!!");
         // const userInstruments = [];
