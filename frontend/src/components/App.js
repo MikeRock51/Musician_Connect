@@ -29,8 +29,7 @@ function App() {
 
   function handleSubmit(event) {
     // event.preventDefault();
-    // console.log(props.userData);
-    alert("Clicked");
+    // alert("Clicked");
     // userData.password !== userData.confirmPassword ? alert('Password Mismatch') : console.log(userData);
 
 }

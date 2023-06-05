@@ -2,9 +2,11 @@ import { useState } from "react";
 
 function Input(props) {
     const [input, setInput] = useState("");
+    const [error, setError] = useState(true);
 
     function handleChange(event) {
         const value = event.target.value;
+        setError(value.length === 0 ? true : false);
         props.onChange(props.name, value);
         setInput(value);
     }
@@ -21,6 +23,7 @@ function Input(props) {
                 value={input}
                 onChange={handleChange}
             />
+            {error && <h6 className="pt-2 cinnabar">Field cannot be empty</h6>}
         </div>
     )
 }

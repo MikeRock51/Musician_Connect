@@ -10,7 +10,7 @@ function Checklist(props) {
     function handleCheck(event) {
         // const instrument = JSON.parse(event.target.value);
         const instrument = JSON.parse(event.target.getAttribute('data-instrument'));
-        console.log(instrument.name);
+        // console.log(instrument.name);
         const isChecked = event.target.checked;
 
         props.onChange(props.name, instrument, isChecked);
