@@ -10,6 +10,7 @@ function App() {
   let [userInstruments, setUserInstruments] = useState([]);
 
   function retrieveInput(key, value, isChecked = false) {
+    // console.log(userData);
     key === 'instruments' && isChecked && userInstruments.push(value);
     if (key === 'instruments' && !isChecked) {
       userInstruments = userInstruments.filter((val) => {

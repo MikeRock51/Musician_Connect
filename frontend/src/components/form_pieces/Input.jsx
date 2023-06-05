@@ -1,12 +1,17 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 function Input(props) {
     const [input, setInput] = useState("");
-    const [error, setError] = useState(true);
+    // const [error, setError] = useState(true);
+    const inputRef = useRef(null);
+    const inputElement = inputRef.current;
+    const [validInput, setValidInput] = useState(true);
 
     function handleChange(event) {
+        setValidInput(inputElement.validity.valid);
+        // setError(inputElement.validationMessage);
         const value = event.target.value;
-        setError(value.length === 0 ? true : false);
+        // setError(value.length === 0 ? true : false);
         props.onChange(props.name, value);
         setInput(value);
     }
@@ -22,23 +27,24 @@ function Input(props) {
                 placeholder={props.name === 'price_by_hour' ? 'How much do you charge per hour?' : props.text}
                 required={props.mandatory ? true : false}
                 value={input}
+                ref={inputRef}
+                pattern={props.pattern && props.pattern}
                 onChange={handleChange}
             />
-            {error && <h6 className="pt-2 cinnabar">Field cannot be empty</h6>}
+            {inputElement && !validInput && <p className="pt-2 teal">{inputElement.validationMessage}</p>}
             {props.name === 'confirmPassword' &&
                 input !== props.pwd && input.length > 0 &&
-                <h6 className="pt-2 cinnabar">Password Mismatch</h6>}
+                <p className="pt-2 teal">Password Mismatch</p>}
         </div> :
         <div className="form-floating">
-        <textarea name="description" id={props.userData.id && props.userData.id}
+        <textarea name="description" id={props.id && props.id}
             className="form-control"
-            placeholder="Write a description about yourself"
             style={{ height: "100px" }}
-            onChange={(event) => {
-                props.onChange(event.target.name, event.target.value);
-            }}
+            onChange={handleChange}
+            value={input}
+            ref={inputRef}
         />
-        <label className="form-label" >Write a description about yourself:</label>
+        <label className="form-label" >{props.text}</label>
     </div>
     )
 }

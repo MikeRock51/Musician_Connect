@@ -48,6 +48,10 @@ a {
   color: teal;
 }
 
+.grey {
+  color: #666666;
+}
+
 .text-outline {
   color: #ECFFB0;
   font-size: 2vw;

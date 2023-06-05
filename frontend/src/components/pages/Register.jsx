@@ -96,7 +96,9 @@ function Register(props) {
             <Input type="email" name="email" text="Email"
                 mandatory={true} onChange={props.onChange} />
             <Input type="tel" name="phone" text="Phone Number"
-                mandatory={true} onChange={props.onChange} />
+                mandatory={true} onChange={props.onChange}
+                pattern="^\+?[0-9\s-]+$"
+            />
             <Input type="password" name="password" text="Password"
                 mandatory={true} onChange={props.onChange} />
             <Input type="password" name="confirmPassword"
@@ -118,19 +120,12 @@ function Register(props) {
             {props.userData.userType === 'Musician' && <Input type="text" name="price_by_hour" text="Price Per Hour"
                 mandatory={true} onChange={props.onChange} />}
 
-            {/* <Input /> */}
+            <Input name="description"
+                id={props.userData.id && props.userData.id}
+                text="Write a brief description about yourself:"
+                onChange={props.onChange}
+            />
 
-            <div className="form-floating">
-                <textarea name="description" id={props.userData.id && props.userData.id}
-                    className="form-control"
-                    placeholder="Write a description about yourself"
-                    style={{ height: "100px" }}
-                    onChange={(event) => {
-                        props.onChange(event.target.name, event.target.value);
-                    }}
-                />
-                <label className="form-label" >Write a description about yourself:</label>
-            </div>
             {/* <div className="mb-3 col-lg-6">
                 <label className="form-label">Upload profile picture:</label>
                 <input type="file" className="form-control form-control"
