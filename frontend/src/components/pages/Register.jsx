@@ -10,15 +10,13 @@ function Register(props) {
     const cities = props.userData.state &&
         JSON.parse(props.userData.state).cities;
 
-    // PODT DATAs
-    const { data, isPending, error } = null;
+    // POST DATAs
+    const [data, setData] = useState(null);
+    const [isPending, setIsPending] = useState(null);
+    const [error, setError] = useState(null);
 
-    function usePost(url, jsonData) {
+    function postIt(url, jsonData) {
         // POST datas
-        const [data, setData] = useState(null);
-        const [isPending, setIsPending] = useState(true);
-        const [error, setError] = useState(null);
-
         fetch(url, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -37,85 +35,101 @@ function Register(props) {
                 setError(error.message);
                 setIsPending(false);
             })
-        return { data, isPending, error };
+    }
+
+    function duplicateStuff(stuff) {
+        return stuff;
     }
 
     function handleSubmit(event) {
-        // event.preventDefault();
+        event.preventDefault();
         let verified = false;
         const userPostUrl = 'http://127.0.0.1:7000/users';
-
-        // Verify that all required fields have value
-        for (let key in props.userData) {
-            if (props.userData[key].length < 1 &&
-                props.userData[key] !== 'profilePicture') {
-                alert(`${key} cannot be empty`)
-                verified = false;
-            } else { verified = true; }
-        }
+        const user = duplicateStuff(props.userData);
 
         // Verify that password and confirm password fields match
         if (props.userData.password !== props.userData.confirmPassword) {
             alert('Password Mismatch');
             verified = true;
         }
+
+        // Verify that all required fields have value
+        for (let key in user) {
+            if (user[key].length < 1 &&
+                user[key] !== 'profilePicture') {
+                alert(`${key} cannot be empty`)
+                verified = false;
+            } else { verified = true; }
+
+            if (key === 'city' || key === 'state') {
+                const id = key + '_id';
+                user[id] = JSON.parse(user[key]).id;
+                delete user[key];
+            }
+        }
+
+        console.log(user);
+
         if (verified) {
-            // { data, isPending, error }
-            usePost(userPostUrl, props.userData)
+            // console.log(user);
+            // postIt(userPostUrl, props.userData);
+            // !isPending && !error && console.log(data);
         }
     }
 
 
-return (
-    <form className="row g-3 mx-5">
-        <Input type="text" name="firstName" text="First Name"
-            mandatory={true} onChange={props.onChange} />
-        <Input type="text" name="lastName" text="Last Name"
-            mandatory={true} onChange={props.onChange} />
-        <Input type="email" name="email" text="Email"
-            mandatory={true} onChange={props.onChange} />
-        <Input type="tel" name="phone" text="Phone Number"
-            mandatory={true} onChange={props.onChange} />
-        <Input type="password" name="password" text="Password"
-            mandatory={true} onChange={props.onChange} />
-        <Input type="password" name="confirmPassword"
-            text="Confirm Password" pwd={props.userData.password}
-            mandatory={true} onChange={props.onChange} />
-        <Select name="state" items={states} text="State"
-            onChange={props.onChange} />
-        <Select name="city"
-            items={cities}
-            onChange={props.onChange} text="City" />
-        {props.userData.userType === 'Musician' && <Input
-            type="text" name="alias" text="Alias"
-            mandatory={false} onChange={props.onChange} />}
-        {props.userData.userType === 'Musician' && <Checklist
-            onChange={props.onChange}
-            name='instruments'
-            checkedItems={props.userData.instruments}
-        />}
-        {props.userData.userType === 'Musician' && <Input type="text" name="price_by_hour" text="Price Per Hour"
-            mandatory={true} onChange={props.onChange} />}
+    return (
+        <form className="row g-3 mx-5">
+            <Input type="text" name="firstName" text="First Name"
+                mandatory={true} onChange={props.onChange} />
+            <Input type="text" name="lastName" text="Last Name"
+                mandatory={true} onChange={props.onChange} />
+            <Input type="email" name="email" text="Email"
+                mandatory={true} onChange={props.onChange} />
+            <Input type="tel" name="phone" text="Phone Number"
+                mandatory={true} onChange={props.onChange} />
+            <Input type="password" name="password" text="Password"
+                mandatory={true} onChange={props.onChange} />
+            <Input type="password" name="confirmPassword"
+                text="Confirm Password" pwd={props.userData.password}
+                mandatory={true} onChange={props.onChange} />
+            <Select name="state" items={states} text="State"
+                onChange={props.onChange} />
+            <Select name="city"
+                items={cities}
+                onChange={props.onChange} text="City" />
+            {props.userData.userType === 'Musician' && <Input
+                type="text" name="alias" text="Alias"
+                mandatory={false} onChange={props.onChange} />}
+            {props.userData.userType === 'Musician' && <Checklist
+                onChange={props.onChange}
+                name='instruments'
+                checkedItems={props.userData.instruments}
+            />}
+            {props.userData.userType === 'Musician' && <Input type="text" name="price_by_hour" text="Price Per Hour"
+                mandatory={true} onChange={props.onChange} />}
 
-        <div className="mb-3 col-lg-6">
-            <label className="form-label">Upload profile picture:</label>
-            <input type="file" className="form-control form-control"
-                id="formFileSm" name="profilePicture" accept="image/*"
-                onChange={(event) => {
-                    console.log(event.target.value)
-                    props.onChange(event.target.name, event.target.value);
-                }}
-            />
-        </div>
-        <div className="col-12">
-            <button type="submit" className="btn"
-                onClick={handleSubmit}
-            >
-                Create my account
-            </button>
-        </div>
-    </form>
-)
+            <div className="mb-3 col-lg-6">
+                <label className="form-label">Upload profile picture:</label>
+                <input type="file" className="form-control form-control"
+                    id="formFileSm" name="profilePicture" accept="image/*"
+                    onChange={(event) => {
+                        // console.log(event.target.value)
+                        props.onChange(event.target.name, event.target.value);
+                    }}
+                />
+            </div>
+            <div className="col-12">
+                <button type="submit" className="btn"
+                    onClick={handleSubmit}
+                >
+                    {!isPending && !error && "Create my account"}
+                    {isPending && "Creating your account..."}
+                    {error && error}
+                </button>
+            </div>
+        </form>
+    )
 }
 
 export default Register;

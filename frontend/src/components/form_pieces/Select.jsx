@@ -24,7 +24,8 @@ function Select(props) {
                 required>
                 <option value=''>Choose...</option>
                 {props.items && props.items.map((item) => {
-                    return <option value={props.name === 'userType' ? item.name : JSON.stringify(item)} key={item.id}>{item.name}</option>
+                    return <option value={props.name === 'userType' ? item.name :
+                        JSON.stringify(item)} key={item.id}>{item.name}</option>
                 })}
             </select>
             {error && <h6 className="pt-2 cinnabar">Please select a value</h6>}
@@ -35,7 +36,7 @@ function Select(props) {
                     onClick={() => {
                         // alert(error)
                         if (!error) {
-                            navigate("/register");   
+                            navigate("/register");
                         }
                     }}
                 >Confirm</button>
