@@ -4,8 +4,6 @@ import Navbar from './Navbar';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Register from './pages/Register';
 import Usertype from './pages/Usertype';
-import usePost from "./utilities/usePost";
-
 
 function App() {
   const [userData, setUserData] = useState({});
@@ -28,29 +26,6 @@ function App() {
     });
   }
 
-  function handleSubmit(event) {
-    // event.preventDefault();
-    let verified = false;
-    const userPostUrl = 'http://127.0.0.1:7000/users';
-
-    // Verify that all required fields have value
-    for (let key in userData) {
-      if (userData[key].length < 1 &&
-        userData[key] !== 'profilePicture') {
-        alert(`${key} cannot be empty`)
-        verified = false;
-      } else { verified = true; }
-    }
-
-    // Verify that password and confirm password fields match
-    if (userData.password !== userData.confirmPassword) {
-      alert('Password Mismatch');
-      verified = true;
-    }
-
-    // usePost()
-  }
-
   return (
     <Router>
       <div className='App'>
@@ -65,7 +40,7 @@ function App() {
           <Route path='/register'
             element={<Register
               userData={userData}
-              handleSubmit={handleSubmit}
+              // handleSubmit={handleSubmit}
               // state={userData.state ? userData.State : null}
               onChange={retrieveInput}
             />} />
