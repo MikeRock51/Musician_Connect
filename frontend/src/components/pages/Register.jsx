@@ -46,6 +46,12 @@ function Register(props) {
         return JSON.parse(JSON.stringify(obj));
     }
 
+    function handleClicked() {
+        props.isValid && handleSubmit();
+        !props.isValid && alert(
+            'One or more invalid responses, please check and try again...')
+    }
+
     function handleSubmit(event) {
         event.preventDefault();
         const userPostUrl = 'http://127.0.0.1:7000/api/v1/users';
@@ -138,7 +144,7 @@ function Register(props) {
             </div> */}
             <div className="col-12">
                 <button type="submit" className="btn"
-                    onClick={handleSubmit}
+                    onClick={handleClicked}
                 >
                     {!isPending && !error && "Create my account"}
                     {isPending && "Creating your account..."}

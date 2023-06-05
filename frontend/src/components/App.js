@@ -8,9 +8,11 @@ import Usertype from './pages/Usertype';
 function App() {
   const [userData, setUserData] = useState({});
   let [userInstruments, setUserInstruments] = useState([]);
+  const [isValid, setIsValid] = useState(false);
 
-  function retrieveInput(key, value, isChecked = false) {
+  function retrieveInput(key, value, isChecked = false, isValid=false) {
     // console.log(userData);
+    setIsValid(isValid);
     key === 'instruments' && isChecked && userInstruments.push(value);
     if (key === 'instruments' && !isChecked) {
       userInstruments = userInstruments.filter((val) => {
@@ -41,6 +43,7 @@ function App() {
           <Route path='/register'
             element={<Register
               userData={userData}
+              isValid={isValid}
               // handleSubmit={handleSubmit}
               // state={userData.state ? userData.State : null}
               onChange={retrieveInput}
