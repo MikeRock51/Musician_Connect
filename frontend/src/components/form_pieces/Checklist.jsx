@@ -30,7 +30,8 @@ function Checklist(props) {
                     );
                 })}
                 ]</label>
-            <button className="btn dropdown-toggle btn-info col-12" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+            <button className="btn dropdown-toggle btn-info col-12" type="button"
+                id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                 Select options (Primary instrument first)
             </button>
             <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -53,7 +54,7 @@ function Checklist(props) {
                 })
                 }
             </ul>
-            {error && <h6 className="pt-2 cinnabar">Please select at least one instrument</h6>}
+            {error && <p className="pt-2 mb-0 teal">Please select at least one instrument</p>}
         </div>
 
     )

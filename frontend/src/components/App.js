@@ -4,13 +4,14 @@ import Navbar from './Navbar';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Register from './pages/Register';
 import Usertype from './pages/Usertype';
+import Signin from "./pages/Signin";
 
 function App() {
   const [userData, setUserData] = useState({});
   let [userInstruments, setUserInstruments] = useState([]);
   const [isValid, setIsValid] = useState(false);
 
-  function retrieveInput(key, value, isChecked = false, isValid=false) {
+  function retrieveInput(key, value, isChecked = false, isValid = false) {
     // console.log(userData);
     setIsValid(isValid);
     key === 'instruments' && isChecked && userInstruments.push(value);
@@ -44,8 +45,10 @@ function App() {
             element={<Register
               userData={userData}
               isValid={isValid}
-              // handleSubmit={handleSubmit}
-              // state={userData.state ? userData.State : null}
+              onChange={retrieveInput}
+            />} />
+          <Route path='/sign-in'
+            element={<Signin
               onChange={retrieveInput}
             />} />
         </Routes>

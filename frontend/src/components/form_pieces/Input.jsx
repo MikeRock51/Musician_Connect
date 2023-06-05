@@ -8,7 +8,7 @@ function Input(props) {
     const [validInput, setValidInput] = useState(true);
 
     function handleChange(event) {
-        setValidInput(inputElement.validity.valid);
+        inputElement && setValidInput(inputElement.validity.valid);
         const value = event.target.value;
         props.onChange(props.name, value, validInput);
         setInput(value);

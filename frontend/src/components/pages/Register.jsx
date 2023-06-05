@@ -3,12 +3,14 @@ import Input from "../form_pieces/Input";
 import Select from "../form_pieces/Select";
 import Checklist from "../form_pieces/Checklist";
 import useFetch from "../utilities/useFetch";
+import { useNavigate } from "react-router-dom";
 
 function Register(props) {
     const statesUrl = 'http://127.0.0.1:7000/api/v1/states';
     const { data: states } = useFetch(statesUrl);
     const cities = props.userData.state &&
         JSON.parse(props.userData.state).cities;
+    const navigate = useNavigate();
 
     // POST DATAs
     const [data, setData] = useState(null);
@@ -88,7 +90,7 @@ function Register(props) {
         if (verified) {
             console.log(user);
             postIt(userPostUrl, user);
-            !isPending && !error && console.log(data);
+            !isPending && !error && navigate('/sign-in');
             error && console.log(error);
         } else { alert('Please fill all required fields'); }
     }
@@ -103,8 +105,7 @@ function Register(props) {
                 mandatory={true} onChange={props.onChange} />
             <Input type="tel" name="phone" text="Phone Number"
                 mandatory={true} onChange={props.onChange}
-                pattern="^\+?[0-9\s-]+$"
-            />
+                pattern="^\+?[0-9\s-]+$" />
             <Input type="password" name="password" text="Password"
                 mandatory={true} onChange={props.onChange} />
             <Input type="password" name="confirmPassword"
