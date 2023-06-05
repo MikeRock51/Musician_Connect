@@ -118,6 +118,13 @@ function Register(props) {
             {props.userData.userType === 'Musician' && <Input type="text" name="price_by_hour" text="Price Per Hour"
                 mandatory={true} onChange={props.onChange} />}
 
+            <div className="form-floating">
+                <textarea name="description" id={props.userData.id && props.userData.id}
+                    className="form-control"
+                    placeholder="Write a description about yourself"
+                    style={{ height: "100px" }} />
+                <label className="form-label" for="floatingTextarea2">Write a description about yourself:</label>
+            </div>
             {/* <div className="mb-3 col-lg-6">
                 <label className="form-label">Upload profile picture:</label>
                 <input type="file" className="form-control form-control"
