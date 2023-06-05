@@ -74,7 +74,7 @@ def generate_random_phone_number():
 
 # Generate sample musician data
 sample_users = []
-for _ in range(50):
+for _ in range(30):
     firstName = random.choice(first_names)
     lastName = random.choice(last_names)
 
@@ -101,7 +101,7 @@ for _ in range(50):
     print(f"{newMusician.toDict()} object added successfully")
 
 # Generate sample client data
-for _ in range(30):
+for _ in range(20):
     firstName = random.choice(first_names)
     lastName = random.choice(last_names)
 

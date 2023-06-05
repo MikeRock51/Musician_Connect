@@ -14,6 +14,7 @@ function Register(props) {
     const [data, setData] = useState(null);
     const [isPending, setIsPending] = useState(null);
     const [error, setError] = useState(null);
+    const [verified, setVerified] = useState(false);
 
     function postIt(url, jsonData) {
         // POST datas
@@ -47,23 +48,22 @@ function Register(props) {
 
     function handleSubmit(event) {
         event.preventDefault();
-        let verified = false;
         const userPostUrl = 'http://127.0.0.1:7000/api/v1/users';
         const user = duplicateObject(props.userData);
 
         // Verify that password and confirm password fields match
         if (props.userData.password !== props.userData.confirmPassword) {
             alert('Password Mismatch');
-            verified = true;
-        }
+            setVerified(false);
+        } else { setVerified(true); }
 
         // Verify that all required fields have value
         for (let key in user) {
             if (user[key] !== 'profilePicture' &&
-                user[key].length < 1) {
+                user[key].length < 2) {
                 alert(`${key} cannot be empty`)
-                verified = false;
-            } else { verified = true; }
+                setVerified(false);
+            } else { setVerified(true); }
 
             if (key === 'city' || key === 'state') {
                 const id = key + '_id';
@@ -84,7 +84,7 @@ function Register(props) {
             postIt(userPostUrl, user);
             !isPending && !error && console.log(data);
             error && console.log(error);
-        }
+        } else { alert('Please fill all required fields'); }
     }
 
     return (
@@ -122,8 +122,12 @@ function Register(props) {
                 <textarea name="description" id={props.userData.id && props.userData.id}
                     className="form-control"
                     placeholder="Write a description about yourself"
-                    style={{ height: "100px" }} />
-                <label className="form-label" for="floatingTextarea2">Write a description about yourself:</label>
+                    style={{ height: "100px" }}
+                    onChange={(event) => {
+                        props.onChange(event.target.name, event.target.value);
+                    }}
+                />
+                <label className="form-label" >Write a description about yourself:</label>
             </div>
             {/* <div className="mb-3 col-lg-6">
                 <label className="form-label">Upload profile picture:</label>

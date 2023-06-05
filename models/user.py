@@ -39,5 +39,5 @@ class User(BaseModel, Base):
         'Booking', foreign_keys=[Booking.musician_id])
     alias = Column(String(128), nullable=True)
     instruments = relationship('Instrument',
-                               secondary='musicianInstruments', backref='players', viewonly=False)
+                               secondary='musicianInstruments', backref='players', cascade='all, delete', viewonly=False)
     price_by_hour = Column(Integer, nullable=False, default=0)
