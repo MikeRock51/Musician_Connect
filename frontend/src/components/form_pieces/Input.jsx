@@ -12,6 +12,7 @@ function Input(props) {
     }
 
     return (
+        props.type ?
         <div className="col-md-6">
             <label className="form-label">{props.text}</label>
             <input
@@ -27,7 +28,18 @@ function Input(props) {
             {props.name === 'confirmPassword' &&
                 input !== props.pwd && input.length > 0 &&
                 <h6 className="pt-2 cinnabar">Password Mismatch</h6>}
-        </div>
+        </div> :
+        <div className="form-floating">
+        <textarea name="description" id={props.userData.id && props.userData.id}
+            className="form-control"
+            placeholder="Write a description about yourself"
+            style={{ height: "100px" }}
+            onChange={(event) => {
+                props.onChange(event.target.name, event.target.value);
+            }}
+        />
+        <label className="form-label" >Write a description about yourself:</label>
+    </div>
     )
 }
 

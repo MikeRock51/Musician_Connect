@@ -118,6 +118,8 @@ function Register(props) {
             {props.userData.userType === 'Musician' && <Input type="text" name="price_by_hour" text="Price Per Hour"
                 mandatory={true} onChange={props.onChange} />}
 
+            {/* <Input /> */}
+
             <div className="form-floating">
                 <textarea name="description" id={props.userData.id && props.userData.id}
                     className="form-control"
