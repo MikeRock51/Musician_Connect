@@ -31,7 +31,7 @@ function Input(props) {
                 pattern={props.pattern && props.pattern}
                 onChange={handleChange}
             />
-            {inputElement && !validInput && <p className="pt-2 teal">{inputElement.validationMessage}</p>}
+            {inputElement && !validInput && <p className="pt-2 mb-0 teal">{inputElement.validationMessage}</p>}
             {props.name === 'confirmPassword' &&
                 input !== props.pwd && input.length > 0 &&
                 <p className="pt-2 teal">Password Mismatch</p>}
