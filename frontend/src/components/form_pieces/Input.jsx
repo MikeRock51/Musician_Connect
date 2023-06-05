@@ -9,9 +9,7 @@ function Input(props) {
 
     function handleChange(event) {
         setValidInput(inputElement.validity.valid);
-        // setError(inputElement.validationMessage);
         const value = event.target.value;
-        // setError(value.length === 0 ? true : false);
         props.onChange(props.name, value);
         setInput(value);
     }

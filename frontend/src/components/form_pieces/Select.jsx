@@ -3,18 +3,18 @@ import { useNavigate } from "react-router-dom";
 
 function Select(props) {
     const [choice, setChoice] = useState('');
-    const [error, setError] = useState(true);
     const navigate = useNavigate();
     const inputRef = useRef(null);
     const inputElement = inputRef.current;
-    const [validInput, setValidInput] = useState(true);
+    const [validInput, setValidInput] = useState(inputElement &&
+        choice === '' ? false : true);
 
     function handleChange(event) {
         const value = event.target.value;
-        setValidInput(inputElement.validity.valid);
-        console.log(validInput);
+        setValidInput(value === '' ? false : true);
         props.onChange(props.name, value);
         setChoice(value);
+        // console.log(validInput);
     }
 
     return (
@@ -24,10 +24,10 @@ function Select(props) {
                 className="form-select"
                 name={props.name}
                 value={choice}
-                onChange={handleChange}
                 ref={inputRef}
+                onChange={handleChange}
                 required>
-                <option value=''>Choose...</option>
+                <option value=''>Select...</option>
                 {props.items && props.items.map((item) => {
                     return <option value={props.name === 'userType' ? item.name :
                         JSON.stringify(item)} key={item.id}>{item.name}</option>
@@ -38,11 +38,9 @@ function Select(props) {
                 <button
                     type="submit"
                     className="btn col-4"
-                    onClick={() => {
-                        // alert(error)
-                        if (!error) {
-                            navigate("/register");
-                        }
+                    onClick={(event) => {
+                        event.preventDefault();
+                        validInput && navigate("/register");
                     }}
                 >Confirm</button>
             </div>}
