@@ -69,12 +69,13 @@ def createUser():
         if key not in userData:
             return make_response(jsonify({"error": f"Missing {key}"}), 400)
 
-    dpFile = request.files['dp']
-    if dpFile and dpFile.filename != '':
-        if not validateFileSize(dpFile):
-            return make_response(jsonify({"error": "File too large"}), 400)
-        if not allowedFile(dpFile.filename):
-            return make_response(jsonifiy({"error": "Format not supported"}), 400)
+    if 'profilePicture' in userData:
+        dpFile = request.files['profilePicture']
+        if dpFile and dpFile.filename != '':
+            if not validateFileSize(dpFile):
+                return make_response(jsonify({"error": "File too large"}), 400)
+            if not allowedFile(dpFile.filename):
+                return make_response(jsonifiy({"error": "Format not supported"}), 400)
 
         secureDpName = secure_filename(dpFile.filename)
 
@@ -133,7 +134,7 @@ def updateUser(user_id):
     for key, value in userData.items():
         if key not in ignoredKeys:
             if key == 'profilePicture':
-                dpFile = request.files['dp']
+                dpFile = request.files['profilePicture']
             if dpFile and dpFile.filename != '':
                 if not validateFileSize(dpFile):
                     return make_response(jsonify({"error": "File too large"}), 400)
@@ -141,7 +142,7 @@ def updateUser(user_id):
                     return make_response(jsonifiy({"error": "Format not supported"}), 400)
 
                 secureDpName = secure_filename(dpFile.filename)
-                setattr(user, key,secureDpName)
+                setattr(user, key, secureDpName)
                 UPLOAD_FOLDER = f"{url_for('static')}/images"
                 dpFile.save(os.path.join(app_views.root_path, UPLOAD_FOLDER, secureDpName))
 

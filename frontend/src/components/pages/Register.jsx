@@ -19,11 +19,15 @@ function Register(props) {
         // POST datas
         fetch(url, {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "http://localhost/3000"
+            },
             body: JSON.stringify(jsonData)
         })
             .then((res) => {
                 if (!res.ok) {
+                    console.log(res.json());
                     throw Error("Failed to create your account");
                 }
                 return res.json();
@@ -31,8 +35,8 @@ function Register(props) {
                 setData(data);
                 setIsPending(false);
                 setError(null);
-            }).catch(error => {
-                setError(error.message);
+            }).catch(err => {
+                setError(err.message);
                 setIsPending(false);
             })
     }
@@ -44,7 +48,7 @@ function Register(props) {
     function handleSubmit(event) {
         event.preventDefault();
         let verified = false;
-        const userPostUrl = 'http://127.0.0.1:7000/users';
+        const userPostUrl = 'http://127.0.0.1:7000/api/v1/users';
         const user = duplicateStuff(props.userData);
 
         // Verify that password and confirm password fields match
@@ -55,8 +59,8 @@ function Register(props) {
 
         // Verify that all required fields have value
         for (let key in user) {
-            if (user[key].length < 1 &&
-                user[key] !== 'profilePicture') {
+            if (user[key] !== 'profilePicture' &&
+                user[key].length < 1) {
                 alert(`${key} cannot be empty`)
                 verified = false;
             } else { verified = true; }
@@ -69,8 +73,10 @@ function Register(props) {
         }
 
         if (verified) {
-            postIt(userPostUrl, props.userData);
+            console.log(user);
+            postIt(userPostUrl, user);
             !isPending && !error && console.log(data);
+            error && console.log(error);
         }
     }
 
@@ -106,16 +112,16 @@ function Register(props) {
             {props.userData.userType === 'Musician' && <Input type="text" name="price_by_hour" text="Price Per Hour"
                 mandatory={true} onChange={props.onChange} />}
 
-            <div className="mb-3 col-lg-6">
+            {/* <div className="mb-3 col-lg-6">
                 <label className="form-label">Upload profile picture:</label>
                 <input type="file" className="form-control form-control"
                     id="formFileSm" name="profilePicture" accept="image/*"
                     onChange={(event) => {
-                        // console.log(event.target.value)
                         props.onChange(event.target.name, event.target.value);
                     }}
+                    enctype="multipart/form-data"
                 />
-            </div>
+            </div> */}
             <div className="col-12">
                 <button type="submit" className="btn"
                     onClick={handleSubmit}
