@@ -72,9 +72,10 @@ function Register(props) {
             }
 
             if (key === 'instruments') {
-                user[key].map((instrument) => {
+                const instrumentIds = user[key].map((instrument) => {
                     return instrument.id;
                 });
+                user[key] = instrumentIds;
             }
         }
 

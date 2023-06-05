@@ -69,6 +69,12 @@ def createUser():
         if key not in userData:
             return make_response(jsonify({"error": f"Missing {key}"}), 400)
 
+#    if 'instruments' in userData:
+ #       instruments = []
+  #      for id in userData['instruments']:
+#            instruments.append(storage.get
+
+
     if 'profilePicture' in userData:
         dpFile = request.files['profilePicture']
         if dpFile and dpFile.filename != '':
