@@ -14,8 +14,8 @@ function App() {
     key === 'instruments' && isChecked && userInstruments.push(value);
     if (key === 'instruments' && !isChecked) {
       userInstruments = userInstruments.filter((val) => {
-          return val.id !== value.id;
-        });
+        return val.id !== value.id;
+      });
       setUserInstruments(userInstruments);
     }
 
@@ -29,10 +29,21 @@ function App() {
 
   function handleSubmit(event) {
     // event.preventDefault();
-    // alert("Clicked");
-    // userData.password !== userData.confirmPassword ? alert('Password Mismatch') : console.log(userData);
+    let verified = false;
 
-}
+    for (let key in userData) {
+      if (userData[key].length < 1) {
+        alert(`${key} cannot be empty`)
+        verified = false;
+      } else { verified = true; }
+    }
+
+    if (userData.password !== userData.confirmPassword) {
+      alert('Password Mismatch');
+      verified = true;
+    }
+    
+  }
 
   return (
     <Router>

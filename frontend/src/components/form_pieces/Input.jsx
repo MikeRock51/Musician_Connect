@@ -24,6 +24,9 @@ function Input(props) {
                 onChange={handleChange}
             />
             {error && <h6 className="pt-2 cinnabar">Field cannot be empty</h6>}
+            {props.name === 'confirmPassword' &&
+                input !== props.pwd && input.length > 0 &&
+                <h6 className="pt-2 cinnabar">Password Mismatch</h6>}
         </div>
     )
 }

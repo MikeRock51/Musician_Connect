@@ -23,7 +23,8 @@ function Register(props) {
                 mandatory={true} onChange={props.onChange} />
             <Input type="password" name="password" text="Password"
                 mandatory={true} onChange={props.onChange} />
-            <Input type="password" name="confirmPassword" text="Confirm Password"
+            <Input type="password" name="confirmPassword"
+            text="Confirm Password" pwd={props.userData.password}
                 mandatory={true} onChange={props.onChange} />
             <Select name="state" items={states} text="State"
                 onChange={props.onChange} />
