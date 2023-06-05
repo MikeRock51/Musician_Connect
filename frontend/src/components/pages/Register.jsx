@@ -38,7 +38,7 @@ function Register(props) {
     }
 
     function duplicateStuff(stuff) {
-        return stuff;
+        return JSON.parse(JSON.stringify(stuff));
     }
 
     function handleSubmit(event) {
@@ -68,12 +68,9 @@ function Register(props) {
             }
         }
 
-        console.log(user);
-
         if (verified) {
-            // console.log(user);
-            // postIt(userPostUrl, props.userData);
-            // !isPending && !error && console.log(data);
+            postIt(userPostUrl, props.userData);
+            !isPending && !error && console.log(data);
         }
     }
 
