@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 
-function usePost(url, user) {
+function usePost(url, jsonData) {
     const [data, setData] = useState(null);
     const [isPending, setIsPending] = useState(true);
     const [error, setError] = useState(null);
@@ -9,7 +9,7 @@ function usePost(url, user) {
     fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(user)
+        body: JSON.stringify(jsonData)
     })
         .then((res) => {
             if (!res.ok) {
