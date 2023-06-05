@@ -81,7 +81,8 @@ def createUser():
 
         userData['profilePicture'] = secureDpName
         UPLOAD_FOLDER = f"{url_for('static')}/images"
-        dpFile.save(os.path.join(app_views.root_path, UPLOAD_FOLDER, secureDpName))
+        dpFile.save('static/images/', secureDpName)
+        #dpFile.save(os.path.join(app_views.root_path, UPLOAD_FOLDER, secureDpName))
 
     hashedPassword = bcrypt.hashpw(userData.get('password').encode('utf-8'), bcrypt.gensalt())
     userData['password'] = str(hashedPassword, 'utf-8')

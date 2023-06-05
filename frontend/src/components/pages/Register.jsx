@@ -41,15 +41,15 @@ function Register(props) {
             })
     }
 
-    function duplicateStuff(stuff) {
-        return JSON.parse(JSON.stringify(stuff));
+    function duplicateObject(obj) {
+        return JSON.parse(JSON.stringify(obj));
     }
 
     function handleSubmit(event) {
         event.preventDefault();
         let verified = false;
         const userPostUrl = 'http://127.0.0.1:7000/api/v1/users';
-        const user = duplicateStuff(props.userData);
+        const user = duplicateObject(props.userData);
 
         // Verify that password and confirm password fields match
         if (props.userData.password !== props.userData.confirmPassword) {
@@ -70,6 +70,12 @@ function Register(props) {
                 user[id] = JSON.parse(user[key]).id;
                 delete user[key];
             }
+
+            if (key === 'instruments') {
+                user[key].map((instrument) => {
+                    return instrument.id;
+                });
+            }
         }
 
         if (verified) {
@@ -79,7 +85,6 @@ function Register(props) {
             error && console.log(error);
         }
     }
-
 
     return (
         <form className="row g-3 mx-5">
