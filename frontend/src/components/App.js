@@ -18,7 +18,7 @@ function App() {
 
     loginData = { ...data };
     console.log(loginData);
-    return true
+    // return true
   }
 
   function retrieveInput(key, value, isChecked = false, validData = undefined) {

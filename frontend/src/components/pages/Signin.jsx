@@ -10,32 +10,32 @@ function Signin(props) {
     const navigate = useNavigate();
     const [authenticated, setAuthenticated] = useState(false);
 
-    function postIt(url, jsonData) {
-        // POST datas
-        fetch(url, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "http://localhost/3000"
-            },
-            body: JSON.stringify(jsonData)
-        })
-            .then((res) => {
-                return res.json();
-            }).then((data) => {
-                if (data.error && data.error === 'Not Found') {
-                    data = ({ "error": "User does not exist" });
-                }
-                setUserInfo(data);
-                // userInfo = data;
-                // console.log(userInfo);
-                setIsPending(false);
-            }).catch(err => {
-                console.log(err);
-                setIsPending(false);
-            })
-        // return data;
-    }
+    // function postIt(url, jsonData) {
+    //     // POST datas
+    //     fetch(url, {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //             "Access-Control-Allow-Origin": "http://localhost/3000"
+    //         },
+    //         body: JSON.stringify(jsonData)
+    //     })
+    //         .then((res) => {
+    //             return res.json();
+    //         }).then((data) => {
+    //             if (data.error && data.error === 'Not Found') {
+    //                 data = ({ "error": "User does not exist" });
+    //             }
+    //             setUserInfo(data);
+    //             // userInfo = data;
+    //             // console.log(userInfo);
+    //             setIsPending(false);
+    //         }).catch(err => {
+    //             console.log(err);
+    //             setIsPending(false);
+    //         })
+    //     return userInfo;
+    // }
 
     function handleClicked(event) {
         event.preventDefault();
@@ -61,15 +61,33 @@ function Signin(props) {
 
         if (verified) {
             // console.log(props.userData);
-            setIsPending(true);
-            postIt(authUrl, props.userData).then(() => {
-                if (!isPending && !userInfo.error) {
-                    // userInfo && setAuthenticated(true);
-                    console.log(userInfo);
-    
-                    // navigate('/user/dashboard');
-                }
-            });
+            fetch(authUrl, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "http://localhost/3000"
+                },
+                body: JSON.stringify(props.userData)
+            })
+                .then((res) => {
+                    return res.json();
+                }).then((data) => {
+                    if (data.error && data.error === 'Not Found') {
+                        data = ({ "error": "User does not exist" });
+                    }
+                    // setUserInfo(data);
+                    if (!isPending && !data.error) {
+                        props.sendData(data);
+                        // navigate(`/user/dashboard/${(data)}`);
+                    }
+                    // userInfo = data;
+                    // console.log(userInfo);
+                    setIsPending(false);
+                }).catch(err => {
+                    console.log(err);
+                    setIsPending(false);
+                })
+
         } else { alert('Please fill all required fields'); }
     }
 
