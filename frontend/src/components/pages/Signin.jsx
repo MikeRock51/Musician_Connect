@@ -18,7 +18,6 @@ function Signin(props) {
             body: JSON.stringify(jsonData)
         })
             .then((res) => {
-                setIsPending(true);
                 return res.json();
             }).then((data) => {
                 if (data.error && data.error === 'Not Found') {
@@ -74,7 +73,7 @@ function Signin(props) {
                     mandatory={true}
                     onChange={props.onChange}
                 />
-                {data && data.error && <p className="pt-2 mb-0 teal">{data.error}</p>}
+                {data && data.error && !isPending && <p className="pt-2 mb-0 teal">{data.error}</p>}
                 {isPending && <p className="pt-2 mb-0 teal">Loading your account...</p>}
             </div>
             <div className="col-md-6 ms-1">

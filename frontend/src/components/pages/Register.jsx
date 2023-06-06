@@ -30,8 +30,8 @@ function Register(props) {
         })
             .then((res) => {
                 if (!res.ok) {
-                    console.log(res.json());
-                    throw Error("Failed to create your account");
+                    // console.log(res.json());
+                    // throw Error("Failed to create your account");
                 }
                 return res.json();
             }).then((data) => {
