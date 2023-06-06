@@ -90,6 +90,7 @@ function Register(props) {
         if (verified) {
             console.log(user);
             postIt(userPostUrl, user);
+            console.log(data);
             !isPending && !error && navigate('/sign-in');
             error && console.log(error);
         } else { alert('Please fill all required fields'); }
