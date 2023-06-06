@@ -5,13 +5,18 @@ function Input(props) {
     // const [error, setError] = useState(true);
     const inputRef = useRef(null);
     const inputElement = inputRef.current;
-    const [validInput, setValidInput] = useState(true);
+    let [validInput, setValidInput] = useState(false);
 
     function handleChange(event) {
-        inputElement && setValidInput(inputElement.validity.valid);
+        // alert(inputElement);
         const value = event.target.value;
-        props.onChange(props.name, value, validInput);
         setInput(value);
+        if (inputElement){
+            setValidInput(inputElement.validity.valid);
+            validInput = inputElement.validity.valid;
+        }
+        console.log(validInput);
+        validInput && props.onChange(props.name, value, validInput);
     }
 
     return (

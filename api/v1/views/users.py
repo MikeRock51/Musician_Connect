@@ -122,7 +122,7 @@ def authenticateUser():
     if bcrypt.checkpw(authPassword, dbPassword):
         return make_response(jsonify(user.toDict()), 200)
     
-    return make_response(jsonify({"message": "Unauthorized"}), 401)
+    return make_response(jsonify({"error": "Incorrect password"}), 401)
 
 @app_views.route('/users/<user_id>', methods=['PUT'], strict_slashes=False)
 def updateUser(user_id):

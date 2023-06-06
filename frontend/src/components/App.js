@@ -9,11 +9,17 @@ import Signin from "./pages/Signin";
 function App() {
   const [userData, setUserData] = useState({});
   let [userInstruments, setUserInstruments] = useState([]);
-  const [isValid, setIsValid] = useState(false);
+  let [isValid, setIsValid] = useState(false);
 
   function retrieveInput(key, value, isChecked = false, validData = undefined) {
     // console.log(userData);
-    validData === undefined ? setIsValid(true) : setIsValid(validData);
+    if (validData === undefined) {
+      setIsValid(true);
+      isValid = true;
+    } else {
+      setIsValid(validData)
+      isValid = validData;
+    }
     key === 'instruments' && isChecked && userInstruments.push(value);
     if (key === 'instruments' && !isChecked) {
       userInstruments = userInstruments.filter((val) => {
@@ -32,7 +38,7 @@ function App() {
 
   return (
     <Router>
-      <div className='App'>
+      <div className=''>
         <div className='nav-container container-fluid'>
           <Navbar />
         </div>
@@ -50,6 +56,8 @@ function App() {
           <Route path='/sign-in'
             element={<Signin
               onChange={retrieveInput}
+              userData={userData}
+              isValid={isValid}
             />} />
         </Routes>
       </div>
