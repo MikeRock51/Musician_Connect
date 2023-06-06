@@ -30,7 +30,7 @@ function Navbar() {
                             </a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link hover" href="#">
+                            <a className="nav-link hover" href="/sign-in">
                                 Sign in
                             </a>
                         </li>
