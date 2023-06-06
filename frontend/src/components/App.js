@@ -5,11 +5,17 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Register from './pages/Register';
 import Usertype from './pages/Usertype';
 import Signin from "./pages/Signin";
+import Dashboard from "./pages/Dashboard";
+
 
 function App() {
   const [userData, setUserData] = useState({});
   let [userInstruments, setUserInstruments] = useState([]);
   let [isValid, setIsValid] = useState(false);
+
+  function printData(data) {
+    console.log(data);
+  }
 
   function retrieveInput(key, value, isChecked = false, validData = undefined) {
     // console.log(userData);
@@ -58,7 +64,9 @@ function App() {
               onChange={retrieveInput}
               userData={userData}
               isValid={isValid}
+              printData={printData}
             />} />
+            <Route path='/dashboard/:userInfo' element={<Dashboard />} />
         </Routes>
       </div>
     </Router>

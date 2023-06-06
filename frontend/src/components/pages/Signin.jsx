@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Input from "../form_pieces/Input";
+import { useNavigate } from "react-router-dom";
 
 function Signin(props) {
-    const [data, setData] = useState(null);
+    let [data, setData] = useState({});
     const [isPending, setIsPending] = useState(null);
-    const [error, setError] = useState(null);
     let [verified, setVerified] = useState(false);
+    const navigate = useNavigate();
 
     function postIt(url, jsonData) {
         // POST datas
@@ -25,11 +26,11 @@ function Signin(props) {
                 }
                 setData(data);
                 setIsPending(false);
-                setError(null);
             }).catch(err => {
                 console.log(err);
                 setIsPending(false);
             })
+        return data;
     }
 
     function handleClicked(event) {
@@ -58,9 +59,19 @@ function Signin(props) {
             // console.log(props.userData);
             setIsPending(true);
             postIt(authUrl, props.userData);
-            // !isPending && !error && navigate('/sign-in');
         } else { alert('Please fill all required fields'); }
     }
+
+    useEffect(() => {
+        if (data !== {} && !isPending && !data.error) {
+            // const userInfo = JSON.stringify(data);
+            // console.log(userInfo);
+            console.log(data);
+            navigate(`/dashboard/${JSON.stringify(data)}`);
+        }
+        // console.log(data);
+        // props.printData(data);
+    }, [data]);
 
     return (
         <form className="row g-3 p-5 mx-5">
@@ -73,7 +84,7 @@ function Signin(props) {
                     mandatory={true}
                     onChange={props.onChange}
                 />
-                {data && data.error && !isPending && <p className="pt-2 mb-0 teal">{data.error}</p>}
+                {data.error && !isPending && <p className="pt-2 mb-0 teal">{data.error}</p>}
                 {isPending && <p className="pt-2 mb-0 teal">Loading your account...</p>}
             </div>
             <div className="col-md-6 ms-1">
