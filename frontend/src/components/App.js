@@ -11,9 +11,9 @@ function App() {
   let [userInstruments, setUserInstruments] = useState([]);
   const [isValid, setIsValid] = useState(false);
 
-  function retrieveInput(key, value, isChecked = false, isValid = false) {
+  function retrieveInput(key, value, isChecked = false, validData = undefined) {
     // console.log(userData);
-    setIsValid(isValid);
+    validData === undefined ? setIsValid(true) : setIsValid(validData);
     key === 'instruments' && isChecked && userInstruments.push(value);
     if (key === 'instruments' && !isChecked) {
       userInstruments = userInstruments.filter((val) => {

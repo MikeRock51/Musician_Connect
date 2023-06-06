@@ -48,14 +48,14 @@ function Register(props) {
         return JSON.parse(JSON.stringify(obj));
     }
 
-    function handleClicked() {
+    function handleClicked(event) {
+        event.preventDefault();
         props.isValid && handleSubmit();
         !props.isValid && alert(
             'One or more invalid responses, please check and try again...')
     }
 
-    function handleSubmit(event) {
-        event.preventDefault();
+    function handleSubmit() {
         const userPostUrl = 'http://127.0.0.1:7000/api/v1/users';
         const user = duplicateObject(props.userData);
 
