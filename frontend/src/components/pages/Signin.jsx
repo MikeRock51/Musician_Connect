@@ -78,7 +78,7 @@ function Signin(props) {
                     // setUserInfo(data);
                     if (!isPending && !data.error) {
                         props.sendData(data);
-                        // navigate(`/user/dashboard/${(data)}`);
+                        navigate('/user/dashboard');
                     }
                     // userInfo = data;
                     // console.log(userInfo);

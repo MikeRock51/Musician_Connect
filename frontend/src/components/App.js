@@ -70,9 +70,9 @@ function App() {
               isValid={isValid}
               sendData={getLoginData}
             />} />
-          <Route path='/user/dashboard/:userInfo'
+          <Route path='/user/dashboard'
             element={<Dashboard
-              // userInfo={userData}
+              userInfo={loginData}
             />} />
         </Routes>
       </div>
