@@ -3,10 +3,12 @@ import Input from "../form_pieces/Input";
 import { useNavigate } from "react-router-dom";
 
 function Signin(props) {
-    let [data, setData] = useState({});
+    // let [data, setData] = useState({});
+    let [userInfo, setUserInfo] = useState({});
     const [isPending, setIsPending] = useState(null);
     let [verified, setVerified] = useState(false);
     const navigate = useNavigate();
+    const [authenticated, setAuthenticated] = useState(false);
 
     function postIt(url, jsonData) {
         // POST datas
@@ -24,13 +26,15 @@ function Signin(props) {
                 if (data.error && data.error === 'Not Found') {
                     data = ({ "error": "User does not exist" });
                 }
-                setData(data);
+                setUserInfo(data);
+                // userInfo = data;
+                // console.log(userInfo);
                 setIsPending(false);
             }).catch(err => {
                 console.log(err);
                 setIsPending(false);
             })
-        return data;
+        // return data;
     }
 
     function handleClicked(event) {
@@ -58,20 +62,22 @@ function Signin(props) {
         if (verified) {
             // console.log(props.userData);
             setIsPending(true);
-            postIt(authUrl, props.userData);
+            postIt(authUrl, props.userData).then(() => {
+                if (!isPending && !userInfo.error) {
+                    // userInfo && setAuthenticated(true);
+                    console.log(userInfo);
+    
+                    // navigate('/user/dashboard');
+                }
+            });
         } else { alert('Please fill all required fields'); }
     }
 
-    useEffect(() => {
-        if (data !== {} && !isPending && !data.error) {
-            // const userInfo = JSON.stringify(data);
-            // console.log(userInfo);
-            console.log(data);
-            navigate(`/dashboard/${JSON.stringify(data)}`);
-        }
-        // console.log(data);
-        // props.printData(data);
-    }, [data]);
+    // if (authenticated) {
+    //     // const done = props.sendData(userInfo);
+    //     console.log(userInfo);
+    //     // navigate(`/user/dashboard/${JSON.stringify(userInfo)}`);
+    // }
 
     return (
         <form className="row g-3 p-5 mx-5">
@@ -84,7 +90,7 @@ function Signin(props) {
                     mandatory={true}
                     onChange={props.onChange}
                 />
-                {data.error && !isPending && <p className="pt-2 mb-0 teal">{data.error}</p>}
+                {userInfo.error && !isPending && <p className="pt-2 mb-0 teal">{userInfo.error}</p>}
                 {isPending && <p className="pt-2 mb-0 teal">Loading your account...</p>}
             </div>
             <div className="col-md-6 ms-1">

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Home from "./pages/Home";
 import Navbar from './Navbar';
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, useNavigate } from "react-router-dom";
 import Register from './pages/Register';
 import Usertype from './pages/Usertype';
 import Signin from "./pages/Signin";
@@ -12,9 +12,13 @@ function App() {
   const [userData, setUserData] = useState({});
   let [userInstruments, setUserInstruments] = useState([]);
   let [isValid, setIsValid] = useState(false);
+  let [loginData, setLoginData] = useState({});
 
-  function printData(data) {
-    console.log(data);
+  function getLoginData(data) {
+
+    loginData = { ...data };
+    console.log(loginData);
+    return true
   }
 
   function retrieveInput(key, value, isChecked = false, validData = undefined) {
@@ -64,9 +68,12 @@ function App() {
               onChange={retrieveInput}
               userData={userData}
               isValid={isValid}
-              printData={printData}
+              sendData={getLoginData}
             />} />
-            <Route path='/dashboard/:userInfo' element={<Dashboard />} />
+          <Route path='/user/dashboard/:userInfo'
+            element={<Dashboard
+              // userInfo={userData}
+            />} />
         </Routes>
       </div>
     </Router>
