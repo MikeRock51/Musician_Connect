@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom";
 
 function Dashboard(props) {
-    const {userInfo} = useParams();
+    // const {userInfo} = useParams();
 
-    console.log((userInfo));
+    // console.log((userInfo));
 
     return <h1>Dashboard</h1>
 }

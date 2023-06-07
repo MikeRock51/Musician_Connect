@@ -4,11 +4,10 @@ import { useNavigate } from "react-router-dom";
 
 function Signin(props) {
     // let [data, setData] = useState({});
-    let [userInfo, setUserInfo] = useState({});
+    const [userInfo, setUserInfo] = useState({});
     const [isPending, setIsPending] = useState(null);
     let [verified, setVerified] = useState(false);
     const navigate = useNavigate();
-    const [authenticated, setAuthenticated] = useState(false);
 
     // function postIt(url, jsonData) {
     //     // POST datas
@@ -61,6 +60,7 @@ function Signin(props) {
 
         if (verified) {
             // console.log(props.userData);
+            setIsPending(true);
             fetch(authUrl, {
                 method: "POST",
                 headers: {
@@ -75,7 +75,7 @@ function Signin(props) {
                     if (data.error && data.error === 'Not Found') {
                         data = ({ "error": "User does not exist" });
                     }
-                    // setUserInfo(data);
+                    setUserInfo(data);
                     if (!isPending && !data.error) {
                         props.sendData(data);
                         navigate('/user/dashboard');
@@ -87,15 +87,8 @@ function Signin(props) {
                     console.log(err);
                     setIsPending(false);
                 })
-
         } else { alert('Please fill all required fields'); }
     }
-
-    // if (authenticated) {
-    //     // const done = props.sendData(userInfo);
-    //     console.log(userInfo);
-    //     // navigate(`/user/dashboard/${JSON.stringify(userInfo)}`);
-    // }
 
     return (
         <form className="row g-3 p-5 mx-5">

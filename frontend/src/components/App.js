@@ -17,6 +17,7 @@ function App() {
   function getLoginData(data) {
 
     loginData = { ...data };
+    setLoginData({...data});
     console.log(loginData);
     // return true
   }
