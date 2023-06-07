@@ -17,20 +17,22 @@ function App() {
   function getLoginData(data) {
 
     loginData = { ...data };
-    setLoginData({...data});
+    setLoginData({ ...data });
     console.log(loginData);
     // return true
   }
 
   function retrieveInput(key, value, isChecked = false, validData = undefined) {
     // console.log(userData);
-    if (validData === undefined) {
+    if (validData === undefined && value.length > 1 ||
+      key === 'instruments') {
       setIsValid(true);
       isValid = true;
     } else {
       setIsValid(validData)
       isValid = validData;
     }
+    console.log("App: " + isValid);
     key === 'instruments' && isChecked && userInstruments.push(value);
     if (key === 'instruments' && !isChecked) {
       userInstruments = userInstruments.filter((val) => {

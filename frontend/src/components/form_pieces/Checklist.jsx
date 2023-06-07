@@ -13,7 +13,7 @@ function Checklist(props) {
         // console.log(instrument.name);
         const isChecked = event.target.checked;
 
-        props.onChange(props.name, instrument, isChecked);
+        props.onChange(props.name, instrument, isChecked, undefined);
         setError(props.checkedItems && props.checkedItems.length < 2 ? true : false);
     }
 

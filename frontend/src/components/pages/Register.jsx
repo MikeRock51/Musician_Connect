@@ -16,7 +16,7 @@ function Register(props) {
     const [data, setData] = useState(null);
     const [isPending, setIsPending] = useState(null);
     const [error, setError] = useState(null);
-    const [verified, setVerified] = useState(false);
+    let [verified, setVerified] = useState(false);
 
     function postIt(url, jsonData) {
         // POST datas
@@ -63,7 +63,10 @@ function Register(props) {
         if (props.userData.password !== props.userData.confirmPassword) {
             alert('Password Mismatch');
             setVerified(false);
-        } else { setVerified(true); }
+        } else {
+            setVerified(true);
+            verified = true;
+        }
 
         // Verify that all required fields have value
         for (let key in user) {
@@ -71,7 +74,10 @@ function Register(props) {
                 user[key].length < 2) {
                 alert(`${key} cannot be empty`)
                 setVerified(false);
-            } else { setVerified(true); }
+            } else {
+                setVerified(true);
+                verified = true;
+            }
 
             if (key === 'city' || key === 'state') {
                 const id = key + '_id';

@@ -12,7 +12,7 @@ function Select(props) {
     function handleChange(event) {
         const value = event.target.value;
         setValidInput(value === '' ? false : true);
-        props.onChange(props.name, value);
+        props.onChange(props.name, value, undefined, undefined);
         setChoice(value);
         // console.log(validInput);
     }
