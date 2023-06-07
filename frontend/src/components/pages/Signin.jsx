@@ -105,7 +105,7 @@ function Signin(props) {
                 {isPending && <p className="pt-2 mb-0 teal">Loading your account...</p>}
             </div>
             <div className="col-md-6 ms-1">
-                <button type="submit" className="btn col-12"
+                <button type="submit" className="btn col-12 anime"
                     onClick={handleClicked}>
                     Sign in
                 </button>

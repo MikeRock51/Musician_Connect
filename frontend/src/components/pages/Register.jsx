@@ -151,7 +151,7 @@ function Register(props) {
                 />
             </div> */}
             <div className="col-12">
-                <button type="submit" className="btn"
+                <button type="submit" className="btn anime"
                     onClick={handleClicked}
                 >
                     {!isPending && !error && "Create my account"}

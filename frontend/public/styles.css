@@ -97,7 +97,7 @@ ul.dropdown-menu {
   border-color: #66666633;
 }
 
-.btn:hover {
+.btn.anime:hover {
   animation: buttonAnimation 0.5s infinite !important;
   background-color: #25cff2 !important;
 }
