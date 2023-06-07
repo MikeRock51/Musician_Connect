@@ -12,7 +12,7 @@ function App() {
   const [userData, setUserData] = useState({});
   let [userInstruments, setUserInstruments] = useState([]);
   let [isValid, setIsValid] = useState(false);
-  let [loginData, setLoginData] = useState({});
+  let [loginData, setLoginData] = useState(null);
 
   function getLoginData(data) {
 
