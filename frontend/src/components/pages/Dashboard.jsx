@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import BookingRow from "../BookingRow";
 
 function Dashboard(props) {
     const [user, setUser] = useState(props.userInfo && props.userInfo);
@@ -21,16 +21,7 @@ function Dashboard(props) {
                         <th className="teal" scope="col">Completed</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <th className="grey" scope="row">1</th>
-                        <td className="grey">Azeez Josephine</td>
-                        <td className="grey">Bithday Party</td>
-                        <td className="grey">16-08-2023/3:00PM</td>
-                        <td className="grey">Garki 2</td>
-                        <td className="grey">False</td>
-                    </tr>
-                </tbody>
+                <BookingRow />
             </table>
             <a href="#" className="nav-link hover">
                 {user.userType.toLowerCase() === 'client' && "Create new booking"}
