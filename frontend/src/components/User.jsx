@@ -1,10 +1,11 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 function User(props) {
     const user = JSON.parse(sessionStorage.getItem("openUser"));
 
-    console.log(user);
+    // console.log(user);
     return (
         <div className="d-flex justify-content-center align-items-center">
             <div className="card mb-3 text-bg-dark brownShadow userCard" style={{ maxWidth: "55%" }}>
@@ -15,9 +16,15 @@ function User(props) {
                     <div className="col-md-8 px-2">
                         <div className="card-body">
                             <div className="nameLocation text-nowrap row pb-2">
-                                <h5 className="card-title bright col-sm-7 col-md-6 mr-2">{`${user.firstName} ${user.lastName}`}</h5>
+                                <h5 className="card-title bright col-sm-7 col-md-6 mb-0 mr-2">{`${user.firstName} ${user.lastName}`}</h5>
                                 <FontAwesomeIcon className='col-1 mt-1 p-0 text-danger' icon={faLocationDot} style={{ color: "#ECFFB0", }} />
-                                <h5 className="col-sm-4 p-0 m-0 bright">Dutse</h5>
+                                <h6 className="col-sm-4 p-0 m-0 mt-1 bright">Dutse</h6>
+                                <p className="col-md-6 col-sm-7 m-0 pb-1 text-secondary">a.k.a {user.alias && user.alias}</p>
+                                <p className="col-sm-5 pl-0 ml-0">{[1, 2, 3, 4, 5].map((i) => {
+                                    return <FontAwesomeIcon icon={faStar}
+                                        style={{ color: "#cff250", }} />
+                                })}
+                                </p>
 
                             </div>
                             {user.userType.toLowerCase() === 'musician' &&
