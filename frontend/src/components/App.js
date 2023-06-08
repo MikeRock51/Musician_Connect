@@ -7,6 +7,7 @@ import Usertype from './pages/Usertype';
 import Signin from "./pages/Signin";
 import Dashboard from "./pages/Dashboard";
 import Footer from "./Footer";
+import Musicians from "./pages/Musicians";
 
 
 function App() {
@@ -72,12 +73,14 @@ function App() {
               onChange={retrieveInput}
               userData={userData}
               isValid={isValid}
-              // sendData={getLoginData}
+            // sendData={getLoginData}
             />} />
           <Route path='/user/dashboard'
             element={<Dashboard
-              // userInfo={loginData}
+            // userInfo={loginData}
             />} />
+          <Route path='/users/musicians'
+            element={<Musicians />} />
         </Routes>
         {/* <div className='nav-container '>
           <Footer />
