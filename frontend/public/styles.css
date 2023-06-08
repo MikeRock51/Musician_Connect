@@ -95,7 +95,7 @@ ul.dropdown-menu {
   -webkit-box-shadow: 0px 1px 3px #666666;
   -moz-box-shadow: 0px 1px 3px #666666;
   box-shadow: 0px 1px 3px #666666;
-  color: #ffffff;
+  /* color: #ffffff; */
   background-color: #ECFFB0 !important;
   font-size: 20px;
   padding: 10px 20px 10px 20px;
