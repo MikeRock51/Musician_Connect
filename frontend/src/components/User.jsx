@@ -1,3 +1,6 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
+
 function User(props) {
     const user = JSON.parse(sessionStorage.getItem("openUser"));
 
@@ -9,16 +12,20 @@ function User(props) {
                     <div className="col-md-4 lightShadow">
                         <img src={user.profilePicture} className="img-fluid rounded-start" alt="..." />
                     </div>
-                    <div className="col-md-8">
+                    <div className="col-md-8 px-2">
                         <div className="card-body">
-                            <h5 className="card-title secondary">{`${user.firstName} ${user.lastName}`}</h5>
+                            <div className="nameLocation text-nowrap row pb-2">
+                                <h5 className="card-title bright col-sm-7 col-md-6 mr-2">{`${user.firstName} ${user.lastName}`}</h5>
+                                <FontAwesomeIcon className='col-1 mt-1 p-0 text-danger' icon={faLocationDot} style={{ color: "#ECFFB0", }} />
+                                <h5 className="col-sm-4 p-0 m-0 bright">Dutse</h5>
+
+                            </div>
                             {user.userType.toLowerCase() === 'musician' &&
                                 <div className="">
-                                    {/* <h6>Instruments</h6> */}
-                                    <div className="list-unstyled row text-nowrap pr-2">
+                                    <div className="list-unstyled row text-nowrap">
                                         {user.instruments.map((instrument, index) => {
                                             return (
-                                                <h6 className={index === 0 ? "col-sm-6 text-bg-success" : "col-sm-6 text-info"} key={instrument.id}>
+                                                <h6 className={index === 0 ? "col-sm-6 col-lg-5 text-bg-success" : "col-sm-6 col-lg-5 text-info"} key={instrument.id}>
                                                     {`[ ${instrument.name} ]`}
                                                 </h6>
                                             )
