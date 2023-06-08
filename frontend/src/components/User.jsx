@@ -43,7 +43,6 @@ function User(props) {
                                         })}
                                     </div>
                                 </div>}
-                            {/* <p className="card-text"></p> */}
                             <p className="card-text fw-light bright mb-0">{user.description}</p>
                             <p className="card-text text-center text-lg-start mt-3"><small className="text-light p-1 rounded text-bg-success">
                                 {user.bookings.filter((booking) => {
