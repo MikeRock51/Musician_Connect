@@ -11,7 +11,7 @@ function Dashboard(props) {
     // console.log(respondentId);
 
     return (
-        <div className="dashboard">
+        <div className="dashboard px-5">
             <h3 className="teal pb-3">Welcome {user && user.firstName}</h3>
             <h6 className="bookings cinnabar">Your Bookings</h6>
             <table className="table table-striped table-success">
@@ -23,6 +23,7 @@ function Dashboard(props) {
                         <th className="teal" scope="col">Event</th>
                         <th className="teal" scope="col">Event Date/Time</th>
                         <th className="teal" scope="col">Event City</th>
+                        <th className="teal" scope="col">Location</th>
                         <th className="teal" scope="col">Completed</th>
                     </tr>
                 </thead>

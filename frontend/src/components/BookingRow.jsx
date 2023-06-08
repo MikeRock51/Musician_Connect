@@ -36,6 +36,7 @@ function BookingRow(props) {
                       })
                 }</td>
                 <td className="grey">Garki 2</td>
+                <td className="grey">{booking.event_address}</td>
                 <td className="grey">False</td>
             </tr>
         </tbody>
