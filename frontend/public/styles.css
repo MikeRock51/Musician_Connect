@@ -13,7 +13,7 @@ html body {
 }
 
 a.hover:hover {
-  color: #C5D5E4 !important;
+  color: #93aac0 !important;
 }
 
 .cinnabar {
@@ -45,11 +45,11 @@ a {
 }
 
 .teal {
-  color: teal;
+  color: teal !important;
 }
 
 .grey {
-  color: #070707c4;
+  color: #070707b2 !important;
 }
 
 .text-outline {

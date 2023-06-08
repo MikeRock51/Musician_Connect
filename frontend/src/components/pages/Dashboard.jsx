@@ -14,7 +14,7 @@ function Dashboard(props) {
         <div className="dashboard">
             <h3 className="teal pb-3">Welcome {user && user.firstName}</h3>
             <h6 className="bookings cinnabar">Your Bookings</h6>
-            <table className="table">
+            <table className="table table-striped table-success">
                 <thead>
                     <tr>
                         <th className="teal" scope="col">#</th>
@@ -26,7 +26,6 @@ function Dashboard(props) {
                         <th className="teal" scope="col">Completed</th>
                     </tr>
                 </thead>
-                <BookingRow />
                 {bookings && bookings.map((booking, index) => {
                     return <BookingRow
                         key={booking.id}
@@ -36,7 +35,7 @@ function Dashboard(props) {
                     />
                 })}
             </table>
-            <a href="#" className="nav-link hover">
+            <a href="#" className="link-underline link-underline-opacity-0 hover">
                 {user.userType.toLowerCase() === 'client' && "Create new booking"}
             </a>
         </div>
