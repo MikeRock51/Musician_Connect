@@ -44,8 +44,6 @@ function BookingRow(props) {
             </tr>
         </tbody>
     )
-    // personId={
-    //                 event={bookings.event_type}
 }
 
 export default BookingRow;

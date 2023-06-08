@@ -15,7 +15,7 @@ function Dashboard(props) {
             <h3 className="teal pb-3">Welcome {user && user.firstName}</h3>
             <div className="px-3">
                 <h6 className="bookings cinnabar">Your Bookings</h6>
-                <table className="table table-striped table-success">
+                <table className="table table-striped table-bordered table-success">
                     <thead>
                         <tr>
                             <th className="teal" scope="col">#</th>
