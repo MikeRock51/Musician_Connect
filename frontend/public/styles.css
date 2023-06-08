@@ -33,6 +33,19 @@ a {
   border-radius: 20px;
 }
 
+.brownShadow {
+  box-shadow: 4px 3px 7px 2px #9b4c24d3;
+  /* background-color:#ECFFB0 !important; */
+}
+
+.lightShadow {
+  box-shadow: 0px 2px 5px 0px lightblue;
+  }
+
+  .bright {
+    color: #ECFFB0;
+  }
+
 .curvy {
   border-radius: 20px !important;
 }
