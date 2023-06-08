@@ -30,6 +30,7 @@ class User(BaseModel, Base):
             default=defaultImage)
     description = Column(String(1024), nullable=True)
     city_id = Column(String(60), ForeignKey('cities.id'), nullable=False)
+    rating = Column(Integer, nullable-False, default=5)
     clientReviews = relationship(
         'Review', backref='client', cascade='all, delete', foreign_keys=[Review.client_id])
     musicianReviews = relationship(
