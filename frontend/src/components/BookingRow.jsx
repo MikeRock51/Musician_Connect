@@ -6,7 +6,7 @@ function BookingRow(props) {
     const url = 'http://127.0.0.1:7000/api/v1';
     const respondentUrl = props.respondentId && `${url}/users/${props.respondentId}`;
     const { data: respondent } = useFetch(respondentUrl);
-    const {data: city} = useFetch(`${url}/cities/${booking.city_id}`);
+    const { data: city } = useFetch(`${url}/cities/${booking.city_id}`);
 
     // console.log(city);
 
@@ -15,13 +15,18 @@ function BookingRow(props) {
             <tr>
                 <th className="grey" scope="row">{props.row}</th>
                 <td className="grey">
-                    <a href="#" className={
-                        "link-offset-2 " +
-                        "link-offset-3-hover " +
-                        "link-underline " +
-                        "link-underline-opacity-0 " +
-                        "link-underline-opacity-75-hover"
-                    }>
+                    <a href={`/users/musicians/${respondent && respondent.id}`}
+                        className={
+                            "link-offset-2 " +
+                            "link-offset-3-hover " +
+                            "link-underline " +
+                            "link-underline-opacity-0 " +
+                            "link-underline-opacity-75-hover"
+                        }
+                        onClick={() => {
+                            sessionStorage.setItem("openUser", JSON.stringify(respondent));
+                        }}
+                    >
                         {respondent && `${respondent.firstName} ${respondent.lastName}`}
                     </a>
                 </td>
@@ -36,7 +41,7 @@ function BookingRow(props) {
                         second: "numeric",
                         hour12: true,
                         timeZoneName: "short"
-                      })
+                    })
                 }</td>
                 <td className="grey">{city && city.name}</td>
                 <td className="grey">{booking.event_address}</td>

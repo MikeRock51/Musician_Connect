@@ -8,6 +8,7 @@ import Signin from "./pages/Signin";
 import Dashboard from "./pages/Dashboard";
 import Footer from "./Footer";
 import Musicians from "./pages/Musicians";
+import User from "./User";
 
 
 function App() {
@@ -81,6 +82,9 @@ function App() {
             />} />
           <Route path='/users/musicians'
             element={<Musicians />} />
+
+          <Route path='/users/musicians/:id'
+            element={<User />} />
         </Routes>
         {/* <div className='nav-container '>
           <Footer />
