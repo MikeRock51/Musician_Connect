@@ -3,11 +3,9 @@ import useFetch from "./utilities/useFetch";
 
 function BookingRow(props) {
     const booking = props.bookingInfo;
-    const [respondentId, setRespondentId] = useState(props.userType === 'client' ?
-        booking.musician_id : booking.client_id);
-    console.log(respondentId);
-    const respondentUrl = `http://127.0.0.1:7000/api/v1/users/${respondentId}`;
+    const respondentUrl = props.respondentId && `http://127.0.0.1:7000/api/v1/users/${props.respondentId}`;
     const { data: respondent } = useFetch(respondentUrl);
+    // console.log(respondent);
 
     return (
         <tbody>
@@ -21,8 +19,7 @@ function BookingRow(props) {
             </tr>
         </tbody>
     )
-    // personId={user.userType.toLowerCase() === 'client' ?
-    //                     bookings.musician_id : bookings.client_id}
+    // personId={
     //                 event={bookings.event_type}
 }
 

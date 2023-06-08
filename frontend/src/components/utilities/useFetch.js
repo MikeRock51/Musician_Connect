@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 
-function useFetch(url) {
+function useFetch(url, dependencies=[]) {
     const [data, setData] = useState(null);
     const [isPending, setIsPending] = useState(true);
     const [error, setError] = useState(null);
@@ -29,7 +29,7 @@ function useFetch(url) {
     return () => {
         abortControl.abort();
     }
-    }, [url]);
+    }, [url, ...dependencies]);
 
     return {data, isPending, error};
 }

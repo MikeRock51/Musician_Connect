@@ -4,8 +4,11 @@ import BookingRow from "../BookingRow";
 function Dashboard(props) {
     const [user, setUser] = useState(JSON.parse(sessionStorage.getItem('userInfo')));
     const [bookings, setBookings] = useState(user.bookings);
+    const [respondentId, setRespondentId] = useState(bookings.length !== 0 &&
+        user.userType.toLowerCase() === 'client' ?
+        bookings[0].musician_id : bookings[0].client_id);
 
-    // console.log(bookings);
+    // console.log(respondentId);
 
     return (
         <div className="dashboard">
@@ -24,12 +27,12 @@ function Dashboard(props) {
                     </tr>
                 </thead>
                 <BookingRow />
-                {bookings.map((booking, index) => {
+                {bookings && bookings.map((booking, index) => {
                     return <BookingRow
-                    key={booking.id}
-                    row={index + 1}
-                    userType={user.userType.toLowerCase()}
-                    bookingInfo={booking}
+                        key={booking.id}
+                        row={index + 1}
+                        respondentId={respondentId}
+                        bookingInfo={booking}
                     />
                 })}
             </table>
