@@ -4,10 +4,11 @@ import BookingRow from "../BookingRow";
 function Dashboard(props) {
     const [user, setUser] = useState(JSON.parse(sessionStorage.getItem('userInfo')));
     const [bookings, setBookings] = useState(user.bookings);
-    // console.log(bookings.length);
-    const [respondentId, setRespondentId] = useState(bookings[0] &&
-        user.userType.toLowerCase() === 'client' ?
-        bookings[0] && bookings[0].musician_id : bookings[0] && bookings[0].client_id);
+    console.log(bookings);
+    let [respondentId, setRespondentId] = useState(null);
+        // bookings[0] &&
+        // user.userType.toLowerCase() === 'client' ?
+        // bookings[0] && bookings[0].musician_id : bookings[0] && bookings[0].client_id);
 
     // console.log(respondentId);
 
@@ -30,6 +31,8 @@ function Dashboard(props) {
                         </tr>
                     </thead>
                     {bookings && bookings.map((booking, index) => {
+                        // setRespondentId(user.userType === 'client' ? booking.musician_id : booking.client_id);
+                        respondentId = user.userType.toLowerCase() === 'client' ? booking.musician_id : booking.client_id;
                         return <BookingRow
                             key={booking.id}
                             row={index + 1}
