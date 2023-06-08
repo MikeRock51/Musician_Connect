@@ -23,14 +23,14 @@ class User(BaseModel, Base):
     userType = Column(String(20), nullable=False)
     firstName = Column(String(128), nullable=False)
     lastName = Column(String(128), nullable=False)
-    email = Column(String(128), nullable=False)
-    phone = Column(String(60), nullable=False)
+    email = Column(String(128), nullable=False, unique=True)
+    phone = Column(String(60), nullable=False, unique=True)
     password = Column(String(128), nullable=False)
     profilePicture = Column(String(1024), nullable=False,
             default=defaultImage)
     description = Column(String(1024), nullable=True)
     city_id = Column(String(60), ForeignKey('cities.id'), nullable=False)
-    rating = Column(Integer, nullable-False, default=5)
+    rating = Column(Integer, nullable=False, default=5)
     clientReviews = relationship(
         'Review', backref='client', cascade='all, delete', foreign_keys=[Review.client_id])
     musicianReviews = relationship(
