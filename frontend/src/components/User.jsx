@@ -3,7 +3,7 @@ import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 function User(props) {
-    const user = JSON.parse(sessionStorage.getItem("openUser"));
+    const user = props.musician ? props.musician : JSON.parse(sessionStorage.getItem("openUser"));
 
     // console.log(user);
     return (
@@ -45,7 +45,7 @@ function User(props) {
                                 </div>}
                             {/* <p className="card-text"></p> */}
                             <p className="card-text fw-light bright mb-0">{user.description}</p>
-                            <p className="card-text text-center mt-3"><small className="text-light p-1 rounded text-bg-success">
+                            <p className="card-text text-center text-lg-start mt-3"><small className="text-light p-1 rounded text-bg-success">
                                 {user.bookings.filter((booking) => {
                                     return booking.completed;
                                 }).length} Bookings Completed
