@@ -41,7 +41,7 @@ def getUserByType(userType):
     allUsers = storage.all(User)
 
     for user in allUsers.values():
-        if user.toDict()['userType'].lower() == userType.lower():
+        if user.userType.lower() == userType.lower():
             usersList.append(user.toDict())
 
     return make_response(jsonify(usersList), 200)
