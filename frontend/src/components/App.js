@@ -6,21 +6,22 @@ import Register from './pages/Register';
 import Usertype from './pages/Usertype';
 import Signin from "./pages/Signin";
 import Dashboard from "./pages/Dashboard";
+import Footer from "./Footer";
 
 
 function App() {
   const [userData, setUserData] = useState({});
   let [userInstruments, setUserInstruments] = useState([]);
   let [isValid, setIsValid] = useState(false);
-  let [loginData, setLoginData] = useState(null);
+  // let [loginData, setLoginData] = useState(null);
 
-  function getLoginData(data) {
+  // function getLoginData(data) {
 
-    loginData = { ...data };
-    setLoginData({ ...data });
-    console.log(loginData);
-    // return true
-  }
+  //   loginData = { ...data };
+  //   setLoginData({ ...data });
+  //   console.log(loginData);
+  //   // return true
+  // }
 
   function retrieveInput(key, value, isChecked = false, validData = undefined) {
     // console.log(userData);
@@ -71,13 +72,16 @@ function App() {
               onChange={retrieveInput}
               userData={userData}
               isValid={isValid}
-              sendData={getLoginData}
+              // sendData={getLoginData}
             />} />
           <Route path='/user/dashboard'
             element={<Dashboard
-              userInfo={loginData}
+              // userInfo={loginData}
             />} />
         </Routes>
+        <div className='nav-container container-fluid'>
+          <Footer />
+        </div>
       </div>
     </Router>
   );

@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BookingRow from "../BookingRow";
 
 function Dashboard(props) {
-    const [user, setUser] = useState(props.userInfo && props.userInfo);
-    console.log((props.userInfo));
+    const [user, setUser] = useState(JSON.parse(sessionStorage.getItem('userInfo')));
+    // console.log((props.userInfo));
 
     return (
         <div className="dashboard">

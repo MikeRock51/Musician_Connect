@@ -77,7 +77,8 @@ function Signin(props) {
                     }
                     setUserInfo(data);
                     if (!isPending && !data.error) {
-                        props.sendData(data);
+                        sessionStorage.setItem("userInfo", JSON.stringify(data));
+                        // props.sendData(data);
                         navigate('/user/dashboard');
                     }
                     // userInfo = data;
