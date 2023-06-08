@@ -79,9 +79,9 @@ function App() {
               // userInfo={loginData}
             />} />
         </Routes>
-        <div className='nav-container container-fluid'>
+        {/* <div className='nav-container '>
           <Footer />
-        </div>
+        </div> */}
       </div>
     </Router>
   );

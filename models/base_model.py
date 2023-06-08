@@ -57,12 +57,21 @@ class BaseModel():
         if type(self).__name__ == 'User':
             from models.city import City
 
+            bookings = []
+
             instance['city'] = storage.get(City, instance['city_id']).name
             if self.userType.lower() == 'musician':
                 instruments = []
                 for instrument in self.instruments:
                     instruments.append(instrument.toDict())
                 instance['instruments'] = instruments
+
+                for booking in self.musicianBookings:
+                    bookings.append(booking.toDict())
+            else:
+                for booking in self.clientBookings:
+                    bookings.append(booking.toDict())
+            instance['bookings'] = bookings
 
         if type(self).__name__ == 'State':
             cities = []
