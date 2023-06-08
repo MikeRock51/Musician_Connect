@@ -3,9 +3,12 @@ import useFetch from "./utilities/useFetch";
 
 function BookingRow(props) {
     const booking = props.bookingInfo;
-    const respondentUrl = props.respondentId && `http://127.0.0.1:7000/api/v1/users/${props.respondentId}`;
+    const url = 'http://127.0.0.1:7000/api/v1';
+    const respondentUrl = props.respondentId && `${url}/users/${props.respondentId}`;
     const { data: respondent } = useFetch(respondentUrl);
-    console.log(booking);
+    const {data: city} = useFetch(`${url}/cities/${booking.city_id}`);
+
+    // console.log(city);
 
     return (
         <tbody>
@@ -23,7 +26,7 @@ function BookingRow(props) {
                     </a>
                 </td>
                 <td className="grey">{booking.event_type}</td>
-                <td className="grey">{
+                <td className="grey text-sm fs-6">{
                     new Date(booking.event_date).toLocaleString(undefined, {
                         year: "numeric",
                         month: "long",
@@ -35,7 +38,7 @@ function BookingRow(props) {
                         timeZoneName: "short"
                       })
                 }</td>
-                <td className="grey">Garki 2</td>
+                <td className="grey">{city && city.name}</td>
                 <td className="grey">{booking.event_address}</td>
                 <td className="grey">False</td>
             </tr>
