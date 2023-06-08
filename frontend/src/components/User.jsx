@@ -5,9 +5,9 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 function User(props) {
     const user = JSON.parse(sessionStorage.getItem("openUser"));
 
-    console.log(user);
+    // console.log(user);
     return (
-        <div className="d-flex justify-content-center align-items-center ">
+        <div className="d-flex justify-content-center align-items-center">
             <div className="card mb-3 text-bg-dark brownShadow userCard" style={{ maxWidth: "55%" }}>
                 <div className="row g-2">
                     <div className="text-center col-md-4 lightShadow">
@@ -45,7 +45,7 @@ function User(props) {
                                 </div>}
                             {/* <p className="card-text"></p> */}
                             <p className="card-text fw-light bright mb-0">{user.description}</p>
-                            <p className="card-text text-center mt-1"><small className="text-light p-1 rounded text-bg-success">
+                            <p className="card-text text-center mt-3"><small className="text-light p-1 rounded text-bg-success">
                                 {user.bookings.filter((booking) => {
                                     return booking.completed;
                                 }).length} Bookings Completed
