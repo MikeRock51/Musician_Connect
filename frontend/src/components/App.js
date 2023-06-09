@@ -88,7 +88,7 @@ function App() {
           <Route path='/users/musicians/:id'
             element={<User />} />
           
-          <Route path='/users/bookings'
+          <Route path='/users/booking'
             element={<Booking />} />
         </Routes>
         {/* <div className='nav-container '>

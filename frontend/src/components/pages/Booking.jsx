@@ -3,8 +3,8 @@ import Select from "../form_pieces/Select";
 
 function Booking() {
     return (
-        <div>
-            <form action="" className="">
+        <div className="px-5">
+            <form action="" className="row">
                 <Input
                     type="text"
                     text="Event Type"
