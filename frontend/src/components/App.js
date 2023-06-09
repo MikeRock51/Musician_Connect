@@ -21,7 +21,14 @@ function App() {
   // console.log(loggedInUser);
   // let [loginData, setLoginData] = useState(null);
 
-  function retrieveBookingData(key, value, kwargs = null) {
+  function retrieveBookingData(key, value, kwargs = null, validData = false) {
+    if (validData === undefined && value.length > 1) {
+      setIsValid(true);
+      isValid = true;
+    } else {
+      setIsValid(validData)
+      isValid = validData;
+    }
     !kwargs ? setBooking((prevData) => {
       // if (key === 'city' || key === 'state') {
       //   const keyId = `${key}_id`;
@@ -53,7 +60,7 @@ function App() {
       setIsValid(validData)
       isValid = validData;
     }
-    console.log("App: " + isValid);
+    // console.log("App: " + isValid);
     key === 'instruments' && isChecked && userInstruments.push(value);
     if (key === 'instruments' && !isChecked) {
       userInstruments = userInstruments.filter((val) => {
@@ -110,6 +117,8 @@ function App() {
             element={<Booking
               bookingData={booking}
               onChange={retrieveBookingData}
+              isValid={isValid}
+              loggedInUser={loggedInUser}
             />} />
         </Routes>
         {/* <div className='nav-container '>
