@@ -120,7 +120,9 @@ def authenticateUser():
     authPassword = authData.get('password').encode('utf-8')
 
     if bcrypt.checkpw(authPassword, dbPassword):
-        return make_response(jsonify(user.toDict()), 200)
+        user = user.toDict()
+        user['loggedIn'] = True
+        return make_response(jsonify(user), 200)
     
     return make_response(jsonify({"error": "Incorrect password"}), 401)
 

@@ -4,7 +4,7 @@ import BookingRow from "../BookingRow";
 function Dashboard(props) {
     // const [user, setUser] = useState(JSON.parse(sessionStorage.getItem('loggedInUser')));
     const [user, setUser] = useState(props.userInfo);
-    const [bookings, setBookings] = useState(user.bookings);
+    const [bookings, setBookings] = useState(user && user.bookings);
     let [respondentId, setRespondentId] = useState(null);
 
     return (

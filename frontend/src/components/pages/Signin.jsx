@@ -9,33 +9,6 @@ function Signin(props) {
     let [verified, setVerified] = useState(false);
     const navigate = useNavigate();
 
-    // function postIt(url, jsonData) {
-    //     // POST datas
-    //     fetch(url, {
-    //         method: "POST",
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //             "Access-Control-Allow-Origin": "http://localhost/3000"
-    //         },
-    //         body: JSON.stringify(jsonData)
-    //     })
-    //         .then((res) => {
-    //             return res.json();
-    //         }).then((data) => {
-    //             if (data.error && data.error === 'Not Found') {
-    //                 data = ({ "error": "User does not exist" });
-    //             }
-    //             setUserInfo(data);
-    //             // userInfo = data;
-    //             // console.log(userInfo);
-    //             setIsPending(false);
-    //         }).catch(err => {
-    //             console.log(err);
-    //             setIsPending(false);
-    //         })
-    //     return userInfo;
-    // }
-
     function handleClicked(event) {
         event.preventDefault();
         props.isValid && handleSubmit();
@@ -78,7 +51,6 @@ function Signin(props) {
                     setUserInfo(data);
                     if (!isPending && !data.error) {
                         sessionStorage.setItem("loggedInUser", JSON.stringify(data));
-                        // props.sendData(data);
                         navigate('/user/dashboard');
                     }
                     // userInfo = data;

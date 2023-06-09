@@ -1,9 +1,11 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.bundle.js';
-// import "../index.css";
+import { useNavigate } from 'react-router-dom';
 
-function Navbar() {
+function Navbar(props) {
+    const navigate = useNavigate();
+
     return (
         <nav className="navbar navbar-expand-lg mb-4">
             <div className="container-fluid">
@@ -30,8 +32,16 @@ function Navbar() {
                             </a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link hover" href="/sign-in">
-                                Sign in
+                            <a
+                                className="nav-link hover"
+                                onClick={() => {
+                                    if (props.loggedIn) {
+                                        sessionStorage.clear()
+                                        navigate('/sign-in')
+                                    }
+                                }}
+                                href="/sign-in">
+                                {props.loggedIn ? "Sign out" : "Sign in"}
                             </a>
                         </li>
                     </ul>
