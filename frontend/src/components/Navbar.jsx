@@ -28,8 +28,8 @@ function Navbar(props) {
                     <ul className="navbar-nav ms-auto me-0 mb-2 mb-lg-0">
                         <li className="nav-item">
                             <a className="nav-link active hover" aria-current="page"
-                                href={props.loggedIn ? "/users/musicians" : "/sign-in"}>
-                                Musicians
+                                href={props.loggedIn ? "/user/dashboard" : "/sign-in"}>
+                                Dashboard
                             </a>
                         </li>
                         <li className="nav-item">
