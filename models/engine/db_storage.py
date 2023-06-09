@@ -58,6 +58,8 @@ class DBStorage:
         if obj:
             if obj in [classes['Instrument'], classes['State']]:
                 queryResult = self.__session.query(obj).order_by(obj.name).all()
+            elif obj == classes['User']:
+                queryResult = self.__session.query(obj).order_by(obj.firstName).all()
             else:
                 queryResult = self.__session.query(obj).all()
             for result in queryResult:
