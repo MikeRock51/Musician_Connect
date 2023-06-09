@@ -18,7 +18,7 @@ function App() {
   let [isValid, setIsValid] = useState(false);
   const [booking, setBooking] = useState({});
   const loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'));
-  const loggedIn = loggedInUser && loggedInUser.loggedIn;
+  const [loggedIn, setLoggedIn] = useState(loggedInUser ? true : false);
   // console.log(loggedInUser);
   // let [loginData, setLoginData] = useState(null);
 
@@ -68,13 +68,15 @@ function App() {
     <Router>
       <div className=''>
         <div className='nav-container container-fluid'>
-          <Navbar 
+          <Navbar
             loggedIn={loggedIn}
+            setLoggedIn={setLoggedIn}
           />
         </div>
         <Routes>
           <Route path='/' element={<Home
             loggedIn={loggedIn}
+            setLoggedIn={setLoggedIn}
           />} />
           <Route path='/register/user-type'
             element={<Usertype onChange={retrieveInput} />}
@@ -85,6 +87,7 @@ function App() {
               isValid={isValid}
               onChange={retrieveInput}
               loggedIn={loggedIn}
+              setLoggedIn={setLoggedIn}
             />} />
           <Route path='/sign-in'
             element={<Signin
@@ -92,18 +95,19 @@ function App() {
               userData={userData}
               isValid={isValid}
               loggedIn={loggedIn}
-
+              setLoggedIn={setLoggedIn}
             />} />
           <Route path='/user/dashboard'
             element={<Dashboard
               userInfo={loggedInUser}
               loggedIn={loggedIn}
-
+              setLoggedIn={setLoggedIn}
             />} />
           <Route path='/users/musicians'
             element={<Musicians
               sendBookingInitials={retrieveBookingData}
               loggedIn={loggedIn}
+              setLoggedIn={setLoggedIn}
             />} />
 
           <Route path='/users/musicians/:id'
@@ -112,9 +116,11 @@ function App() {
           <Route path='/booking'
             element={<Booking
               bookingData={booking}
-              onChange={retrieveBookingData}              isValid={isValid}
+              onChange={retrieveBookingData}
+              isValid={isValid}
               loggedInUser={loggedInUser}
               loggedIn={loggedIn}
+              setLoggedIn={setLoggedIn}
             />} />
         </Routes>
         {/* <div className='nav-container '>

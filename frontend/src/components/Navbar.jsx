@@ -27,8 +27,9 @@ function Navbar(props) {
                 <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
                     <ul className="navbar-nav ms-auto me-0 mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <a className="nav-link active hover" aria-current="page" href="/register/user-type">
-                                Register
+                            <a className="nav-link active hover" aria-current="page"
+                                href={props.loggedIn ? "/users/musicians" : "/sign-in"}>
+                                Musicians
                             </a>
                         </li>
                         <li className="nav-item">
@@ -37,6 +38,7 @@ function Navbar(props) {
                                 onClick={() => {
                                     if (props.loggedIn) {
                                         sessionStorage.clear()
+                                        props.setLoggedIn(false);
                                         navigate('/sign-in')
                                     }
                                 }}

@@ -51,6 +51,7 @@ function Signin(props) {
                     setUserInfo(data);
                     if (!isPending && !data.error) {
                         sessionStorage.setItem("loggedInUser", JSON.stringify(data));
+                        props.setLoggedIn(true);
                         navigate('/user/dashboard');
                     }
                     // userInfo = data;

@@ -37,7 +37,7 @@ function Dashboard(props) {
                     })}
                 </table>
                 <a href="/users/musicians" className="link-underline link-underline-opacity-0 hover">
-                    {user.userType.toLowerCase() === 'client' && "Create new booking"}
+                    {user && user.userType.toLowerCase() === 'client' && "Create new booking"}
                 </a>
             </div>
         </div>
