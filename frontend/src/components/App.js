@@ -16,8 +16,17 @@ function App() {
   const [userData, setUserData] = useState({});
   let [userInstruments, setUserInstruments] = useState([]);
   let [isValid, setIsValid] = useState(false);
-  // const [booking, setBooking] = useState({});
+  const [booking, setBooking] = useState({});
   // let [loginData, setLoginData] = useState(null);
+
+  function retrieveBookingData(key, value) {
+    setBooking((prevData) => {
+      return {
+        ...prevData,
+        [key]: value
+      }
+    })
+  }
 
   // function getLoginData(data) {
 
@@ -87,9 +96,12 @@ function App() {
 
           <Route path='/users/musicians/:id'
             element={<User />} />
-          
+
           <Route path='/users/booking'
-            element={<Booking />} />
+            element={<Booking
+              bookingData={booking}
+              onChange={retrieveBookingData}
+            />} />
         </Routes>
         {/* <div className='nav-container '>
           <Footer />

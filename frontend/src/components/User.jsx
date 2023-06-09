@@ -12,7 +12,13 @@ function User(props) {
                 <div className="row g-2">
                     <div className="text-center col-md-4 lightShadow">
                         <img src={user.profilePicture} className="img-fluid rounded-start" alt="..." />
-                        <button type="button" className="w-100 anime btn cinnabar fw-bold">
+                        <button
+                            type="button"
+                            className="w-100 anime btn cinnabar fw-bold"
+                            onClick={() => {
+                                console.log(user);
+                            }}
+                        >
                             Book Now
                         </button>
                     </div>
@@ -21,7 +27,7 @@ function User(props) {
                             <div className="nameLocation text-nowrap row pb-0">
                                 <h5 className="card-title bright col-sm-7 col-md-5 mb-0 mr-2">{`${user.firstName} ${user.lastName}`}</h5>
                                 <FontAwesomeIcon className='col-1 mt-1 p-0 text-danger' icon={faLocationDot} style={{ color: "#ECFFB0", }} />
-                                <h6 className="col-sm-4 p-0 m-0 mt-1 bright">Dutse</h6>
+                                <h6 className="col-sm-4 p-0 m-0 mt-1 bright">{user.city}</h6>
                                 <p className="col-md-5 col-sm-7 m-0 pb-1 text-secondary">a.k.a {user.alias && user.alias}</p>
                                 <p className="col-sm-5 pl-0 ml-0">{[1, 2, 3, 4, 5].map((i) => {
                                     return <FontAwesomeIcon icon={faStar}

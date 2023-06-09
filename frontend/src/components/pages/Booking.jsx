@@ -1,7 +1,14 @@
+import { useState } from "react";
 import Input from "../form_pieces/Input";
 import Select from "../form_pieces/Select";
+import useFetch from "../utilities/useFetch";
 
-function Booking() {
+function Booking(props) {
+    const statesUrl = 'http://127.0.0.1:7000/api/v1/states';
+    const states = useFetch(statesUrl).data;
+    const cities= props.bookingData.state && JSON.parse(props.bookingData.state).cities;
+    console.log(cities);
+
     return (
         <div className="px-5">
             <form action="" className="row">
@@ -11,14 +18,14 @@ function Booking() {
                     className="form-control"
                     name="event_type"
                     mandatory={true}
-                // onChange={handleChange}
+                    onChange={props.onChange}
                 />
                 <Input
                     type="datetime-local"
                     name="event_date"
                     text="Event Date/Time"
-                    // className="form-control"
                     id="datetime-input"
+                    onChange={props.onChange}
                 />
                 <Input
                     type="text"
@@ -26,13 +33,19 @@ function Booking() {
                     className="form-control"
                     name="event_address"
                     mandatory={true}
-                // onChange={handleChange}
+                    onChange={props.onChange}
+                />
+                <Select
+                    name="state"
+                    text="State"
+                    items={states}
+                    onChange={props.onChange}
                 />
                 <Select
                     name="city"
                     text="City"
-                // items={cities}
-                // onChange={props.onChange} text="City"
+                    items={cities}
+                    onChange={props.onChange}
                 />
             </form>
         </div>

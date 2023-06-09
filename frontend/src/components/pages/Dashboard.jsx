@@ -4,7 +4,7 @@ import BookingRow from "../BookingRow";
 function Dashboard(props) {
     const [user, setUser] = useState(JSON.parse(sessionStorage.getItem('userInfo')));
     const [bookings, setBookings] = useState(user.bookings);
-    console.log(bookings);
+    // console.log(bookings);
     let [respondentId, setRespondentId] = useState(null);
         // bookings[0] &&
         // user.userType.toLowerCase() === 'client' ?
@@ -41,7 +41,7 @@ function Dashboard(props) {
                         />
                     })}
                 </table>
-                <a href="#" className="link-underline link-underline-opacity-0 hover">
+                <a href="/users/musicians" className="link-underline link-underline-opacity-0 hover">
                     {user.userType.toLowerCase() === 'client' && "Create new booking"}
                 </a>
             </div>
