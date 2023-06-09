@@ -77,7 +77,7 @@ function Signin(props) {
                     }
                     setUserInfo(data);
                     if (!isPending && !data.error) {
-                        sessionStorage.setItem("userInfo", JSON.stringify(data));
+                        sessionStorage.setItem("loggedInUser", JSON.stringify(data));
                         // props.sendData(data);
                         navigate('/user/dashboard');
                     }

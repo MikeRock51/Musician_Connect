@@ -2,15 +2,10 @@ import { useEffect, useState } from "react";
 import BookingRow from "../BookingRow";
 
 function Dashboard(props) {
-    const [user, setUser] = useState(JSON.parse(sessionStorage.getItem('userInfo')));
+    // const [user, setUser] = useState(JSON.parse(sessionStorage.getItem('loggedInUser')));
+    const [user, setUser] = useState(props.userInfo);
     const [bookings, setBookings] = useState(user.bookings);
-    // console.log(bookings);
     let [respondentId, setRespondentId] = useState(null);
-        // bookings[0] &&
-        // user.userType.toLowerCase() === 'client' ?
-        // bookings[0] && bookings[0].musician_id : bookings[0] && bookings[0].client_id);
-
-    // console.log(respondentId);
 
     return (
         <div className="dashboard">

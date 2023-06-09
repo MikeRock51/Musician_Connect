@@ -1,9 +1,11 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
 
 function User(props) {
     const user = props.musician ? props.musician : JSON.parse(sessionStorage.getItem("openUser"));
+    const navigate = useNavigate();
 
     // console.log(user);
     return (
@@ -16,7 +18,12 @@ function User(props) {
                             type="button"
                             className="w-100 anime btn cinnabar fw-bold"
                             onClick={() => {
-                                console.log(user);
+                                // console.log(user);
+                                props.sendBookingInitials(null, null, {
+                                    "musician_id": user.id,
+                                    "client_id": JSON.parse(sessionStorage.getItem('loggedInUser')).id
+                                });
+                                navigate('/booking');
                             }}
                         >
                             Book Now
@@ -38,7 +45,7 @@ function User(props) {
 
                             </div>
                             {user.userType.toLowerCase() === 'musician' &&
-                                <div className="ms-2">
+                                <div className="ms-2 ">
                                     <div className="row text-nowrap">
                                         {user.instruments.map((instrument, index) => {
                                             return (

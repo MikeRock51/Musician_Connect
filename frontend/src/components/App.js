@@ -17,15 +17,22 @@ function App() {
   let [userInstruments, setUserInstruments] = useState([]);
   let [isValid, setIsValid] = useState(false);
   const [booking, setBooking] = useState({});
+  const loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'));
+  // console.log(loggedInUser);
   // let [loginData, setLoginData] = useState(null);
 
-  function retrieveBookingData(key, value) {
-    setBooking((prevData) => {
+  function retrieveBookingData(key, value, kwargs = null) {
+    !kwargs ? setBooking((prevData) => {
+      // if (key === 'city' || key === 'state') {
+      //   const keyId = `${key}_id`;
+      //   const id = JSON.parse(value).id;
+      // }
       return {
         ...prevData,
-        [key]: value
+        [key]: value,
       }
-    })
+    }) :
+      setBooking({ ...kwargs });
   }
 
   // function getLoginData(data) {
@@ -89,15 +96,17 @@ function App() {
             />} />
           <Route path='/user/dashboard'
             element={<Dashboard
-            // userInfo={loginData}
+              userInfo={loggedInUser}
             />} />
           <Route path='/users/musicians'
-            element={<Musicians />} />
+            element={<Musicians
+              sendBookingInitials={retrieveBookingData}
+            />} />
 
           <Route path='/users/musicians/:id'
             element={<User />} />
 
-          <Route path='/users/booking'
+          <Route path='/booking'
             element={<Booking
               bookingData={booking}
               onChange={retrieveBookingData}
