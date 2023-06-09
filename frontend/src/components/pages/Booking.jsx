@@ -14,6 +14,13 @@ function Booking() {
                 // onChange={handleChange}
                 />
                 <Input
+                    type="datetime-local"
+                    name="event_date"
+                    text="Event Date/Time"
+                    // className="form-control"
+                    id="datetime-input"
+                />
+                <Input
                     type="text"
                     text="Event Address"
                     className="form-control"
@@ -21,19 +28,11 @@ function Booking() {
                     mandatory={true}
                 // onChange={handleChange}
                 />
-                <Input
-                    type="text"
-                    text="Event Type"
-                    className="form-control"
-                    name="event_type"
-                    mandatory={true}
-                // onChange={handleChange}
-                />
-                <Select 
+                <Select
                     name="city"
                     text="City"
-                    // items={cities}
-                    // onChange={props.onChange} text="City"
+                // items={cities}
+                // onChange={props.onChange} text="City"
                 />
             </form>
         </div>
