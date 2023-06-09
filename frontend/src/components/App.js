@@ -9,12 +9,14 @@ import Dashboard from "./pages/Dashboard";
 import Footer from "./Footer";
 import Musicians from "./pages/Musicians";
 import User from "./User";
+import Booking from "./pages/Booking";
 
 
 function App() {
   const [userData, setUserData] = useState({});
   let [userInstruments, setUserInstruments] = useState([]);
   let [isValid, setIsValid] = useState(false);
+  // const [booking, setBooking] = useState({});
   // let [loginData, setLoginData] = useState(null);
 
   // function getLoginData(data) {
@@ -85,6 +87,9 @@ function App() {
 
           <Route path='/users/musicians/:id'
             element={<User />} />
+          
+          <Route path='/users/bookings'
+            element={<Booking />} />
         </Routes>
         {/* <div className='nav-container '>
           <Footer />
