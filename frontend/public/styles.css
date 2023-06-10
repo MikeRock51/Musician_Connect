@@ -20,12 +20,13 @@ a.hover:hover {
 }
 
 a {
-    color: #008575 !important;
-  }
+  color: #008575 !important;
+}
 
-nav a, .bright {
-    color: #ECFFB0 !important;
-  }
+nav a,
+.bright {
+  color: #ECFFB0 !important;
+}
 
 .navbar-toggler {
   color: #ECFFB0 !important;
@@ -91,11 +92,15 @@ nav a, .bright {
 
 .lightShadow {
   box-shadow: 0px 2px 5px 0px lightblue;
-  }
+}
 
-  .bright {
-    color: #ECFFB0;
-  }
+.bright {
+  color: #ECFFB0;
+}
+
+.yellish {
+  color: #CCD51A;
+}
 
 .curvy {
   border-radius: 20px !important;
@@ -147,7 +152,7 @@ ul.dropdown-menu {
   -moz-box-shadow: 0px 1px 3px #666666;
   box-shadow: 0px 1px 3px #666666;
   /* color: #ffffff !important; */
-  background-color: #ECFFB0 !important;
+  background-color: #CCD51A !important;
   font-size: 20px;
   padding: 10px 20px 10px 20px;
   text-decoration: none;
@@ -163,16 +168,18 @@ ul.dropdown-menu {
 
 .btn.anime:hover {
   animation: buttonAnimation 0.5s infinite !important;
-  background-color: rgb(197, 229, 240) !important;
+  background-color: #EF7079 !important;
 }
 
 @keyframes buttonAnimation {
   0% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(1.1);
   }
+
   100% {
     transform: scale(1);
   }

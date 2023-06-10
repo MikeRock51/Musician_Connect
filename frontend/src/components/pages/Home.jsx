@@ -17,30 +17,57 @@ function Home(props) {
                 <img src="/images/Outdoor Band.jpg"
                     alt="..." className="img-fluid" />
             </div>
-            <div className="d-flex justify-content-center px-5 py-5">
-                <blockquote
-                    className="col-sm-4 col-lg-3 bg-secondary text-center shadow-text mx-3 display-6 px-3 py-4"
-                    style={{
-                        backgroundColor: "#C88EA7",
-                        color: "#FFDADA"
-                    }}
-                >Surprise your loved ones with live music</blockquote>
-                <blockquote
-                    className="col-sm-4 col-lg-3 bg-dark text-center shadow-text mx-3 display-6 px-3 py-4"
-                    style={{
-                        backgroundColor: "#698269",
-                        color: "#FFBBBB"
-                    }}
-                >Spice up your events with your desired sound</blockquote>
+            <div className="" style={{}}>
+                <div className="d-flex justify-content-center px-5 pt-5">
+                    <blockquote
+                        className="col-sm-4 col-lg-3 bg-secondary text-center shadow-text mx-3 display-6 px-3 py-4"
+                        style={{
+                            backgroundColor: "#C88EA7",
+                            color: "#FFDADA",
+                            // width: "40rem"
+                        }}
+                    >Surprise your loved ones with live music</blockquote>
+                    <blockquote
+                        className="col-sm-4 col-lg-3 bg-dark text-center shadow-text mx-3 display-6 px-3 py-4"
+                        style={{
+                            backgroundColor: "#698269",
+                            color: "#FFBBBB",
+                            // width: "40rem"
+                        }}
+                    >Spice up your events with your desired sound</blockquote>
+                </div>
+                <div className="d-flex justify-content-center px-5">
+                    <blockquote
+                        className="col-sm-4 col-lg-3 bg-dark text-center shadow-text mx-3 display-6 px-3 py-4"
+                        style={{
+                            backgroundColor: "#698269",
+                            color: "#FFBBBB",
+                            // width: "40rem"
+                        }}
+                    >Collaborate with fellow musicians in town</blockquote>
+                    <blockquote
+                        className="col-sm-4 col-lg-3 bg-secondary text-center shadow-text mx-3 display-6 px-3 py-4"
+                        style={{
+                            backgroundColor: "#C88EA7",
+                            color: "#FFDADA",
+                            // maxWidth: "40rem"
+                        }}
+                    >Find a reheasal buddy to keep you motivated</blockquote>
+                </div>
             </div>
-            <div className="carousel-container bg-secondary p-0 col-5 col-lg-4 mt-3">
+            <div className="carousel-container bg-secondary p-0 col-6 col-lg-5 mt-3">
                 {data && <Slideshow data={data} />}
                 {isPending && <h3>Loading...</h3>}
                 {error && <h4>{error}</h4>}
             </div>
-            {props.loggedIn && props.loggedInUser.userType !== 'Musician' && <div className="pt-5 mt-3 col-12 text-center">
+            {/* {props.loggedIn && props.loggedInUser.userType !== 'Musician' && */}
+            <div className="pt-5 mt-3 col-12 text-center">
                 <button type="submit"
-                    className="btn btn-lg anime bg-brownie col-6 mb-5"
+                    // style={{
+                    //     backgroundColor: "#68BDE1",
+                    //     // maxWidth: "40rem"
+                    // }}
+                    className="btn btn-lg anime col-6 mb-5"
                     onClick={() => {
                         props.loggedIn ? navigate('users/musicians') :
                             navigate('/register/user-type');
@@ -48,7 +75,8 @@ function Home(props) {
                 >
                     Get Started
                 </button>
-            </div>}
+            </div>
+            {/* } */}
         </div>
     )
 }
