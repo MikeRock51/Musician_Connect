@@ -14,7 +14,7 @@ function Slideshow(props) {
         return (
           <Carousel.Item key={musician.id}>
             <img
-              className="d-block w-100 rounded-4 py-1"
+              className="d-block w-100 rounded-3"
               src={musician.profilePicture}
               alt={`${musician.firsName} ${musician.lastName}`}
             />

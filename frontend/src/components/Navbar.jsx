@@ -10,8 +10,8 @@ function Navbar(props) {
         <nav className="navbar navbar-expand-lg mb-4">
             <div className="container-fluid">
                 <a className="navbar-brand" href="/">
-                    <h3 className='cinnabar fw-bold'>Musician Connect</h3>
-                </a>
+                    <h3 className='bright fw-bold'>Musician Connect</h3>
+                </a> 
                 <button
                     className="navbar-toggler"
                     type="button"
@@ -27,14 +27,15 @@ function Navbar(props) {
                 <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
                     <ul className="navbar-nav ms-auto me-0 mb-2 mb-lg-0">
                         <li className="nav-item">
-                            {props.loggedIn && <a className="nav-link active hover" aria-current="page"
-                                href="/user/dashboard">
-                                Dashboard
-                            </a>}
+                            {props.loggedIn &&
+                                <a className="nav-link active hover bright" aria-current="page"
+                                    href="/user/dashboard">
+                                    Dashboard
+                                </a>}
                         </li>
                         <li className="nav-item">
                             <a
-                                className="nav-link hover"
+                                className="nav-link hover bright"
                                 onClick={() => {
                                     if (props.loggedIn) {
                                         sessionStorage.clear()

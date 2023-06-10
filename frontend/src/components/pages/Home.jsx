@@ -10,10 +10,10 @@ function Home(props) {
     return (
         <div className="row d-flex justify-content-center align-item-center">
             <div className='my-3 text-center'>
-                <h1 className='display-4 teal'>Welcome to Musician Connect!</h1>
-                <h4 className='cinnabar h5'>The best musicians in Abuja at your fingertips</h4>
+                <h1 className='display-5 fw-semibold bright'>Welcome to Musician Connect!</h1>
+                <h4 className='fs-4 text-light fw-normal h5'>The best musicians in Abuja at your fingertips</h4>
             </div>
-            <div className="carousel-container bg-brownie col-5 col-lg-4 mt-3">
+            <div className="carousel-container bg-secondary p-0 col-5 col-lg-4 mt-3">
                 {data && <Slideshow data={data} />}
                 {isPending && <h3>Loading...</h3>}
                 {error && <h4>{error}</h4>}

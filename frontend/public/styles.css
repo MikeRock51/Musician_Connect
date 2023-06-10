@@ -1,14 +1,14 @@
 html body {
   width: 100vw;
-  background: #010102ef;
-  background-image: radial-gradient(#bfc0c1 7.2%, transparent 0);
+  background: #010102e8;
+  background-image: radial-gradient(#ff5e0ed3 7.2%, transparent 0);
   background-size: 25px 25px;
   /* padding: 1rem; */
   /* box-sizing: border-box; */
 }
 
 .nav-container {
-  background-color: #edffb0f1;
+  background-color: #334105f1;
   margin: 0;
   /* padding: 0; */
 }
@@ -25,12 +25,26 @@ a {
     color: #008575 !important;
   }
 
-.bg-brownie {
-  background-color: #9b4c24d3 !important;
+nav a {
+    color: #ECFFB0 !important;
+  }
+
+.navbar-toggler {
+  color: #ECFFB0 !important;
+}
+
+.navbar-toggler-icon {
+  background-color: #ECFFB0 !important;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 .bg-brownie {
-  background-color: #9b4c24d3 !important;
+  background-color: #9b4c24 !important;
+}
+
+.bg-brownie {
+  background-color: #d36027e3 !important;
 }
 
 .brownie {
@@ -42,7 +56,7 @@ a {
   /* overflow: hidden; */
   text-align: center;
   margin: 0 auto;
-  box-shadow: 4px 3px 7px 2px #9b4c24d3;
+  box-shadow: 4px 3px 7px 2px #acb184e7;
   border-radius: 20px;
 }
 
