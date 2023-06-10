@@ -16,7 +16,7 @@ html body {
 }
 
 a.hover:hover {
-  color: #1ae2b0 !important;
+  color: #bd8569 !important;
 }
 
 a {
@@ -141,7 +141,7 @@ ul.dropdown-menu {
 
 .btn.anime:hover {
   animation: buttonAnimation 0.5s infinite !important;
-  background-color: #b1dfa3 !important;
+  background-color: rgb(197, 229, 240) !important;
 }
 
 @keyframes buttonAnimation {

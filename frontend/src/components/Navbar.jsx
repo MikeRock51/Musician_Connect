@@ -7,11 +7,11 @@ function Navbar(props) {
     const navigate = useNavigate();
 
     return (
-        <nav className="navbar navbar-expand-lg mb-4">
+        <nav className="navbar navbar-expand-lg">
             <div className="container-fluid pe-sm-4 pe-lg-5">
                 <a className="navbar-brand" href="/">
                     <h3 className='bright fw-bold'>Musician Connect</h3>
-                </a> 
+                </a>
                 <button
                     className="navbar-toggler me-0"
                     type="button"
