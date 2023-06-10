@@ -64,17 +64,34 @@ function App() {
     });
   }
 
+  let prevScrollPos = window.pageYOffset;
+
+  window.onscroll = function () {
+    const currentScrollPos = window.pageYOffset;
+
+    if (prevScrollPos > currentScrollPos) {
+      // Scrolling up
+      document.querySelector(".nav-container").classList.remove("navbar-scroll-up");
+      document.querySelector(".nav-container").classList.add("navbar-scroll-down");
+    } else {
+      // Scrolling down
+      document.querySelector(".nav-container").classList.remove("navbar-scroll-down");
+      document.querySelector(".nav-container").classList.add("navbar-scroll-up");
+    }
+
+    prevScrollPos = currentScrollPos;
+  };
+
   return (
     <Router>
-      <div className='position-block '>
-        <div className="mb-5 pb-2">
-          <div className='nav-container container-fluid rounded pe-0 position-fixed top-0 z-1'>
+      <div className='App'>
+        <div className="mb-5 pb-5">
+          <div className='nav-container container-fluid rounded pe-0 fixed-top'>
             <Navbar
               loggedIn={loggedIn}
               setLoggedIn={setLoggedIn}
             />
           </div>
-          <br/>
         </div>
         <Routes>
           <Route path='/' element={<Home

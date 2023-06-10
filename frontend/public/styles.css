@@ -37,6 +37,16 @@ nav a, .bright {
   border-radius: 5px;
 }
 
+.navbar-scroll-up {
+  transform: translateY(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.navbar-scroll-down {
+  transform: translateY(0%);
+  transition: transform 0.3s ease-in-out;
+}
+
 .cinnabar {
   color: #ff5e0ed3 !important;
 }
