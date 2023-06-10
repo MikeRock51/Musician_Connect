@@ -18,7 +18,7 @@ function Home(props) {
                 {isPending && <h3>Loading...</h3>}
                 {error && <h4>{error}</h4>}
             </div>
-            <div className="pt-5 mt-4 col-12 text-center">
+            <div className="pt-5 mt-3 col-12 text-center">
                 <button type="submit"
                     className="btn btn-lg anime col-4"
                     onClick={() => {

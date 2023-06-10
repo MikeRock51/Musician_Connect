@@ -7,46 +7,43 @@ function User(props) {
     const user = props.musician ? props.musician : JSON.parse(sessionStorage.getItem("openUser"));
     const navigate = useNavigate();
 
-    // console.log(user);
+    // console.log(props.loggedInUser.userType);
     return (
         <div className="d-flex justify-content-center align-items-center">
             <div className="card mb-3 text-bg-dark brownShadow userCard" style={{ maxWidth: "55%" }}>
                 <div className="row g-2">
                     <div className="text-center col-md-4 lightShadow">
                         <img src={user.profilePicture} className="img-fluid rounded-start" alt="..." />
-                        <div className="row">
-                            {props.loggedInUser && props.loggedInUser.userType === 'musician' ?
+                        {props.loggedInUser && props.loggedInUser.userType.toLowerCase() === 'client' ?
+                            <button
+                                type="button"
+                                className="w-100 anime btn cinnabar fw-bold"
+                                onClick={() => {
+                                    props.sendBookingInitials(null, null, {
+                                        "musician_id": user.id,
+                                        "client_id": JSON.parse(sessionStorage.getItem('loggedInUser')).id
+                                    });
+                                    navigate('/booking');
+                                }}
+                            >
+                                Book Now
+                            </button> :
+                            <div className="row d-flex justify-content-center">
                                 <button
                                     type="button"
-                                    className="w-100 anime btn cinnabar fw-bold"
+                                    className="col-6 mb-1 anime btn bg-success text-light fw-bold"
                                     onClick={() => {
-                                        // console.log(user);
-                                        props.sendBookingInitials(null, null, {
-                                            "musician_id": user.id,
-                                            "client_id": JSON.parse(sessionStorage.getItem('loggedInUser')).id
-                                        });
-                                        navigate('/booking');
+                                        navigate('/user/dashboard');
                                     }}
-                                >
-                                    Book Now
-                                </button> :
+                                >Accept</button>
                                 <button
                                     type="button"
-                                    className="ms-3 col-4 mb-1 w-50 anime btn bg-success text-light fw-bold"
+                                    className="ms-2 col-4 mb-1 btn bg-danger text-light fw-bold"
                                     onClick={() => {
-                                        navigate('/booking');
-                                    }}
-                                >Accept</button>}
-                            {props.loggedInUser && props.loggedInUser.userType === 'musician' && alert("YES") &&
-                                <button
-                                    type="button"
-                                    className="ms-5 col-3 mb-1 w-50 btn bg-danger text-light fw-bold"
-                                    onClick={() => {
-                                        navigate('/booking');
+                                        navigate('/user/dashboard');
                                     }}
                                 >Reject</button>
-                                }
-                        </div>
+                            </div>}
 
                     </div>
                     <div className="col-md-8 px-2">
