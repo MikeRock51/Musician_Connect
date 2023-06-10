@@ -78,7 +78,7 @@ nav a, .bright {
   /* overflow: hidden; */
   text-align: center;
   margin: 0 auto;
-  box-shadow: 4px 3px 7px 2px #acb184e7;
+  box-shadow: 4px 3px 7px 2px #9b4c24d3;
   border-radius: 20px;
 }
 
@@ -144,7 +144,7 @@ ul.dropdown-menu {
   -webkit-box-shadow: 0px 1px 3px #666666;
   -moz-box-shadow: 0px 1px 3px #666666;
   box-shadow: 0px 1px 3px #666666;
-  /* color: #ffffff; */
+  /* color: #ffffff !important; */
   background-color: #ECFFB0 !important;
   font-size: 20px;
   padding: 10px 20px 10px 20px;
