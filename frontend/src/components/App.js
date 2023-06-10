@@ -73,10 +73,16 @@ function App() {
       // Scrolling up
       document.querySelector(".nav-container").classList.remove("navbar-scroll-up");
       document.querySelector(".nav-container").classList.add("navbar-scroll-down");
+      
+      document.querySelector("div.fixed-bottom").classList.remove("footer-scroll-up");
+      document.querySelector("div.fixed-bottom").classList.add("footer-scroll-down");
     } else {
       // Scrolling down
       document.querySelector(".nav-container").classList.remove("navbar-scroll-down");
       document.querySelector(".nav-container").classList.add("navbar-scroll-up");
+
+      document.querySelector("div.fixed-bottom").classList.add("footer-scroll-up");
+      document.querySelector("div.fixed-bottom").classList.remove("footer-scroll-down");
     }
 
     prevScrollPos = currentScrollPos;
