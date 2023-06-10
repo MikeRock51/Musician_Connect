@@ -9,12 +9,8 @@ html body {
   /* box-sizing: border-box; */
 }
 
-.App {
-  min-height: calc(100% - 100px);
-}
-
 .nav-container {
-  background-color: #334105ce;
+  background-color: #9b4c24;
   margin: 0;
   /* padding: 0; */
 }
@@ -145,7 +141,7 @@ ul.dropdown-menu {
 
 .btn.anime:hover {
   animation: buttonAnimation 0.5s infinite !important;
-  background-color: #9feb88 !important;
+  background-color: #b1dfa3 !important;
 }
 
 @keyframes buttonAnimation {

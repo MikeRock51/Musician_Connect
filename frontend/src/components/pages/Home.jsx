@@ -20,7 +20,7 @@ function Home(props) {
             </div>
             {props.loggedInUser.userType !== 'Musician' && <div className="pt-5 mt-3 col-12 text-center">
                 <button type="submit"
-                    className="btn btn-lg anime col-4"
+                    className="btn btn-lg anime col-4 mb-5"
                     onClick={() => {
                         props.loggedIn ? navigate('users/musicians') :
                             navigate('/register/user-type');

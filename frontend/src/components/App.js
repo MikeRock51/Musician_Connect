@@ -67,7 +67,7 @@ function App() {
   return (
     <Router>
       <div className=''>
-        <div className='nav-container container-fluid rounded pe-0'>
+        <div className='nav-container container-fluid rounded pe-0 '>
           <Navbar
             loggedIn={loggedIn}
             setLoggedIn={setLoggedIn}
@@ -128,7 +128,7 @@ function App() {
               setLoggedIn={setLoggedIn}
             />} />
         </Routes>
-        <div className=''>
+        <div className='mt-5 pt-5'>
           <Footer />
         </div>
       </div>
