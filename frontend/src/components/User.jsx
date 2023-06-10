@@ -14,20 +14,40 @@ function User(props) {
                 <div className="row g-2">
                     <div className="text-center col-md-4 lightShadow">
                         <img src={user.profilePicture} className="img-fluid rounded-start" alt="..." />
-                        <button
-                            type="button"
-                            className="w-100 anime btn cinnabar fw-bold"
-                            onClick={() => {
-                                // console.log(user);
-                                props.sendBookingInitials(null, null, {
-                                    "musician_id": user.id,
-                                    "client_id": JSON.parse(sessionStorage.getItem('loggedInUser')).id
-                                });
-                                navigate('/booking');
-                            }}
-                        >
-                            Book Now
-                        </button>
+                        <div className="row">
+                            {props.loggedInUser && props.loggedInUser.userType === 'musician' ?
+                                <button
+                                    type="button"
+                                    className="w-100 anime btn cinnabar fw-bold"
+                                    onClick={() => {
+                                        // console.log(user);
+                                        props.sendBookingInitials(null, null, {
+                                            "musician_id": user.id,
+                                            "client_id": JSON.parse(sessionStorage.getItem('loggedInUser')).id
+                                        });
+                                        navigate('/booking');
+                                    }}
+                                >
+                                    Book Now
+                                </button> :
+                                <button
+                                    type="button"
+                                    className="ms-3 col-4 mb-1 w-50 anime btn bg-success text-light fw-bold"
+                                    onClick={() => {
+                                        navigate('/booking');
+                                    }}
+                                >Accept</button>}
+                            {props.loggedInUser && props.loggedInUser.userType === 'musician' && alert("YES") &&
+                                <button
+                                    type="button"
+                                    className="ms-5 col-3 mb-1 w-50 btn bg-danger text-light fw-bold"
+                                    onClick={() => {
+                                        navigate('/booking');
+                                    }}
+                                >Reject</button>
+                                }
+                        </div>
+
                     </div>
                     <div className="col-md-8 px-2">
                         <div className="card-body">
