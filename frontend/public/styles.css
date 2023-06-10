@@ -1,15 +1,16 @@
 html body {
-  width: 100%;
-  background: #f1f5f8;
+  width: 100vw;
+  background: #010102ef;
   background-image: radial-gradient(#bfc0c1 7.2%, transparent 0);
   background-size: 25px 25px;
-  padding: 1rem;
-  box-sizing: border-box;
+  /* padding: 1rem; */
+  /* box-sizing: border-box; */
 }
 
 .nav-container {
-  background-color: #edffb0a9;
+  background-color: #edffb0f1;
   margin: 0;
+  /* padding: 0; */
 }
 
 a.hover:hover {
@@ -24,12 +25,24 @@ a {
     color: #008575 !important;
   }
 
+.bg-brownie {
+  background-color: #9b4c24d3 !important;
+}
+
+.bg-brownie {
+  background-color: #9b4c24d3 !important;
+}
+
+.brownie {
+  color: #9b4c24d3 !important;
+}
+
 .carousel-container {
   /* width: 40%; */
   /* overflow: hidden; */
   text-align: center;
   margin: 0 auto;
-  box-shadow: 4px 3px 7px 2px #00000040;
+  box-shadow: 4px 3px 7px 2px #9b4c24d3;
   border-radius: 20px;
 }
 
@@ -112,7 +125,7 @@ ul.dropdown-menu {
 
 .btn.anime:hover {
   animation: buttonAnimation 0.5s infinite !important;
-  background-color: #25cff2 !important;
+  background-color: #9feb88 !important;
 }
 
 @keyframes buttonAnimation {

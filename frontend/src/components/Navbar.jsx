@@ -10,7 +10,7 @@ function Navbar(props) {
         <nav className="navbar navbar-expand-lg mb-4">
             <div className="container-fluid">
                 <a className="navbar-brand" href="/">
-                    <h3 className='cinnabar'>Musician Connect</h3>
+                    <h3 className='cinnabar fw-bold'>Musician Connect</h3>
                 </a>
                 <button
                     className="navbar-toggler"

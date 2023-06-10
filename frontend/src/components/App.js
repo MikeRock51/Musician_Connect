@@ -67,7 +67,7 @@ function App() {
   return (
     <Router>
       <div className=''>
-        <div className='nav-container container-fluid'>
+        <div className='nav-container container-fluid '>
           <Navbar
             loggedIn={loggedIn}
             setLoggedIn={setLoggedIn}
@@ -76,6 +76,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home
             loggedIn={loggedIn}
+            loggedInUser={loggedInUser}
             setLoggedIn={setLoggedIn}
           />} />
           <Route path='/register/user-type'
@@ -127,9 +128,9 @@ function App() {
               setLoggedIn={setLoggedIn}
             />} />
         </Routes>
-        {/* <div className='nav-container '>
+        <div className=''>
           <Footer />
-        </div> */}
+        </div>
       </div>
     </Router>
   );

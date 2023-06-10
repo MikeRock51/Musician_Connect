@@ -13,22 +13,22 @@ function Home(props) {
                 <h1 className='display-4 teal'>Welcome to Musician Connect!</h1>
                 <h4 className='cinnabar h5'>The best musicians in Abuja at your fingertips</h4>
             </div>
-            <div className="carousel-container col-6 col-lg-5 mt-3">
+            <div className="carousel-container bg-brownie col-5 col-lg-4 mt-3">
                 {data && <Slideshow data={data} />}
                 {isPending && <h3>Loading...</h3>}
                 {error && <h4>{error}</h4>}
             </div>
-            <div className="pt-5 mt-3 col-12 text-center">
+            {props.loggedInUser.userType !== 'Musician' && <div className="pt-5 mt-3 col-12 text-center">
                 <button type="submit"
                     className="btn btn-lg anime col-4"
                     onClick={() => {
-                        props.loggedIn ? navigate('/musicians') :
+                        props.loggedIn ? navigate('users/musicians') :
                             navigate('/register/user-type');
                     }}
                 >
                     Get Started
                 </button>
-            </div>
+            </div>}
         </div>
     )
 }

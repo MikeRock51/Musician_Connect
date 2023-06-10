@@ -14,12 +14,12 @@ function Slideshow(props) {
         return (
           <Carousel.Item key={musician.id}>
             <img
-              className="d-block w-100"
+              className="d-block w-100 rounded-4 py-1"
               src={musician.profilePicture}
               alt={`${musician.firsName} ${musician.lastName}`}
             />
             <Carousel.Caption className="carousel-caption">
-              <h6 className='mt-1 pt-3 text-outline'>Meet {musician.firstName} from {musician.city}. Plays {musician.instruments.map((instrument, index) => {
+              <h6 className='mt-1 pt-3 fw-semibold text-outline'>Meet {musician.firstName} from {musician.city}. Plays {musician.instruments.map((instrument, index) => {
                 return index < musician.instruments.length - 1 ? instrument.name + ', ' : 'and ' + instrument.name
               })}</h6>
             </Carousel.Caption>
