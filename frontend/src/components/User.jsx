@@ -13,7 +13,7 @@ function User(props) {
             <div className="card mb-3 text-bg-dark brownShadow userCard" style={{ maxWidth: "55%" }}>
                 <div className="row g-2">
                     <div className="text-center col-md-4 lightShadow">
-                        <img src={user.profilePicture} className="img-fluid rounded-start" alt="..." />
+                        <img src={user.profilePicture} className="img-fluid rounded-start" alt="Musician DP" />
                         {props.loggedInUser && props.loggedInUser.userType.toLowerCase() === "client" ?
                             <button
                                 type="button"

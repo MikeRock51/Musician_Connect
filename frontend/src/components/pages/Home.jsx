@@ -13,12 +13,32 @@ function Home(props) {
                 <h1 className='display-5 fw-semibold bright'>Welcome to Musician Connect!</h1>
                 <h4 className='fs-4 text-light fw-normal h5'>The best musicians in Abuja at your fingertips</h4>
             </div>
+            <div className="col-12 d-flex justify-content-center px-5">
+                <img src="/images/Outdoor Band.jpg"
+                    alt="..." className="img-fluid" />
+            </div>
+            <div className="d-flex justify-content-center px-5 py-5">
+                <blockquote
+                    className="col-sm-4 col-lg-3 bg-secondary text-center shadow-text mx-3 display-6 px-3 py-4"
+                    style={{
+                        backgroundColor: "#C88EA7",
+                        color: "#FFDADA"
+                    }}
+                >Surprise your loved ones with live music</blockquote>
+                <blockquote
+                    className="col-sm-4 col-lg-3 bg-dark text-center shadow-text mx-3 display-6 px-3 py-4"
+                    style={{
+                        backgroundColor: "#698269",
+                        color: "#FFBBBB"
+                    }}
+                >Spice up your events with your desired sound</blockquote>
+            </div>
             <div className="carousel-container bg-secondary p-0 col-5 col-lg-4 mt-3">
                 {data && <Slideshow data={data} />}
                 {isPending && <h3>Loading...</h3>}
                 {error && <h4>{error}</h4>}
             </div>
-            {props.loggedInUser.userType !== 'Musician' && <div className="pt-5 mt-3 col-12 text-center">
+            {props.loggedIn && props.loggedInUser.userType !== 'Musician' && <div className="pt-5 mt-3 col-12 text-center">
                 <button type="submit"
                     className="btn btn-lg anime bg-brownie col-6 mb-5"
                     onClick={() => {

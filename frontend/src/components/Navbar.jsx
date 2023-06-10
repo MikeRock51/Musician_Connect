@@ -7,7 +7,7 @@ function Navbar(props) {
     const navigate = useNavigate();
 
     return (
-        <nav className="navbar navbar-expand-lg">
+        <nav className="navbar navbar-expand-lg navbar-dark">
             <div className="container-fluid pe-sm-4 pe-lg-5">
                 <a className="navbar-brand" href="/">
                     <h3 className='bright fw-bold'>Musician Connect</h3>

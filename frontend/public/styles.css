@@ -10,7 +10,7 @@ html body {
 }
 
 .nav-container {
-  background-color: #9b4c24;
+  background-color: #9b4c24f5;
   margin: 0;
   /* padding: 0; */
 }
@@ -32,7 +32,7 @@ nav a, .bright {
 }
 
 .navbar-toggler-icon {
-  background-color: #ECFFB0 !important;
+  /* background-color: #ECFFB0 !important; */
   padding: 10px;
   border-radius: 5px;
 }
@@ -74,8 +74,6 @@ nav a, .bright {
 }
 
 .carousel-container {
-  /* width: 40%; */
-  /* overflow: hidden; */
   text-align: center;
   margin: 0 auto;
   box-shadow: 4px 3px 7px 2px #9b4c24d3;
@@ -85,6 +83,10 @@ nav a, .bright {
 .brownShadow {
   box-shadow: 4px 3px 7px 2px #9b4c24d3;
   /* background-color:#ECFFB0 !important; */
+}
+
+.shadow-text {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .lightShadow {
