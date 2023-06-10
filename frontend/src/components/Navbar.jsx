@@ -8,12 +8,12 @@ function Navbar(props) {
 
     return (
         <nav className="navbar navbar-expand-lg mb-4">
-            <div className="container-fluid">
+            <div className="container-fluid pe-sm-4 pe-lg-5">
                 <a className="navbar-brand" href="/">
                     <h3 className='bright fw-bold'>Musician Connect</h3>
                 </a> 
                 <button
-                    className="navbar-toggler"
+                    className="navbar-toggler me-0"
                     type="button"
                     data-bs-toggle="collapse"
                     data-bs-target="#navbarTogglerDemo03"

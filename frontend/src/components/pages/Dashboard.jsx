@@ -2,17 +2,16 @@ import { useEffect, useState } from "react";
 import BookingRow from "../BookingRow";
 
 function Dashboard(props) {
-    // const [user, setUser] = useState(JSON.parse(sessionStorage.getItem('loggedInUser')));
     const [user, setUser] = useState(props.userInfo);
     const [bookings, setBookings] = useState(user && user.bookings);
     let [respondentId, setRespondentId] = useState(null);
 
     return (
-        <div className="dashboard">
-            <h3 className="teal pb-3">Welcome {user && user.firstName}</h3>
-            <div className="px-3">
-                <h6 className="bookings cinnabar">Your Bookings</h6>
-                <table className="table table-striped table-bordered table-success">
+        <div className="px-4">
+            <h3 className="pb-2 bright">Welcome {user && user.firstName}</h3>
+            <div className="">
+                <h6 className="bookings bg-brownie w-25 text-center p-1 rounded bright">Your Bookings</h6>
+                <table className="col-6 table table-striped table-bordered table-success">
                     <thead>
                         <tr>
                             <th className="teal" scope="col">#</th>
@@ -26,8 +25,8 @@ function Dashboard(props) {
                         </tr>
                     </thead>
                     {bookings && bookings.map((booking, index) => {
-                        // setRespondentId(user.userType === 'client' ? booking.musician_id : booking.client_id);
-                        respondentId = user.userType.toLowerCase() === 'client' ? booking.musician_id : booking.client_id;
+                        respondentId = user.userType.toLowerCase() === 'client' ?
+                            booking.musician_id : booking.client_id;
                         return <BookingRow
                             key={booking.id}
                             row={index + 1}
@@ -36,7 +35,8 @@ function Dashboard(props) {
                         />
                     })}
                 </table>
-                <a href="/users/musicians" className="link-underline link-underline-opacity-0 hover">
+                <a href="/users/musicians"
+                    className="link-underline link-underline-opacity-0 hover bright">
                     {user && user.userType.toLowerCase() === 'client' && "Create new booking"}
                 </a>
             </div>

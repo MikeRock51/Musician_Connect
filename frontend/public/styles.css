@@ -1,5 +1,7 @@
 html body {
   width: 100vw;
+  height: 100%;
+  overflow-x: hidden;
   background: #010102e8;
   background-image: radial-gradient(#ff5e0ed3 7.2%, transparent 0);
   background-size: 25px 25px;
@@ -7,25 +9,25 @@ html body {
   /* box-sizing: border-box; */
 }
 
+.App {
+  min-height: calc(100% - 100px);
+}
+
 .nav-container {
-  background-color: #334105f1;
+  background-color: #334105ce;
   margin: 0;
   /* padding: 0; */
 }
 
 a.hover:hover {
-  color: #93aac0 !important;
+  color: #1ae2b0 !important;
 }
-
-.cinnabar {
-    color: #ff5e0ed3 !important;
-  }
 
 a {
     color: #008575 !important;
   }
 
-nav a {
+nav a, .bright {
     color: #ECFFB0 !important;
   }
 
@@ -37,6 +39,10 @@ nav a {
   background-color: #ECFFB0 !important;
   padding: 10px;
   border-radius: 5px;
+}
+
+.cinnabar {
+  color: #ff5e0ed3 !important;
 }
 
 .bg-brownie {

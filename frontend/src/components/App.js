@@ -67,7 +67,7 @@ function App() {
   return (
     <Router>
       <div className=''>
-        <div className='nav-container container-fluid rounded'>
+        <div className='nav-container container-fluid rounded pe-0'>
           <Navbar
             loggedIn={loggedIn}
             setLoggedIn={setLoggedIn}
