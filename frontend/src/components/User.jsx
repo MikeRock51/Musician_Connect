@@ -14,7 +14,7 @@ function User(props) {
                 <div className="row g-2">
                     <div className="text-center col-md-4 lightShadow">
                         <img src={user.profilePicture} className="img-fluid rounded-start" alt="..." />
-                        {props.loggedInUser && props.loggedInUser.userType.toLowerCase() === 'client' ?
+                        {props.loggedInUser && props.loggedInUser.userType.toLowerCase() === "client" ?
                             <button
                                 type="button"
                                 className="w-100 anime btn cinnabar fw-bold"

@@ -108,10 +108,14 @@ function App() {
               sendBookingInitials={retrieveBookingData}
               loggedIn={loggedIn}
               setLoggedIn={setLoggedIn}
+              loggedInUser={loggedInUser}
             />} />
 
           <Route path='/users/musicians/:id'
-            element={<User />} />
+            element={<User
+              loggedInUser={loggedInUser}
+              loggedIn={loggedIn}
+            />} />
 
           <Route path='/booking'
             element={<Booking

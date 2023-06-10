@@ -14,6 +14,8 @@ function Musicians(props) {
                 // console.log(musician);
                 return (
                     <User
+                        loggedIn={props.loggedIn}
+                        loggedInUser={props.loggedInUser}
                         musician={musician}
                         key={musician.id}
                         sendBookingInitials={props.sendBookingInitials}
