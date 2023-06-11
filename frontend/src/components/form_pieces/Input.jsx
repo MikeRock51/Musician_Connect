@@ -22,7 +22,13 @@ function Input(props) {
     return (
         props.type ?
             <div className="">
-                <label className="form-label text-light">{props.text}</label>
+                <label className="form-label text-light">
+                    {props.text}
+                    {inputElement && !validInput && <span className="pt-2 mb-0 bright"> [ {inputElement.validationMessage} ]</span>}
+                    {props.name === 'confirmPassword' &&
+                        userInput !== props.pwd && userInput.length > 0 &&
+                        <span className="pt-2 mb-0 bright"> [ Password Mismatch ]</span>}
+                </label>
                 <input
                     type={props.type}
                     name={props.name}
@@ -35,10 +41,6 @@ function Input(props) {
                     onChange={handleChange}
                     minLength={props.name === 'password' ? "8" : ""}
                 />
-                {inputElement && !validInput && <p className="pt-2 mb-0 bright">{inputElement.validationMessage}</p>}
-                {props.name === 'confirmPassword' &&
-                    userInput !== props.pwd && userInput.length > 0 &&
-                    <p className="pt-2 mb-0 bright">Password Mismatch</p>}
             </div> :
             <div className="form-floating">
                 <textarea name="description" id={props.id && props.id}
