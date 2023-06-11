@@ -17,7 +17,7 @@ function User(props) {
                         {props.loggedInUser && props.loggedInUser.userType.toLowerCase() === "client" ?
                             <button
                                 type="button"
-                                className="w-100 anime btn cinnabar fw-bold"
+                                className="w-100 anime btn bg-bright cinnabar fw-bold"
                                 onClick={() => {
                                     props.sendBookingInitials(null, null, {
                                         "musician_id": user.id,

@@ -122,9 +122,7 @@ function Register(props) {
 
     if (verified) {
         console.log("Success");
-    //   console.log(user);
       postIt(userPostUrl, userData);
-    //   console.log(data);
       !isPending && !error && navigate("/sign-in");
       error && console.log(error);
     } else {

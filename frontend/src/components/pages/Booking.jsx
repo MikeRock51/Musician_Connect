@@ -16,9 +16,7 @@ function Booking(props) {
 
     function handleClicked(event) {
         event.preventDefault();
-        props.isValid && handleSubmit();
-        !props.isValid && alert(
-            'One or more invalid responses, please check and try again...')
+        handleSubmit();
     }
 
     function handleSubmit(event) {
@@ -98,8 +96,8 @@ function Booking(props) {
                     onChange={props.onChange}
                     mandatory={true}
                 />
-                {error && !isPending && <p className="pt-2 mb-0 teal">{error}</p>}
-                {isPending && <p className="pt-2 mb-0 teal">Creating your booking...</p>}
+                {error && !isPending && <p className="pt-2 mb-0 bright">{error}</p>}
+                {isPending && <p className="pt-2 mb-0 bright">Creating your booking...</p>}
                 <div className="col-lg-6 ms-1 pt-3">
                     <button type="submit"
                         className="btn col-12 anime"

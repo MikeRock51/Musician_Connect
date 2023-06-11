@@ -27,16 +27,19 @@ function Navbar(props) {
                 <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
                     <ul className="navbar-nav ms-auto me-0 mb-2 mb-lg-0">
                         <li className="nav-item">
-                            {props.loggedIn &&
+                            {props.loggedIn ?
                                 <a className="nav-link active hover bright" aria-current="page"
                                     href="/user/dashboard">
                                     Dashboard
+                                </a> : <a className="nav-link active hover bright" aria-current="page"
+                                    href="/register">
+                                    Register
                                 </a>}
-                            {!props.loggedIn && window.location.pathname === '/sign-in' &&
+                            {/* {!props.loggedIn && window.location.pathname === '/sign-in' &&
                                 <a className="nav-link active hover bright" aria-current="page"
                                     href="/register/user-type">
                                     Register
-                                </a>}
+                                </a>} */}
                         </li>
                         <li className="nav-item">
                             <a
