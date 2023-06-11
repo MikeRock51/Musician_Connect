@@ -65,26 +65,28 @@ function Signin(props) {
     }
 
     return (
-        <form className="row g-3 p-5 mx-5">
-            <div className="col-12">
-                <Input className="" type="email" name="email" text="Email"
-                    mandatory={true}
-                    onChange={props.onChange}
-                />
-                <Input type="password" name="password" text="Password"
-                    mandatory={true}
-                    onChange={props.onChange}
-                />
-                {userInfo.error && !isPending && <p className="pt-2 mb-0 teal">{userInfo.error}</p>}
-                {isPending && <p className="pt-2 mb-0 teal">Loading your account...</p>}
-            </div>
-            <div className="col-md-6 ms-1">
-                <button type="submit" className="btn col-12 anime"
-                    onClick={handleClicked}>
-                    Sign in
-                </button>
-            </div>
-        </form>
+        // <div className="d-flex justify-content-center">
+            <form className="row g-3 mx-5">
+                <div className="">
+                    <Input className="" type="email" name="email" text="Email"
+                        mandatory={true}
+                        onChange={props.onChange}
+                    />
+                    <Input type="password" name="password" text="Password"
+                        mandatory={true}
+                        onChange={props.onChange}
+                    />
+                    {userInfo.error && !isPending && <p className="pt-2 mb-0 teal">{userInfo.error}</p>}
+                    {isPending && <p className="pt-2 mb-0 teal">Loading your account...</p>}
+                </div>
+                <div className="col-md-6 ms-1">
+                    <button type="submit" className="btn col-12 anime"
+                        onClick={handleClicked}>
+                        Sign in
+                    </button>
+                </div>
+            </form>
+        // </div>
     )
 }
 

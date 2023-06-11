@@ -20,7 +20,7 @@ function Home(props) {
             <div className="" style={{}}>
                 <div className="d-flex justify-content-center px-5 pt-5">
                     <blockquote
-                        className="col-sm-4 col-lg-3 bg-secondary text-center shadow-text mx-3 display-6 px-3 py-4"
+                        className="col-sm-4 col-lg-3 bg-secondary text-center shadow-text mx-3 display-6 px-3 py-5  "
                         style={{
                             backgroundColor: "#C88EA7",
                             color: "#FFDADA",
