@@ -11,9 +11,10 @@ function Signin(props) {
 
     function handleClicked(event) {
         event.preventDefault();
-        props.isValid && handleSubmit();
-        !props.isValid && alert(
-            'One or more invalid responses, please check and try again...')
+        handleSubmit()
+        // props.isValid && handleSubmit();
+        // !props.isValid && alert(
+        //     'One or more invalid responses, please check and try again...')
     }
 
     function handleSubmit() {

@@ -123,10 +123,10 @@ function Register(props) {
     if (verified) {
         console.log("Success");
     //   console.log(user);
-    //   postIt(userPostUrl, userData);
+      postIt(userPostUrl, userData);
     //   console.log(data);
-    //   !isPending && !error && navigate("/sign-in");
-    //   error && console.log(error);
+      !isPending && !error && navigate("/sign-in");
+      error && console.log(error);
     } else {
       alert("Please fill all required fields");
     }
