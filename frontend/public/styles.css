@@ -128,7 +128,7 @@ nav a,
 }
 
 .dropdown-menu::-webkit-scrollbar {
-  width: 0px;
+  width: 10px;
 }
 
 ul.dropdown-menu {
@@ -168,7 +168,7 @@ ul.dropdown-menu {
 
 .btn.anime:hover {
   animation: buttonAnimation 0.5s infinite !important;
-  background-color: #EF7079 !important;
+  background-color: #C8B273 !important;
 }
 
 @keyframes buttonAnimation {

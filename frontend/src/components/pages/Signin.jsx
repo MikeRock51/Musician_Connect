@@ -65,28 +65,31 @@ function Signin(props) {
     }
 
     return (
-        // <div className="d-flex justify-content-center">
-            <form className="row g-3 mx-5">
-                <div className="">
-                    <Input className="" type="email" name="email" text="Email"
-                        mandatory={true}
-                        onChange={props.onChange}
-                    />
-                    <Input type="password" name="password" text="Password"
-                        mandatory={true}
-                        onChange={props.onChange}
-                    />
-                    {userInfo.error && !isPending && <p className="pt-2 mb-0 teal">{userInfo.error}</p>}
-                    {isPending && <p className="pt-2 mb-0 teal">Loading your account...</p>}
-                </div>
-                <div className="col-md-6 ms-1">
-                    <button type="submit" className="btn col-12 anime"
-                        onClick={handleClicked}>
-                        Sign in
-                    </button>
-                </div>
-            </form>
-        // </div>
+        <form className="row g-3 mx-5">
+            <div className="">
+                <Input className="" type="email" name="email" text="Email"
+                    mandatory={true}
+                    onChange={props.onChange}
+                />
+                <Input type="password" name="password" text="Password"
+                    mandatory={true}
+                    onChange={props.onChange}
+                />
+                {userInfo.error && !isPending && <p className="pt-2 mb-0 teal">{userInfo.error}</p>}
+                {isPending && <p className="pt-2 mb-0 teal">Loading your account...</p>}
+            </div>
+            <div className="col-md-6 ms-1">
+                <button type="submit" className="btn col-12 anime mb-3"
+                    onClick={handleClicked}>
+                    Sign in
+                </button>
+                <span className="text-light">
+                    Don't have an account?
+                    <a href="/register/user-type"
+                        className="link-underline link-underline-opacity-0 hover bright"> Sign Up here</a>
+                </span>
+            </div>
+        </form>
     )
 }
 

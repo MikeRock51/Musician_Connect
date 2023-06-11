@@ -104,6 +104,17 @@ function Register(props) {
 
     return (
         <form className="row g-3 mx-5">
+            <div className="d-flex justify-content-center mb-1">
+                <Select name="userType"
+                    items={[
+                        { 'name': 'Client', 'id': 1 },
+                        { 'name': 'Musician', 'id': 2 }
+                    ]}
+                    text="Account Type"
+                    onChange={props.onChange}
+                    value={props.userData.userType}
+                />
+            </div>
             <Input type="text" name="firstName" text="First Name"
                 mandatory={true} onChange={props.onChange} />
             <Input type="text" name="lastName" text="Last Name"
@@ -151,13 +162,18 @@ function Register(props) {
                 />
             </div> */}
             <div className="col-12">
-                <button type="submit" className="btn anime"
+                <button type="submit" className="btn anime w-100 mb-3"
                     onClick={handleClicked}
                 >
                     {!isPending && !error && "Create my account"}
                     {isPending && "Creating your account..."}
                     {error && error}
                 </button>
+                <span className="text-light">
+                    Already have an account?
+                    <a href="/sign-in"
+                        className="link-underline link-underline-opacity-0 hover bright"> Sign In here</a>
+                </span>
             </div>
         </form>
     )

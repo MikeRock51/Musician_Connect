@@ -18,12 +18,12 @@ function Select(props) {
     }
 
     return (
-        <div className="col-md-6">
+        <div className="col-md-6 mt-0">
             <label className="form-label text-light">{props.text}</label>
             <select
                 className="form-select"
                 name={props.name}
-                value={choice}
+                value={props.value ? props.value : choice}
                 ref={inputRef}
                 onChange={handleChange}
                 required>
