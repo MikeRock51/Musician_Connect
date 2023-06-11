@@ -50,9 +50,19 @@ function Register(props) {
 
     function handleClicked(event) {
         event.preventDefault();
-        props.isValid && handleSubmit();
-        !props.isValid && alert(
-            'One or more invalid responses, please check and try again...')
+        const requiredFields = ['firstName', 'lastName', 'email',
+            'city_id', 'userType', 'phone', 'password'];
+
+        requiredFields.map((field) => {
+            // console.log(props.userData[field]);
+            if (!props.userData[field] || props.userData[field].length < 2) {
+                setVerified(false);
+            }
+        });
+
+        // props.isValid && handleSubmit();
+        // !props.isValid && alert(
+        //     'One or more invalid responses, please check and try again...')
     }
 
     function handleSubmit() {
@@ -103,55 +113,77 @@ function Register(props) {
     }
 
     return (
-        <form className="row g-3 mx-5">
-            <div className="d-flex justify-content-center mb-1">
-                <Select name="userType"
-                    items={[
-                        { 'name': 'Client', 'id': 1 },
-                        { 'name': 'Musician', 'id': 2 }
-                    ]}
-                    text="Account Type"
-                    onChange={props.onChange}
-                    value={props.userData.userType}
-                />
+        <div className="container-md">
+            <div className="alert alert-danger alert-dismissible fade show text-center" role="alert">
+                <strong className="">Input error! Please check the form and try again.</strong>
+                <button type="button" className="btn-close pe-3" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
-            <Input type="text" name="firstName" text="First Name"
-                mandatory={true} onChange={props.onChange} />
-            <Input type="text" name="lastName" text="Last Name"
-                mandatory={true} onChange={props.onChange} />
-            <Input type="email" name="email" text="Email"
-                mandatory={true} onChange={props.onChange} />
-            <Input type="tel" name="phone" text="Phone Number"
-                mandatory={true} onChange={props.onChange}
-                pattern="^\+?[0-9\s-]+$" />
-            <Input type="password" name="password" text="Password"
-                mandatory={true} onChange={props.onChange} />
-            <Input type="password" name="confirmPassword"
-                text="Confirm Password" pwd={props.userData.password}
-                mandatory={true} onChange={props.onChange} />
-            <Select name="state" items={states} text="State"
-                onChange={props.onChange} />
-            <Select name="city"
-                items={cities}
-                onChange={props.onChange} text="City" />
-            {props.userData.userType === 'Musician' && <Input
-                type="text" name="alias" text="Alias"
-                mandatory={false} onChange={props.onChange} />}
-            {props.userData.userType === 'Musician' && <Checklist
-                onChange={props.onChange}
-                name='instruments'
-                checkedItems={props.userData.instruments}
-            />}
-            {props.userData.userType === 'Musician' && <Input type="text" name="price_by_hour" text="Price Per Hour"
-                mandatory={true} onChange={props.onChange} />}
+            <form className="row g-3 mx-5">
+                <div className={props.userData.userType === 'Client' ? 'col-md-12' : "col-md-6"}>
+                    <Select name="userType"
+                        items={[
+                            { 'name': 'Client', 'id': 1 },
+                            { 'name': 'Musician', 'id': 2 }
+                        ]}
+                        text="Account Type"
+                        onChange={props.onChange}
+                        value={props.userData.userType}
+                    />
+                </div>
+                {props.userData.userType === 'Musician' && <Checklist
+                    onChange={props.onChange}
+                    name='instruments'
+                    checkedItems={props.userData.instruments}
+                    lenCheckedItems={props.userData.instruments && props.userData.instruments.length}
+                />}
+                <div className="col-md-6">
+                    <Input type="text" name="firstName" text="First Name"
+                        mandatory={true} onChange={props.onChange} />
+                </div>
+                <div className="col-md-6">
+                    <Input type="text" name="lastName" text="Last Name"
+                        mandatory={true} onChange={props.onChange} />
+                </div>
+                <div className="col-md-6">
+                    <Input type="email" name="email" text="Email"
+                        mandatory={true} onChange={props.onChange} />
+                </div>
+                <div className="col-md-6">
+                    <Input type="tel" name="phone" text="Phone Number"
+                        mandatory={true} onChange={props.onChange}
+                        pattern="^\+?[0-9\s-]+$" />
+                </div>
+                <div className="col-md-6">
+                    <Input type="password" name="password" text="Password"
+                        mandatory={true} onChange={props.onChange} />
+                </div>
+                <div className="col-md-6">
+                    <Input type="password" name="confirmPassword"
+                        text="Confirm Password" pwd={props.userData.password}
+                        mandatory={true} onChange={props.onChange} />
+                </div>
+                <div className="col-md-6">
+                    <Select name="state" items={states} text="State"
+                        onChange={props.onChange} />
+                </div>
+                <div className="col-md-6">
+                    <Select name="city"
+                        items={cities}
+                        onChange={props.onChange} text="City" />
+                </div>
+                {props.userData.userType === 'Musician' && <Input
+                    type="text" name="alias" text="Alias"
+                    mandatory={false} onChange={props.onChange} />}
+                {props.userData.userType === 'Musician' && <Input type="text" name="price_by_hour" text="Price Per Hour"
+                    mandatory={true} onChange={props.onChange} />}
 
-            <Input name="description"
-                id={props.userData.id && props.userData.id}
-                text="Write a brief description about yourself:"
-                onChange={props.onChange}
-            />
+                <Input name="description"
+                    id={props.userData.id && props.userData.id}
+                    text="Write a brief description about yourself:"
+                    onChange={props.onChange}
+                />
 
-            {/* <div className="mb-3 col-lg-6">
+                {/* <div className="mb-3 col-lg-6">
                 <label className="form-label">Upload profile picture:</label>
                 <input type="file" className="form-control form-control"
                     id="formFileSm" name="profilePicture" accept="image/*"
@@ -161,21 +193,22 @@ function Register(props) {
                     enctype="multipart/form-data"
                 />
             </div> */}
-            <div className="col-12">
-                <button type="submit" className="btn anime w-100 mb-3"
-                    onClick={handleClicked}
-                >
-                    {!isPending && !error && "Create my account"}
-                    {isPending && "Creating your account..."}
-                    {error && error}
-                </button>
-                <span className="text-light">
-                    Already have an account?
-                    <a href="/sign-in"
-                        className="link-underline link-underline-opacity-0 hover bright"> Sign In here</a>
-                </span>
-            </div>
-        </form>
+                <div className="col-12">
+                    <button type="submit" className="btn anime w-100 mb-3"
+                        onClick={handleClicked}
+                    >
+                        {!isPending && !error && "Create my account"}
+                        {isPending && "Creating your account..."}
+                        {error && error}
+                    </button>
+                    <span className="text-light">
+                        Already have an account?
+                        <a href="/sign-in"
+                            className="link-underline link-underline-opacity-0 hover bright"> Sign In here</a>
+                    </span>
+                </div>
+            </form>
+        </div>
     )
 }
 

@@ -5,7 +5,6 @@ import useFetch from "../utilities/useFetch";
 function Checklist(props) {
     const url = 'http://127.0.0.1:7000/api/v1/instruments';
     const { data: instruments, isPending, error: fetchError } = useFetch(url);
-    const [error, setError] = useState(true);
 
     function handleCheck(event) {
         // const instrument = JSON.parse(event.target.value);
@@ -14,7 +13,6 @@ function Checklist(props) {
         const isChecked = event.target.checked;
 
         props.onChange(props.name, instrument, isChecked, undefined);
-        setError(props.checkedItems && props.checkedItems.length < 2 ? true : false);
     }
 
     return (
@@ -29,6 +27,7 @@ function Checklist(props) {
                         </React.Fragment>
                     );
                 })}
+                {props.lenCheckedItems === 0 && <span className="pt-2 mb-0 bright"> Please select at least one instrument </span>}
                 ]</label>
             <button className="btn dropdown-toggle btn-info col-12" type="button"
                 id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
@@ -54,7 +53,6 @@ function Checklist(props) {
                 })
                 }
             </ul>
-            {error && <p className="pt-2 mb-0 bright">Please select at least one instrument</p>}
         </div>
 
     )

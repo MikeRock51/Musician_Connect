@@ -18,7 +18,7 @@ function Select(props) {
     }
 
     return (
-        <div className="col-md-6 mt-0">
+        <div className="">
             <label className="form-label text-light">{props.text}</label>
             <select
                 className="form-select"

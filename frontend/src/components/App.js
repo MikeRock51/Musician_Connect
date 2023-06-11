@@ -23,13 +23,13 @@ function App() {
   // let [loginData, setLoginData] = useState(null);
 
   function retrieveBookingData(key, value, kwargs = null, validData = false) {
-    if (validData === undefined && value.length > 1) {
-      setIsValid(true);
-      isValid = true;
-    } else {
-      setIsValid(validData)
-      isValid = validData;
-    }
+    // if (validData === undefined && value.length > 1) {
+    //   setIsValid(true);
+    //   isValid = true;
+    // } else {
+    //   setIsValid(validData)
+    //   isValid = validData;
+    // }
     !kwargs ? setBooking((prevData) => {
       return {
         ...prevData,
@@ -40,14 +40,16 @@ function App() {
   }
 
   function retrieveInput(key, value, isChecked = false, validData = undefined) {
-    if (validData === undefined && value.length > 1 ||
-      key === 'instruments') {
-      setIsValid(true);
-      isValid = true;
-    } else {
-      setIsValid(validData)
-      isValid = validData;
-    }
+    // if (validData === undefined && value.length > 4 ||
+    //   key === 'instruments') {
+    //   setIsValid(true);
+    //   isValid = true;
+    // } else {
+    //   setIsValid(validData)
+    //   isValid = validData;
+    // }
+    // console.log(isValid);
+    // console.log(key + ': ' + value);
     key === 'instruments' && isChecked && userInstruments.push(value);
     if (key === 'instruments' && !isChecked) {
       userInstruments = userInstruments.filter((val) => {
