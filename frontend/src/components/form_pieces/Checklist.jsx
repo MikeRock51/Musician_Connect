@@ -19,7 +19,7 @@ function Checklist(props) {
 
     return (
         <div className="dropdown col-md-6">
-            <label className="pb-2">Instruments Played: [
+            <label className="pb-2 text-light">Instruments Played: [
                 {props.checkedItems && props.checkedItems.map((instrument, index) => {
                     instrument = instrument;
                     return (
@@ -54,7 +54,7 @@ function Checklist(props) {
                 })
                 }
             </ul>
-            {error && <p className="pt-2 mb-0 teal">Please select at least one instrument</p>}
+            {error && <p className="pt-2 mb-0 bright">Please select at least one instrument</p>}
         </div>
 
     )

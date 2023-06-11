@@ -16,15 +16,13 @@ function Input(props) {
             setValidInput(inputElement.validity.valid);
             validInput = inputElement.validity.valid;
         }
-        console.log(value);
-        console.log(validInput);
         props.onChange(props.name, value, undefined, validInput);
     }
 
     return (
         props.type ?
-            <div className="col-md-6">
-                <label className="form-label">{props.text}</label>
+            <div className="col-md-6 mt-2">
+                <label className="form-label text-light">{props.text}</label>
                 <input
                     type={props.type}
                     name={props.name}
@@ -37,10 +35,10 @@ function Input(props) {
                     onChange={handleChange}
                     minLength={props.name === 'password' ? "8" : ""}
                 />
-                {inputElement && !validInput && <p className="pt-2 mb-0 teal">{inputElement.validationMessage}</p>}
+                {inputElement && !validInput && <p className="pt-2 mb-0 bright">{inputElement.validationMessage}</p>}
                 {props.name === 'confirmPassword' &&
                     input !== props.pwd && input.length > 0 &&
-                    <p className="pt-2 teal">Password Mismatch</p>}
+                    <p className="pt-2 bright">Password Mismatch</p>}
             </div> :
             <div className="form-floating">
                 <textarea name="description" id={props.id && props.id}

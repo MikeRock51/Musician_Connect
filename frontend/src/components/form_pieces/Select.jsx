@@ -19,7 +19,7 @@ function Select(props) {
 
     return (
         <div className="col-md-6">
-            <label className="form-label">{props.text}</label>
+            <label className="form-label text-light">{props.text}</label>
             <select
                 className="form-select"
                 name={props.name}
@@ -33,7 +33,7 @@ function Select(props) {
                         JSON.stringify(item)} key={item.id}>{item.name}</option>
                 })}
             </select>
-            {inputElement && !validInput && <p className="pt-2 mb-0 teal">{inputElement.validationMessage}</p>}
+            {inputElement && !validInput && <p className="pt-2 mb-0 bright">{inputElement.validationMessage}</p>}
             {props.addButton && <div className="col-sm-12 pt-3">
                 <button
                     type="submit"

@@ -34,7 +34,7 @@ function Navbar(props) {
                                 </a>}
                             {!props.loggedIn && window.location.pathname === '/sign-in' &&
                                 <a className="nav-link active hover bright" aria-current="page"
-                                    href="/register">
+                                    href="/register/user-type">
                                     Register
                                 </a>}
                         </li>
