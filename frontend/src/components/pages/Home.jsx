@@ -4,7 +4,7 @@ import Slideshow from "../Slideshow";
 import useFetch from "../utilities/useFetch";
 
 function Home(props) {
-    const { data, isPending, error } = useFetch('http://127.0.0.1:7000/api/v1/users/type/musician');
+    const { data, isPending, error } = useFetch('http://192.168.0.133:7000/api/v1/users/type/musician');
     const navigate = useNavigate();
 
     return (
