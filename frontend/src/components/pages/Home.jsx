@@ -16,7 +16,7 @@ function Home(props) {
         <h1 className="display-5 fw-semibold bright">
           Welcome to Musician Connect!
         </h1>
-        <h4 className="fs-4 lead light-blue fw-normal h5">
+        <h4 className="fs-5 px-4 fw-semibold display-6 text-info h5">
           The best musicians in Abuja at your fingertips
         </h4>
       </div>
@@ -31,8 +31,8 @@ function Home(props) {
             text="Surprise your loved ones with live music"
           />
           <Quote
-            bg="bg-primary"
-            textColor="#B0DAFF"
+            bg="bg-info"
+            textColor="#B70404"
             text="Spice up your events with your desired sound"
           />
           <Quote
@@ -47,28 +47,32 @@ function Home(props) {
           />
         </div>
       </div>
-      <div className="carousel-container bg-secondary p-0 col-6 col-lg-5 mt-3 w-75">
-        {data && <Slideshow data={data} />}
-        {isPending && <h3>Loading...</h3>}
-        {error && <h4>{error}</h4>}
-      </div>
-      {/* {props.loggedIn && props.loggedInUser.userType !== 'Musician' && */}
-      <div className="pt-5 mt-3 col-12 text-center">
-        <button
-          type="submit"
-          // style={{
-          //     backgroundColor: "#68BDE1",
-          //     // maxWidth: "40rem"
-          // }}
-          className="btn btn-lg anime col-6 mb-5"
-          onClick={() => {
-            props.loggedIn
-              ? navigate("users/musicians")
-              : navigate("/register/user-type");
-          }}
-        >
-          Get Started
-        </button>
+
+      <div className="col-md-6 col-sm-9">
+        <h4 className="text-info text-center display-5 fw-semibold mt-5 mb-3">Featured Users</h4>
+        <div className="carousel-container bg-secondary p-0 mt-3 w-75">
+          {data && <Slideshow data={data} />}
+          {isPending && <h3>Loading...</h3>}
+          {error && <h4>{error}</h4>}
+        </div>
+        {/* {props.loggedIn && props.loggedInUser.userType !== 'Musician' && */}
+        <div className="pt-5 mt-3 col-12 text-center">
+          <button
+            type="submit"
+            // style={{
+            //     backgroundColor: "#68BDE1",
+            //     // maxWidth: "40rem"
+            // }}
+            className="btn btn-lg anime col-6 mb-3"
+            onClick={() => {
+              props.loggedIn
+                ? navigate("users/musicians")
+                : navigate("/register/user-type");
+            }}
+          >
+            Get Started
+          </button>
+        </div>
       </div>
       {/* } */}
     </div>
