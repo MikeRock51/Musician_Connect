@@ -70,6 +70,10 @@ nav a,
   color: #9b4c24d3 !important;
 }
 
+.pinky {
+  color: #F4D3D3;
+}
+
 .carousel-container {
   text-align: center;
   margin: 0 auto;
@@ -84,6 +88,10 @@ nav a,
 
 .shadow-text {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.shadow-text-light {
+  text-shadow: 1px 1px 1px #6f787a;
 }
 
 .lightShadow {

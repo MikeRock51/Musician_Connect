@@ -8,9 +8,12 @@ function Dashboard(props) {
 
   return (
     <div className="container-sm">
-      <div className="row">
-        <h3 className="ps-0 bright">Welcome {user && user.firstName}</h3>
-        <h6 className="bg-brownie w-25 text-center p-1 my-2 rounded bright">
+      <div className="row px-2">
+        <h3 className="ps-0 pinky shadow-text-light">Welcome {user && user.firstName}</h3>
+        <h6
+          className="col-sm-3 col-3 bg-brownie text-center p-1 my-2 rounded bright"
+          style={{ fontSize: "2.2vw" }}
+        >
           Your Bookings
         </h6>
         <div className="">

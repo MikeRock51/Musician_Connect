@@ -5,7 +5,7 @@ import useFetch from "../utilities/useFetch";
 import { useNavigate } from "react-router-dom";
 
 function Booking(props) {
-    const statesUrl = 'http://127.0.0.1:7000/api/v1/states';
+    const statesUrl = 'http://192.168.43.248:7000/api/v1/states';
     const states = useFetch(statesUrl).data;
     const cities = props.bookingData.state && JSON.parse(props.bookingData.state).cities;
     const [isPending, setIsPending] = useState(false);
@@ -20,7 +20,7 @@ function Booking(props) {
     }
 
     function handleSubmit(event) {
-        const bookingUrl = "http://127.0.0.1:7000/api/v1/bookings";
+        const bookingUrl = "http://192.168.43.248:7000/api/v1/bookings";
         const postData = {
             "city_id": JSON.parse(props.bookingData.city).id,
             ...props.bookingData

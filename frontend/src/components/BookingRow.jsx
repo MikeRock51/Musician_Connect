@@ -3,7 +3,7 @@ import useFetch from "./utilities/useFetch";
 
 function BookingRow(props) {
     const booking = props.bookingInfo;
-    const url = 'http://127.0.0.1:7000/api/v1';
+    const url = 'http://192.168.43.248:7000/api/v1';
     const respondentUrl = props.respondentId && `${url}/users/${props.respondentId}`;
     const { data: respondent } = useFetch(respondentUrl);
     const { data: city } = useFetch(`${url}/cities/${booking.city_id}`);
@@ -12,7 +12,7 @@ function BookingRow(props) {
 
     return (
         <tbody>
-            <tr style={{fontSize: "1.5vw"}}>
+            <tr style={{fontSize: "1.6vw"}} className="">
                 <th className="grey" scope="row">{props.row}</th>
                 <td className="grey">
                     <a href={`/users/musicians/${respondent && respondent.id}`}
