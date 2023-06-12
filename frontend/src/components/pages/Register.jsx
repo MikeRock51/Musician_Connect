@@ -148,7 +148,7 @@ function Register(props) {
           ></button>
         </div>
       )}
-      <form className="row g-3 mx-5">
+      <form className="row g-3 mx-2">
         <div
           className={
             props.userData.userType === "Client" ? "col-md-12" : "col-md-6"
@@ -283,7 +283,7 @@ function Register(props) {
                     enctype="multipart/form-data"
                 />
             </div> */}
-        <div className="col-12">
+        <div className="col text-center mx-auto">
           <button
             type="submit"
             className="btn anime w-100 mb-3"
@@ -292,7 +292,7 @@ function Register(props) {
             {!isPending && "Create my account"}
             {isPending && "Creating your account..."}
           </button>
-          <span className="text-light">
+          <p className="text-light">
             Already have an account?
             <a
               href="/sign-in"
@@ -301,7 +301,7 @@ function Register(props) {
               {" "}
               Sign In here
             </a>
-          </span>
+          </p>
         </div>
       </form>
     </div>

@@ -68,8 +68,8 @@ function Signin(props) {
 
   return (
     <div className="container-md">
-      <form className="row g-3 mx-5 d-flex justify-content-center align-items-center">
-        <div className="col-md-6">
+      <form className="row g-3 mx-auto px-2 d-flex justify-content-center align-items-center">
+        <div className="col">
           <Input
             className=""
             type="email"
@@ -91,15 +91,15 @@ function Signin(props) {
         {userInfo.error && !isPending && (
           <p className="pt-2 text-center mb-0 bright">{userInfo.error}</p>
         )}
-        <div className="col-md-6 ms-1 text-center">
+        <div className="col-md-6 col-sm-12 ms-1 text-center">
           <button
             type="submit"
-            className="btn col-12 anime mb-3"
+            className="btn col-12 col-sm-9 anime mb-3"
             onClick={handleClicked}
           >
             Sign in
           </button>
-          <span className="text-light">
+          <p className="text-light">
             Don't have an account?
             <a
               href="/register/user-type"
@@ -108,7 +108,7 @@ function Signin(props) {
               {" "}
               Sign Up here
             </a>
-          </span>
+          </p>
           {isPending && (
             <p className="pt-2 text-center mb-0 bright">
               Loading your account...

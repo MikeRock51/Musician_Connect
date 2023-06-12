@@ -12,7 +12,7 @@ function Dashboard(props) {
         <h3 className="ps-0 pinky shadow-text-light">Welcome {user && user.firstName}</h3>
         <h6
           className="col-sm-3 col-3 bg-brownie text-center p-1 my-2 rounded bright"
-          style={{ fontSize: "2.2vw" }}
+          style={{ fontSize: "2.0vw" }}
         >
           Your Bookings
         </h6>
