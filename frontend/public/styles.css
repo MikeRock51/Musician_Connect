@@ -71,7 +71,7 @@ nav a,
 }
 
 .pinky {
-  color: #F4D3D3;
+  color: #F4D3D3 !important;
 }
 
 .carousel-container {
