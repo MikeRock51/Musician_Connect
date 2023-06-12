@@ -8,7 +8,6 @@ function BookingRow(props) {
     const { data: respondent } = useFetch(respondentUrl);
     const { data: city } = useFetch(`${url}/cities/${booking.city_id}`);
 
-    // console.log(city);
 
     return (
         <tbody>

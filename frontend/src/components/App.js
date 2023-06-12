@@ -77,37 +77,37 @@ function App() {
     const currentScrollPos = window.pageYOffset;
 
     // if (window.location.pathname === "/users/musicians") {
-      if (prevScrollPos > currentScrollPos) {
-        document
-          .querySelector(".nav-container")
-          .classList.remove("navbar-scroll-up");
-        document
-          .querySelector(".nav-container")
-          .classList.add("navbar-scroll-down");
+    if (prevScrollPos > currentScrollPos) {
+      document
+        .querySelector(".nav-container")
+        .classList.remove("navbar-scroll-up");
+      document
+        .querySelector(".nav-container")
+        .classList.add("navbar-scroll-down");
 
-        document
-          .querySelector("div.fixed-bottom")
-          .classList.remove("footer-scroll-up");
-        document
-          .querySelector("div.fixed-bottom")
-          .classList.add("footer-scroll-down");
-      } else {
-        document
-          .querySelector(".nav-container")
-          .classList.remove("navbar-scroll-down");
-        document
-          .querySelector(".nav-container")
-          .classList.add("navbar-scroll-up");
+      document
+        .querySelector("div.fixed-bottom")
+        .classList.remove("footer-scroll-up");
+      document
+        .querySelector("div.fixed-bottom")
+        .classList.add("footer-scroll-down");
+    } else {
+      document
+        .querySelector(".nav-container")
+        .classList.remove("navbar-scroll-down");
+      document
+        .querySelector(".nav-container")
+        .classList.add("navbar-scroll-up");
 
-        document
-          .querySelector("div.fixed-bottom")
-          .classList.add("footer-scroll-up");
-        document
-          .querySelector("div.fixed-bottom")
-          .classList.remove("footer-scroll-down");
-      }
+      document
+        .querySelector("div.fixed-bottom")
+        .classList.add("footer-scroll-up");
+      document
+        .querySelector("div.fixed-bottom")
+        .classList.remove("footer-scroll-down");
+    }
 
-      prevScrollPos = currentScrollPos;
+    prevScrollPos = currentScrollPos;
     // }
   };
 
@@ -182,7 +182,13 @@ function App() {
 
           <Route
             path="/users/musicians/:id"
-            element={<User loggedInUser={loggedInUser} loggedIn={loggedIn} />}
+            element={
+              <User
+                loggedInUser={loggedInUser}
+                loggedIn={loggedIn}
+                sendBookingInitials={retrieveBookingData}
+              />
+            }
           />
 
           <Route

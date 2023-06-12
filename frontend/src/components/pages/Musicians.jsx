@@ -3,7 +3,7 @@ import User from "../User";
 import useFetch from "../utilities/useFetch";
 
 function Musicians(props) {
-    const musiciansUrl = 'http://192.168.0.133:7000/api/v1/users/type/musician';
+    const musiciansUrl = 'http://192.168.43.248:7000/api/v1/users/type/musician';
     const { data: musicians } = useFetch(musiciansUrl);
 
     // console.log(musicians);

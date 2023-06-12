@@ -105,8 +105,8 @@ function Signin(props) {
               href="/register/user-type"
               className="link-underline link-underline-opacity-0 hover bright"
             >
-              {" "}
-              Sign Up here
+              {"  "}
+               Sign Up here
             </a>
           </p>
           {isPending && (
