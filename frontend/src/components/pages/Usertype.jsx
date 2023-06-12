@@ -3,9 +3,9 @@ import Select from "../form_pieces/Select";
 
 function Usertype(props) {
   return (
-    <div className="container-lg text-center">
-      <form className="row g-3 mx-5 d-flex justify-content-center">
-        <div className="col-lg-6">
+    <div className="container-sm text-center">
+      <form className="row g-3 mx-2 d-flex justify-content-center my-auto">
+        <div className="">
           <Select
             name="userType"
             items={[
