@@ -94,7 +94,7 @@ function Signin(props) {
         <div className="col-md-6 col-sm-12 ms-1 text-center">
           <button
             type="submit"
-            className="btn col-12 col-sm-9 anime mb-3"
+            className="btn btn-outline-danger col-12 col-sm-9 mb-3"
             onClick={handleClicked}
           >
             Sign in

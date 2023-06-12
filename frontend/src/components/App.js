@@ -76,7 +76,7 @@ function App() {
   window.onscroll = function () {
     const currentScrollPos = window.pageYOffset;
 
-    if (window.location.pathname === "/users/musicians") {
+    // if (window.location.pathname === "/users/musicians") {
       if (prevScrollPos > currentScrollPos) {
         document
           .querySelector(".nav-container")
@@ -108,12 +108,12 @@ function App() {
       }
 
       prevScrollPos = currentScrollPos;
-    }
+    // }
   };
 
   return (
     <Router>
-      <div className="App">
+      <div className="App position-relative">
         <div className="mb-5 pb-5">
           <div className="nav-container container-fluid rounded pe-0 fixed-top">
             <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />

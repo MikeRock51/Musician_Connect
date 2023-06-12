@@ -9,7 +9,7 @@ function Dashboard(props) {
   return (
     <div className="container-sm container-fluid">
       <div className="row px-1">
-        <h3 className="ps-0 pinky shadow-text-light">Welcome {user && user.firstName}</h3>
+        <h3 className="ps-0 text-info shadow-text-light">Welcome {user && user.firstName}</h3>
         <h6
           className="col-sm-3 col-3 bg-brownie text-center p-1 my-2 rounded bright"
           style={{ fontSize: "2.0vw" }}
@@ -67,7 +67,7 @@ function Dashboard(props) {
         </div>
         <a
           href="/users/musicians"
-          className="link-underline link-underline-opacity-0 hover bright"
+          className="link-underline col-sm-4 btn-info btn-link link-underline-opacity-0 hover text-info"
         >
           {user &&
             user.userType.toLowerCase() === "client" &&

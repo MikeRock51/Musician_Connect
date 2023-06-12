@@ -32,7 +32,7 @@ function Home(props) {
           />
           <Quote
             bg="bg-info"
-            textColor="#B70404"
+            textColor="#183A1D"
             text="Spice up your events with your desired sound"
           />
           <Quote
@@ -63,7 +63,7 @@ function Home(props) {
             //     backgroundColor: "#68BDE1",
             //     // maxWidth: "40rem"
             // }}
-            className="btn btn-lg anime col-6 mb-3"
+            className="btn btn-lg btn-info bg-info anime col-9 mb-3"
             onClick={() => {
               props.loggedIn
                 ? navigate("users/musicians")

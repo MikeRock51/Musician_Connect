@@ -56,7 +56,7 @@ function Select(props) {
         <div className="col-sm-12 pt-3">
           <button
             type="submit"
-            className="btn col-4 anime"
+            className="btn col-4"
             onClick={(event) => {
               event.preventDefault();
               validInput && navigate("/register");
