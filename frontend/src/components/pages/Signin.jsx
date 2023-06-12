@@ -15,7 +15,7 @@ function Signin(props) {
   }
 
   function handleSubmit() {
-    const authUrl = "http://192.168.0.133:7000/api/v1/users/auth";
+    const authUrl = "http://127.0.0.1:7000/api/v1/users/auth";
 
     // Verify that all required fields have value
     if (props.userData.password && props.userData.password.length < 1) {

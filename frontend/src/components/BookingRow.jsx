@@ -3,7 +3,7 @@ import useFetch from "./utilities/useFetch";
 
 function BookingRow(props) {
     const booking = props.bookingInfo;
-    const url = 'http://192.168.0.133:7000/api/v1';
+    const url = 'http://127.0.0.1:7000/api/v1';
     const respondentUrl = props.respondentId && `${url}/users/${props.respondentId}`;
     const { data: respondent } = useFetch(respondentUrl);
     const { data: city } = useFetch(`${url}/cities/${booking.city_id}`);
@@ -12,7 +12,7 @@ function BookingRow(props) {
 
     return (
         <tbody>
-            <tr>
+            <tr style={{fontSize: "1.5vw"}}>
                 <th className="grey" scope="row">{props.row}</th>
                 <td className="grey">
                     <a href={`/users/musicians/${respondent && respondent.id}`}
@@ -31,7 +31,8 @@ function BookingRow(props) {
                     </a>
                 </td>
                 <td className="grey">{booking.event_type}</td>
-                <td className="grey text-sm fs-6">{
+                <td className="grey te
+                xt-sm">{
                     new Date(booking.event_date).toLocaleString(undefined, {
                         year: "numeric",
                         month: "long",

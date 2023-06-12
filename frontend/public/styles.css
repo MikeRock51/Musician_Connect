@@ -1,7 +1,7 @@
 html body {
-  width: 100vw;
+  width: 100%;
   height: 100%;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   background: #010102e8;
   background-image: radial-gradient(#CCD51A 7.2%, transparent 0);
   background-size: 25px 25px;
