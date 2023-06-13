@@ -286,7 +286,7 @@ function Register(props) {
         <div className="col text-center mx-auto">
           <button
             type="submit"
-            className="btn btn-outline-danger w-100 mb-3"
+            className="btn btn-outline-danger fw-bold w-100 mb-3"
             onClick={handleClicked}
           >
             {!isPending && "Create my account"}
