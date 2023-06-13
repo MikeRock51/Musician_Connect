@@ -67,8 +67,8 @@ function Signin(props) {
   }
 
   return (
-    <div className="container-md">
-      <form className="row g-3 mx-auto px-2 d-flex justify-content-center align-items-center">
+    <div className="container-sm">
+      <form className="row g-3 m-auto px-2 d-flex justify-content-center align-items-center">
         <div className="col">
           <Input
             className=""
@@ -94,7 +94,7 @@ function Signin(props) {
         <div className="col-md-6 col-sm-12 ms-1 text-center">
           <button
             type="submit"
-            className="btn btn-outline-danger col-12 col-sm-9 mb-3"
+            className="btn btn-outline-danger brownie col-12  mb-3"
             onClick={handleClicked}
           >
             Sign in

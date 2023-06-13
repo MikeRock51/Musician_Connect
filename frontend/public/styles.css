@@ -103,11 +103,11 @@ nav a,
 }
 
 .bright {
-  color: #ECFFB0;
+  color: #ECFFB0 !important;
 }
 
 .yellish {
-  color: #CCD51A;
+  color: #CCD51A !important;
 }
 
 .curvy {
