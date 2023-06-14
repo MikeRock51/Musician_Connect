@@ -5,7 +5,7 @@ import useFetch from "../utilities/useFetch";
 import { useNavigate } from "react-router-dom";
 
 function Booking(props) {
-    const statesUrl = 'http://192.168.43.248:7000/api/v1/states';
+    const statesUrl = '/states';
     const states = useFetch(statesUrl).data;
     const cities = props.bookingData.state && JSON.parse(props.bookingData.state).cities;
     const [isPending, setIsPending] = useState(false);
@@ -20,7 +20,7 @@ function Booking(props) {
     }
 
     function handleSubmit(event) {
-        const bookingUrl = "http://192.168.43.248:7000/api/v1/bookings";
+        const bookingUrl = "/bookings";
         const postData = {
             "city_id": JSON.parse(props.bookingData.city).id,
             ...props.bookingData
@@ -56,7 +56,7 @@ function Booking(props) {
     }
 
     return (
-        <div className="px-5">
+        <div className="container-sm px-5 bg-info bg-opacity-25 rounded-3 mb-5">
             <form onSubmit={handleClicked} className="row">
                 <Input
                     type="text"
@@ -98,9 +98,9 @@ function Booking(props) {
                 />
                 {error && !isPending && <p className="pt-2 mb-0 bright">{error}</p>}
                 {isPending && <p className="pt-2 mb-0 bright">Creating your booking...</p>}
-                <div className="col-lg-6 ms-1 pt-3">
+                <div className="ms-1 py-4">
                     <button type="submit"
-                        className="btn col-12 anime"
+                        className="btn col-12 anime fw-bold text-center text-danger"
                     // onClick={handleClicked}
                     >Create Booking</button>
                 </div>

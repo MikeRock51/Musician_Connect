@@ -20,7 +20,7 @@ function Select(props) {
 
   return (
     <div className="">
-      <label className="form-label text-light">
+      <label className="form-label text-light mt-2">
         {props.text}
         {inputElement && !validInput && (
           <span className="pt-2 mb-0 bright">

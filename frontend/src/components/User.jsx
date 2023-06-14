@@ -18,7 +18,7 @@ function User(props) {
             <div className="text-center bg-secondary col-md-4 lightShadow">
               <img
                 src={user.profilePicture}
-                className="img-fluid rounded-start w-75 py-1"
+                className="img-fluid rounded-4 shadow-lg w-75 py-1"
                 alt="Musician DP"
               />
               {props.loggedInUser &&
