@@ -56,7 +56,7 @@ function Booking(props) {
     }
 
     return (
-        <div className="container-sm px-5 bg-info bg-opacity-25 rounded-3 mb-5">
+        <div className="container-sm px-5 bg-info bg-opacity-25 rounded-3 my-5">
             <form onSubmit={handleClicked} className="row">
                 <Input
                     type="text"

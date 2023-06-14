@@ -56,14 +56,14 @@ function Home(props) {
           {error && <h4>{error}</h4>}
         </div>
         {/* {props.loggedIn && props.loggedInUser.userType !== 'Musician' && */}
-        <div className="pt-5 mt-3 col-12 text-center">
+        <div className="pt-5 mt-2 col-12 text-center">
           <button
             type="submit"
             // style={{
             //     backgroundColor: "#68BDE1",
             //     // maxWidth: "40rem"
             // }}
-            className="btn btn-lg btn-info bg-info anime col-9 mb-3"
+            className="btn btn-lg btn-info bg-info anime col-9 col-sm-12 mb-3"
             onClick={() => {
               props.loggedIn
                 ? navigate("users/musicians")
