@@ -15,7 +15,7 @@ function Signin(props) {
   }
 
   function handleSubmit() {
-    const authUrl = "http://192.168.43.248:7000/api/v1/users/auth";
+    const authUrl = "/users/auth";
 
     // Verify that all required fields have value
     if (props.userData.password && props.userData.password.length < 1) {
@@ -34,10 +34,7 @@ function Signin(props) {
       setIsPending(true);
       fetch(authUrl, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "http://localhost/3000",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(props.userData),
       })
         .then((res) => {

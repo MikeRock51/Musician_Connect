@@ -3,7 +3,7 @@ import { useState } from "react";
 import useFetch from "../utilities/useFetch";
 
 function Checklist(props) {
-    const url = 'http://192.168.43.248:7000/api/v1/instruments';
+    const url = '/instruments';
     const { data: instruments, isPending, error: fetchError } = useFetch(url);
 
     function handleCheck(event) {

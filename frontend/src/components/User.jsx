@@ -13,10 +13,7 @@ function User(props) {
   return (
     <div className="container-sm text-center text-sm-start">
       <div className="d-flex justify-content-center align-items-center">
-        <div
-          className="card mb-3 text-bg-dark brownShadow w-75"
-        //   style={{ maxWidth: "80%" }}
-        >
+        <div className="card mb-3 text-bg-dark brownShadow w-75">
           <div className="row g-2">
             <div className="text-center bg-secondary col-md-4 lightShadow">
               <img

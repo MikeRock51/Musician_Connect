@@ -6,7 +6,7 @@ import Quote from "../Quote";
 
 function Home(props) {
   const { data, isPending, error } = useFetch(
-    "http://192.168.43.248:7000/api/v1/users/type/musician"
+    "/users/type/musician"
   );
   const navigate = useNavigate();
 
@@ -21,7 +21,7 @@ function Home(props) {
         </h4>
       </div>
       <div className="col-12 d-flex justify-content-center px-5">
-        <img src="/images/Outdoor Band.jpg" alt="..." className="img-fluid" />
+        <img src="/images/Outdoor_Band.jpg" alt="..." className="img-fluid" />
       </div>
       <div className="">
         <div className="row pt-3">

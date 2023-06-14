@@ -6,7 +6,7 @@ import useFetch from "../utilities/useFetch";
 import { useNavigate } from "react-router-dom";
 
 function Register(props) {
-  const statesUrl = "http://192.168.43.248:7000/api/v1/states";
+  const statesUrl = "/states";
   const { data: states } = useFetch(statesUrl);
   const cities =
     props.userData.state && JSON.parse(props.userData.state).cities;
@@ -23,8 +23,8 @@ function Register(props) {
     fetch(url, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "http://localhost/3000",
+        "Content-Type": "application/json"
+        // "Access-Control-Allow-Origin": "http://localhost/3000",
       },
       body: JSON.stringify(jsonData),
     })

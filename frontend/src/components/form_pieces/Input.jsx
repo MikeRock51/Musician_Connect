@@ -13,10 +13,6 @@ function Input(props) {
     inputElement && setValidInput(inputElement.validity.valid);
     const value = event.target.value;
     setInput(value);
-    // if (inputElement && value.length > 2) {
-    //     setValidInput(inputElement.validity.valid);
-    //     validInput = inputElement.validity.valid;
-    // }
     props.onChange(props.name, value, undefined, validInput);
   }
 

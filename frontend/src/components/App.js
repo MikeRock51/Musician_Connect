@@ -114,7 +114,7 @@ function App() {
   return (
     <Router>
       <div className="App position-relative">
-        <div className="mb-5 pb-5">
+        <div className="mb-5 pb-4">
           <div className="nav-container container-fluid rounded pe-0 fixed-top">
             <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
           </div>
