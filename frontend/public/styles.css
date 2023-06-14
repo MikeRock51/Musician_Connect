@@ -142,7 +142,7 @@ nav a,
 ul.dropdown-menu {
   overflow: scroll;
   height: 35vh;
-  width: 80%;
+  width: 100%;
   overflow: auto;
 }
 

@@ -3,7 +3,7 @@ import { useState } from "react";
 import useFetch from "../utilities/useFetch";
 
 function Checklist(props) {
-    const url = 'http://127.0.0.1:7000/api/v1/instruments';
+    const url = 'http://192.168.43.248:7000/api/v1/instruments';
     const { data: instruments, isPending, error: fetchError } = useFetch(url);
 
     function handleCheck(event) {
@@ -28,8 +28,8 @@ function Checklist(props) {
                     );
                 })}
                 {props.lenCheckedItems === 0 && <span className="pt-2 mb-0 bright"> Please select at least one instrument </span>}
-                ]</label>
-            <button className="btn dropdown-toggle btn-info col-12" type="button"
+                ]</label>   
+            <button className="btn dropdown-toggle btn-info text-wrap col-12" type="button"
                 id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                 Select options (Primary instrument first)
             </button>
