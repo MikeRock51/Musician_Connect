@@ -1,2 +1,4 @@
 *.swp
 *.swo
+mcc_db.sql
+setup_mcc_db.sql
