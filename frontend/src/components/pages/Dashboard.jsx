@@ -7,7 +7,7 @@ function Dashboard(props) {
   let [respondentId, setRespondentId] = useState(null);
 
   return (
-    <div className="container-sm container-fluid">
+    <div className="container-sm mb-5">
       <div className="row px-1">
         <h3 className="ps-0 text-info shadow-text-light">Welcome {user && user.firstName}</h3>
         <h6

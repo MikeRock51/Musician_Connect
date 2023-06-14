@@ -67,7 +67,7 @@ function Signin(props) {
   }
 
   return (
-    <div className="container-sm">
+    <div className="container-sm bg-info bg-opacity-25 rounded-3 align-center">
       <form className="row g-3 m-auto px-2 d-flex justify-content-center align-items-center">
         <div className="col">
           <Input
@@ -110,7 +110,7 @@ function Signin(props) {
             </a>
           </p>
           {isPending && (
-            <p className="pt-2 text-center mb-0 bright">
+            <p className="py-2 text-center mb-0 bright">
               Loading your account...
             </p>
           )}

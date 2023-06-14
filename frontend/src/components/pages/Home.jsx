@@ -11,7 +11,7 @@ function Home(props) {
   const navigate = useNavigate();
 
   return (
-    <div className="row d-flex justify-content-center align-item-center">
+    <div className="row d-flex justify-content-center align-item-center mb-5">
       <div className="my-3 text-center">
         <h1 className="display-5 fw-semibold bright">
           Welcome to Musician Connect!
