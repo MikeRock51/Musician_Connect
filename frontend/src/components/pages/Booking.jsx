@@ -5,7 +5,7 @@ import useFetch from "../utilities/useFetch";
 import { useNavigate } from "react-router-dom";
 
 function Booking(props) {
-    const statesUrl = '/states';
+    const statesUrl = 'http://192.168.43.248:7000/api/v1/states';
     const states = useFetch(statesUrl).data;
     const cities = props.bookingData.state && JSON.parse(props.bookingData.state).cities;
     const [isPending, setIsPending] = useState(false);
