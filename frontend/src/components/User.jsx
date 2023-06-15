@@ -9,9 +9,8 @@ function User(props) {
     : JSON.parse(sessionStorage.getItem("openUser"));
   const navigate = useNavigate();
 
-  // console.log(props.loggedInUser.userType);
   return (
-    <div className="container-sm text-center text-sm-start">
+    <div className="container-sm text-center text-sm-start mb-5">
       <div className="d-flex justify-content-center align-items-center">
         <div className="card mb-3 text-bg-dark brownShadow w-75">
           <div className="row g-2">
