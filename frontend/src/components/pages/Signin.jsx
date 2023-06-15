@@ -15,7 +15,7 @@ function Signin(props) {
   }
 
   function handleSubmit() {
-    const authUrl = "http://192.168.43.248:7000/api/v1/users/auth";
+    const authUrl = "https://www.mikerock.tech/api/v1/users/auth";
 
     // Verify that all required fields have value
     if (props.userData.password && props.userData.password.length < 1) {

@@ -75,7 +75,7 @@ function Register(props) {
   }
 
   function handleSubmit(userData) {
-    const userPostUrl = "http://192.168.43.248:7000/api/v1/users";
+    const userPostUrl = "https://www.mikerock.tech/api/v1/users";
     const requiredFields = [
       "firstName",
       "lastName",
