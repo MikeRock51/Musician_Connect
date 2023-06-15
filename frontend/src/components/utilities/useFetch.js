@@ -9,7 +9,7 @@ function useFetch(url, dependencies=[]) {
     useEffect(() => {
         const abortControl = new AbortController();
 
-        fetch(url, { signal: abortControl.signal})
+        fetch(`http://127.0.0.1:7000/${url}`, { signal: abortControl.signal})
         .then((res) => {
             if (!res.ok) {
                 throw Error("Failed to fetch requested data");
