@@ -11,7 +11,7 @@ function BookingRow(props) {
     return (
         <tbody>
             <tr style={{fontSize: "1.6vw"}} className="">
-                <th className="grey" scope="row">{props.row}</th>
+                <th className="grey fw-normal text-center" scope="row">{props.row}</th>
                 <td className="grey">
                     <a href={`/users/musicians/${respondent && respondent.id}`}
                         className={
