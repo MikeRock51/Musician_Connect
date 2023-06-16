@@ -85,12 +85,12 @@ function App() {
         .querySelector(".nav-container")
         .classList.add("navbar-scroll-down");
 
-      // document
-      //   .querySelector("div.fixed-bottom")
-      //   .classList.remove("footer-scroll-up");
-      // document
-      //   .querySelector("div.fixed-bottom")
-      //   .classList.add("footer-scroll-down");
+      document
+        .querySelector("div.fixed-bottom")
+        .classList.remove("footer-scroll-up");
+      document
+        .querySelector("div.fixed-bottom")
+        .classList.add("footer-scroll-down");
     } else {
       document
         .querySelector(".nav-container")
@@ -99,12 +99,12 @@ function App() {
         .querySelector(".nav-container")
         .classList.add("navbar-scroll-up");
 
-      // document
-      //   .querySelector("div.fixed-bottom")
-      //   .classList.add("footer-scroll-up");
-      // document
-      //   .querySelector("div.fixed-bottom")
-      //   .classList.remove("footer-scroll-down");
+      document
+        .querySelector("div.fixed-bottom")
+        .classList.add("footer-scroll-up");
+      document
+        .querySelector("div.fixed-bottom")
+        .classList.remove("footer-scroll-down");
     }
 
     prevScrollPos = currentScrollPos;
@@ -113,7 +113,7 @@ function App() {
 
   return (
     <Router>
-      <div className="App position-relative">
+      <div className="App position-relative py-5 px-2">
         <div className="mb-5 pb-4">
           <div className="nav-container container-fluid rounded pe-0 fixed-top">
             <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />

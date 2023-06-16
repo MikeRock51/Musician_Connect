@@ -131,7 +131,7 @@ function Register(props) {
   }
 
   return (
-    <div className="container-sm bg-info bg-opacity-25 rounded-3 mb-5">
+    <div className="container-sm bg-info bg-opacity-25 rounded-3 my-5">
       {error && !verified && (
         <div
           className="alert alert-danger alert-dismissible fade show text-center fixed-top mt-5"
@@ -286,7 +286,7 @@ function Register(props) {
         <div className="col text-center mx-auto">
           <button
             type="submit"
-            className="btn btn-outline-danger fw-bold w-100 mb-3"
+            className="btn btn-outline-dark fw-bold w-100 mb-3"
             onClick={handleClicked}
           >
             {!isPending && "Create my account"}
