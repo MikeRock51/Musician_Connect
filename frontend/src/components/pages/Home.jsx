@@ -74,7 +74,7 @@ function Home(props) {
           </button>
         </div>
       </div>
-      <div className="text-center mt-4 px-5 py-3 bg-light col-10">
+      <div className="text-center mt-4 mb-5 px-5 py-3 bg-light col-10">
         <h3 className="brownie fw-semibold">About Musician Connect</h3>
         <p className="text-dark text-start">
           Musician Connect is an online platform to help people who are in need

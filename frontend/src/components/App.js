@@ -205,7 +205,7 @@ function App() {
             }
           />
         </Routes>
-        <div className="mt-5">
+        <div className=" footer" style={{ marginTop: "100px" }}>
           <Footer />
         </div>
       </div>
