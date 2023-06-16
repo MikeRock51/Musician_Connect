@@ -89,6 +89,16 @@ function Home(props) {
           access the unique services and talent of every musician around their
           city.
         </p>
+        <h4 className="brownie fw-semibold text-start">The Team</h4>
+        <h5 className="text-start lh-1">Michael Adebayo</h5>
+        <h6 className="text-start brownie">Full-Stack Developer</h6>
+        <p className="text-dark text-start">
+          Michael was solely responsible
+          for building the application. As a full-stack developer, he worked on
+          the backend, implemented the application api, and also the frontend/UI
+          of the application. As the only team member, he was also responsible
+          for the deployment and hosting of the web application.
+        </p>
       </div>
     </div>
   );
