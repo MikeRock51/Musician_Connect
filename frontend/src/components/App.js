@@ -85,12 +85,12 @@ function App() {
         .querySelector(".nav-container")
         .classList.add("navbar-scroll-down");
 
-      document
-        .querySelector("div.fixed-bottom")
-        .classList.remove("footer-scroll-up");
-      document
-        .querySelector("div.fixed-bottom")
-        .classList.add("footer-scroll-down");
+      // document
+      //   .querySelector("div.fixed-bottom")
+      //   .classList.remove("footer-scroll-up");
+      // document
+      //   .querySelector("div.fixed-bottom")
+      //   .classList.add("footer-scroll-down");
     } else {
       document
         .querySelector(".nav-container")
@@ -99,12 +99,12 @@ function App() {
         .querySelector(".nav-container")
         .classList.add("navbar-scroll-up");
 
-      document
-        .querySelector("div.fixed-bottom")
-        .classList.add("footer-scroll-up");
-      document
-        .querySelector("div.fixed-bottom")
-        .classList.remove("footer-scroll-down");
+      // document
+      //   .querySelector("div.fixed-bottom")
+      //   .classList.add("footer-scroll-up");
+      // document
+      //   .querySelector("div.fixed-bottom")
+      //   .classList.remove("footer-scroll-down");
     }
 
     prevScrollPos = currentScrollPos;
@@ -205,7 +205,7 @@ function App() {
             }
           />
         </Routes>
-        <div className="">
+        <div className="mt-5">
           <Footer />
         </div>
       </div>
