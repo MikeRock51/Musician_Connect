@@ -15,7 +15,7 @@ function Home(props) {
           Welcome to Musician Connect!
         </h1>
         <h4 className="fs-5 px-4 fw-semibold display-6 text-light h5">
-          The best musicians in Abuja at your fingertips
+          Bridging the gap between music professionals and their clients.
         </h4>
       </div>
       <div className="col-12 d-flex justify-content-center px-5">
@@ -93,11 +93,11 @@ function Home(props) {
         <h5 className="text-start lh-1">Michael Adebayo</h5>
         <h6 className="text-start brownie">Full-Stack Developer</h6>
         <p className="text-dark text-start">
-          Michael was solely responsible
-          for building the application. As a full-stack developer, he worked on
-          the backend, implemented the application api, and also the frontend/UI
-          of the application. As the only team member, he was also responsible
-          for the deployment and hosting of the web application.
+          Michael was solely responsible for building the application. As a
+          full-stack developer, he worked on the backend, implemented the
+          application api, and also the frontend/UI of the application. As the
+          only team member, he was also responsible for the deployment and
+          hosting of the web application.
         </p>
       </div>
     </div>
