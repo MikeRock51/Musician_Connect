@@ -1,5 +1,6 @@
 # Musician Connect
-### Bridging the gap between music professionals and their clients.
+## Bridging the gap between music professionals and their clients.
+<br>
 
 ![Web app demonstration desktop](./Screenshot%20from%202023-06-17%2005-37-49.png)
 
