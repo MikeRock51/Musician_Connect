@@ -87,10 +87,10 @@ function App() {
 
       document
         .querySelector("div.fixed-bottom")
-        .classList.remove("footer-scroll-up");
+        .classList.add("footer-scroll-up");
       document
         .querySelector("div.fixed-bottom")
-        .classList.add("footer-scroll-down");
+        .classList.remove("footer-scroll-down");
     } else {
       document
         .querySelector(".nav-container")
@@ -101,10 +101,10 @@ function App() {
 
       document
         .querySelector("div.fixed-bottom")
-        .classList.add("footer-scroll-up");
+        .classList.remove("footer-scroll-up");
       document
         .querySelector("div.fixed-bottom")
-        .classList.remove("footer-scroll-down");
+        .classList.add("footer-scroll-down");
     }
 
     prevScrollPos = currentScrollPos;
