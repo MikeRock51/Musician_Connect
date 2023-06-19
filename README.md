@@ -58,7 +58,7 @@ There are a lot of wonderful musicians out there who desire to be hired to play 
 - **Find Music Tutors:**
 This project will make finding a music coach for any instrument of choice a lot easier.
 This project will be valuable to both musicians looking for clients and clients looking to hire professional musicians.
-
+ 
 ## Limitation
 The scope of this project will be limited to musical services within Abuja, Nigeria for now. It is intended to expand into other services nationwide in the foreseeable future.
 
