@@ -2,7 +2,6 @@ import { useState, useRef } from "react";
 
 function Input(props) {
   const [userInput, setInput] = useState("");
-  // const [error, setError] = useState(true);
   const inputRef = useRef(null);
   const inputElement = inputRef.current;
   let [validInput, setValidInput] = useState(

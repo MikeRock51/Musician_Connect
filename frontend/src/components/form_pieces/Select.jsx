@@ -15,7 +15,6 @@ function Select(props) {
     setValidInput(value === "" ? false : true);
     props.onChange(props.name, value, undefined, undefined);
     setChoice(value);
-    // console.log(validInput);
   }
 
   return (
