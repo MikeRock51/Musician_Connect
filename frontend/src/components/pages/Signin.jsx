@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Input from "../form_pieces/Input";
 import { useNavigate } from "react-router-dom";
 
 function Signin(props) {
-  // let [data, setData] = useState({});
   const [userInfo, setUserInfo] = useState({});
   const [isPending, setIsPending] = useState(null);
   let [verified, setVerified] = useState(false);
@@ -30,7 +29,6 @@ function Signin(props) {
     }
 
     if (verified) {
-      // console.log(props.userData);
       setIsPending(true);
       fetch(authUrl, {
         method: "POST",
@@ -50,8 +48,6 @@ function Signin(props) {
             props.setLoggedIn(true);
             navigate("/user/dashboard");
           }
-          // userInfo = data;
-          // console.log(userInfo);
           setIsPending(false);
         })
         .catch((err) => {
@@ -103,7 +99,7 @@ function Signin(props) {
               className="link-underline link-underline-opacity-0 hover bright"
             >
               {"  "}
-               Sign Up here
+              Sign Up here
             </a>
           </p>
           {isPending && (

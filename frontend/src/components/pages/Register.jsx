@@ -24,13 +24,12 @@ function Register(props) {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
-        // "Access-Control-Allow-Origin": "http://localhost/3000",
       },
       body: JSON.stringify(jsonData),
     })
       .then((res) => {
         if (!res.ok) {
-          // console.log(res.json());
+          console.log(res.json());
           // throw Error("Failed to create your account");
         }
         return res.json();
@@ -69,9 +68,6 @@ function Register(props) {
       }
     }
     handleSubmit(userData);
-    // props.isValid && handleSubmit();
-    // !props.isValid && alert(
-    //     'One or more invalid responses, please check and try again...')
   }
 
   function handleSubmit(userData) {
@@ -100,8 +96,6 @@ function Register(props) {
       verified = true;
       console.log("Passed");
     }
-
-    //   console.log(userData);
 
     // Verify that all required fields are present and not empty
     for (let field of requiredFields) {

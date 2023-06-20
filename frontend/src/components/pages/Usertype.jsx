@@ -1,4 +1,3 @@
-import Navbar from "../Navbar";
 import Select from "../form_pieces/Select";
 
 function Usertype(props) {

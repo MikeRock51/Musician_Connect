@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import BookingRow from "../BookingRow";
 
 function Dashboard(props) {

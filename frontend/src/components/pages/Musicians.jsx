@@ -1,4 +1,3 @@
-import { useState } from "react";
 import User from "../User";
 import useFetch from "../utilities/useFetch";
 
@@ -6,12 +5,9 @@ function Musicians(props) {
     const musiciansUrl = '/users/type/musician';
     const { data: musicians } = useFetch(musiciansUrl);
 
-    // console.log(musicians);
-
     return (
         <div className="musicians">
             {musicians && musicians.map((musician) => {
-                // console.log(musician);
                 return (
                     <User
                         loggedIn={props.loggedIn}

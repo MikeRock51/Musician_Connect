@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import Navbar from "../Navbar";
 import Slideshow from "../Slideshow";
 import useFetch from "../utilities/useFetch";
 import Quote from "../Quote";
@@ -55,14 +54,9 @@ function Home(props) {
           {isPending && <h3>Loading...</h3>}
           {error && <h4>{error}</h4>}
         </div>
-        {/* {props.loggedIn && props.loggedInUser.userType !== 'Musician' && */}
         <div className="pt-5 mt-2 col-12 text-center">
           <button
             type="submit"
-            // style={{
-            //     backgroundColor: "#68BDE1",
-            //     // maxWidth: "40rem"
-            // }}
             className="btn btn-lg btn-info bg-info anime col-9 col-sm-12 mb-3"
             onClick={() => {
               props.loggedIn
