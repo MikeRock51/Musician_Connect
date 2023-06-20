@@ -1,3 +1,7 @@
+/**
+ * Defines the layout for displaying the list of user bookings
+*/
+
 import useFetch from "./utilities/useFetch";
 
 function BookingRow(props) {
@@ -21,6 +25,7 @@ function BookingRow(props) {
                             "link-underline-opacity-75-hover"
                         }
                         onClick={() => {
+                            // Stores the booking respondent's data in session storage
                             sessionStorage.setItem("openUser", JSON.stringify(respondent));
                         }}
                     >

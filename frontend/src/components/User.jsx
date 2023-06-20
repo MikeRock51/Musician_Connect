@@ -63,13 +63,17 @@ function User(props) {
             <div className="col-md-8 px-2">
               <div className="card-body">
                 <div className="nameLocation text-nowrap row pb-0">
-                  <h5 className="card-title bright col-sm-7 col-md-5 mb-0 mr-2">{`${user.firstName} ${user.lastName}`}</h5>
+                  <h5 className="card-title bright col-sm-7 col-md-5 mb-0 mr-2">
+                    {`${user.firstName} ${user.lastName}`}
+                  </h5>
                   <FontAwesomeIcon
                     className="col-sm-1 col-2 mt-1 p-0 text-danger"
                     icon={faLocationDot}
                     style={{ color: "#ECFFB0" }}
                   />
-                  <h6 className="col-sm-4 col-3 p-0 m-0 mt-1 bright">{user.city}</h6>
+                  <h6 className="col-sm-4 col-3 p-0 m-0 mt-1 bright">
+                    {user.city}
+                  </h6>
                   <p className="col-md-5 col-sm-7 m-0 pb-1 text-secondary">
                     a.k.a {user.alias && user.alias}
                   </p>
