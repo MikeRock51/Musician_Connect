@@ -17,10 +17,11 @@ def allowedFile(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
+
 def validateFileSize(file):
     """Validates that uploaded file doesn't exceed the max size"""
     MAX_CONTENT_LENGTH = 16 * 1000 * 1000
-    return file.content_length <= MAX_CONTENT_LENGTH 
+    return file.content_length <= MAX_CONTENT_LENGTH
 
 
 @app_views.route('/users', strict_slashes=False)
@@ -34,6 +35,7 @@ def allUsers():
 
     return make_response(jsonify(usersList), 200)
 
+
 @app_views.route('/users/type/<userType>', strict_slashes=False)
 def getUserByType(userType):
     """Returns a JSON formatted list of all users of the requested type"""
@@ -46,6 +48,7 @@ def getUserByType(userType):
 
     return make_response(jsonify(usersList), 200)
 
+
 @app_views.route('/users/<userId>', strict_slashes=False)
 def getUserById(userId):
     """Retrieves a user from storage by ID"""
@@ -55,7 +58,8 @@ def getUserById(userId):
         abort(404)
 
     return make_response(jsonify(user.toDict()), 200)
-    
+
+
 @app_views.route('/users', methods=['POST'], strict_slashes=False)
 def createUser():
     """Creates a new User"""
@@ -63,7 +67,8 @@ def createUser():
     if not userData:
         return make_response(jsonify({"error": "Not a JSON"}), 400)
 
-    requiredKeys = ['firstName', 'lastName', 'email', 'city_id', 'userType', 'phone', 'password']
+    requiredKeys = ['firstName', 'lastName', 'email',
+                    'city_id', 'userType', 'phone', 'password']
 
     for key in requiredKeys:
         if key not in userData:
@@ -88,15 +93,17 @@ def createUser():
         userData['profilePicture'] = secureDpName
         UPLOAD_FOLDER = f"{url_for('static')}/images"
         dpFile.save('static/images/', secureDpName)
-        #dpFile.save(os.path.join(app_views.root_path, UPLOAD_FOLDER, secureDpName))
+        # dpFile.save(os.path.join(app_views.root_path, UPLOAD_FOLDER, secureDpName))
 
-    hashedPassword = bcrypt.hashpw(userData.get('password').encode('utf-8'), bcrypt.gensalt())
+    hashedPassword = bcrypt.hashpw(userData.get(
+        'password').encode('utf-8'), bcrypt.gensalt())
     userData['password'] = str(hashedPassword, 'utf-8')
 
     newUser = User(**userData)
     newUser.save()
 
     return make_response(jsonify(newUser.toDict()), 201)
+
 
 @app_views.route('/users/auth', methods=['POST'], strict_slashes=False)
 def authenticateUser():
@@ -123,8 +130,9 @@ def authenticateUser():
         user = user.toDict()
         user['loggedIn'] = True
         return make_response(jsonify(user), 200)
-    
+
     return make_response(jsonify({"error": "Incorrect password"}), 401)
+
 
 @app_views.route('/users/<user_id>', methods=['PUT'], strict_slashes=False)
 def updateUser(user_id):
@@ -153,13 +161,15 @@ def updateUser(user_id):
                 secureDpName = secure_filename(dpFile.filename)
                 setattr(user, key, secureDpName)
                 UPLOAD_FOLDER = f"{url_for('static')}/images"
-                dpFile.save(os.path.join(app_views.root_path, UPLOAD_FOLDER, secureDpName))
+                dpFile.save(os.path.join(app_views.root_path,
+                            UPLOAD_FOLDER, secureDpName))
 
             setattr(user, key, value)
 
     user.save()
 
     return make_response(jsonify(user.toDict()), 200)
+
 
 @app_views.route('/users/<user_id>', methods=['DELETE'], strict_slashes=False)
 def deleteUser(user_id):
@@ -170,6 +180,7 @@ def deleteUser(user_id):
 
     storage.delete(user)
     return make_response(jsonify({}), 200)
+
 
 @app_views.route('/instruments', strict_slashes=False)
 def fetchUserInstruments():

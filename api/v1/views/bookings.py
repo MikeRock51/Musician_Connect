@@ -26,13 +26,14 @@ def fetchUserBookings(user_id, user_type):
 
     if user_type.lower() == 'musician':
         bookings = user.musicianBookings
-    else: 
+    else:
         bookings = user.clientBookings
 
     for booking in bookings:
         userBookings.append(booking.toDict())
 
     return make_response(jsonify(userBookings), 200)
+
 
 @app_views.route('/bookings', strict_slashes=False)
 def fetchAllBookings():
@@ -43,8 +44,8 @@ def fetchAllBookings():
     for booking in bookings.values():
         bookingList.append(booking.toDict())
 
-
     return make_response(jsonify(bookingList), 200)
+
 
 @app_views.route('/bookings/completed', strict_slashes=False)
 def fetchCompletedBookings():
@@ -55,7 +56,6 @@ def fetchCompletedBookings():
     for booking in bookings.values():
         if booking.completed:
             bookingList.append(booking.toDict())
-
 
     return make_response(jsonify(bookingList), 200)
 
@@ -69,6 +69,7 @@ def fetchBooking(booking_id):
         abort(404)
 
     return make_response(jsonify(booking.toDict()), 200)
+
 
 @app_views.route('/bookings/<booking_id>', methods=['PUT'], strict_slashes=False)
 def updateBooking(booking_id):
@@ -93,6 +94,7 @@ def updateBooking(booking_id):
 
     return make_response(jsonify(booking.toDict()), 200)
 
+
 @app_views.route('/bookings', methods=['POST'], strict_slashes=False)
 def createBooking():
     """Creates a new booking in storage"""
@@ -101,7 +103,8 @@ def createBooking():
     if not bookingData:
         return make_response(jsonify({"error": "Not a JSON"}), 400)
 
-    requiredKeys = ['event_type', 'event_date', 'event_address', 'city_id', 'client_id', 'musician_id']
+    requiredKeys = ['event_type', 'event_date',
+                    'event_address', 'city_id', 'client_id', 'musician_id']
 
     for key in requiredKeys:
         if key not in bookingData:
@@ -111,6 +114,7 @@ def createBooking():
     booking.save()
 
     return make_response(jsonify(booking.toDict()), 201)
+
 
 @app_views.route('/bookings/<booking_id>', methods=['DELETE'], strict_slashes=False)
 def deleteBooking(booking_id):
