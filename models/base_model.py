@@ -2,7 +2,7 @@
 """Base module of the application"""
 
 from sqlalchemy.orm import declarative_base, relationship
-from sqlalchemy import Column, String, Integer, ForeignKey, DateTime
+from sqlalchemy import Column, String, DateTime
 from datetime import datetime
 from uuid import uuid4
 from models import storage

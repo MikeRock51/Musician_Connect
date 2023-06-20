@@ -7,7 +7,7 @@ from models.booking import Booking
 from sqlalchemy import Column, String, ForeignKey, Table, Integer
 from sqlalchemy.orm import relationship
 
-defaultImage= "https://cdn-icons-png.flaticon.com/512/4123/4123763.png"
+defaultImage = "https://cdn-icons-png.flaticon.com/512/4123/4123763.png"
 
 musicianInstruments = Table('musicianInstruments', Base.metadata,
                             Column('user_id', String(60), ForeignKey(
@@ -27,7 +27,7 @@ class User(BaseModel, Base):
     phone = Column(String(60), nullable=False, unique=True)
     password = Column(String(128), nullable=False)
     profilePicture = Column(String(1024), nullable=False,
-            default=defaultImage)
+                            default=defaultImage)
     description = Column(String(1024), nullable=True)
     city_id = Column(String(60), ForeignKey('cities.id'), nullable=False)
     rating = Column(Integer, nullable=False, default=5)
