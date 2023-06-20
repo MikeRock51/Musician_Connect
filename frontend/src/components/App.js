@@ -23,17 +23,8 @@ function App() {
   const [booking, setBooking] = useState({});
   const loggedInUser = JSON.parse(sessionStorage.getItem("loggedInUser"));
   const [loggedIn, setLoggedIn] = useState(loggedInUser ? true : false);
-  // console.log(loggedInUser);
-  // let [loginData, setLoginData] = useState(null);
 
   function retrieveBookingData(key, value, kwargs = null, validData = false) {
-    // if (validData === undefined && value.length > 1) {
-    //   setIsValid(true);
-    //   isValid = true;
-    // } else {
-    //   setIsValid(validData)
-    //   isValid = validData;
-    // }
     !kwargs
       ? setBooking((prevData) => {
           return {
@@ -45,16 +36,6 @@ function App() {
   }
 
   function retrieveInput(key, value, isChecked = false, validData = undefined) {
-    // if (validData === undefined && value.length > 4 ||
-    //   key === 'instruments') {
-    //   setIsValid(true);
-    //   isValid = true;
-    // } else {
-    //   setIsValid(validData)
-    //   isValid = validData;
-    // }
-    // console.log(isValid);
-    // console.log(key + ': ' + value);
     key === "instruments" && isChecked && userInstruments.push(value);
     if (key === "instruments" && !isChecked) {
       userInstruments = userInstruments.filter((val) => {
