@@ -40,7 +40,7 @@ function Home(props) {
           <Quote
             bg="bg-dark"
             textColor="#E8AA42"
-            text="Find a reheasal buddy to keep you motivated"
+            text="Find a rehearsal buddy to keep you motivated"
           />
         </div>
       </div>

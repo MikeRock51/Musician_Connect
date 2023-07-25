@@ -55,19 +55,27 @@ class DBStorage:
         
         objects = {}
 
+        # Retrive objects of type obj if obj is not None
         if obj:
             if obj in [classes['Instrument'], classes['State']]:
+                # If Instrument or State is requested, sort by name
                 queryResult = self.__session.query(obj).order_by(obj.name).all()
             elif obj == classes['User']:
+                # If User is requested, sort by firstName
                 queryResult = self.__session.query(obj).order_by(obj.firstName).all()
             else:
+                # When objects that don't require sorting is requested
                 queryResult = self.__session.query(obj).all()
+            # Save each object from query result in objects with <className.id> as key
             for result in queryResult:
                 key = "{}.{}".format(result.__class__.__name__, result.id)
                 objects[key] = result
         else:
+            # If no object type was specified, retrieve all objects from database
             for className in classes.values():
                 queryResult = self.__session.query(className).all()
+                # For every object type, save each object from query result
+                # in objects with <className.id> as key
                 for result in queryResult:
                     key = "{}.{}".format(result.__class__.__name__, result.id)
                     objects[key] = result

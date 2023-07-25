@@ -19,7 +19,7 @@ function Booking(props) {
   }
 
   function handleSubmit(event) {
-    const bookingUrl = "https://www.mikerock.tech/api/v1/bookings";
+    const bookingUrl = "http://127.0.0.1:7000/api/v1/bookings";
     const postData = {
       city_id: JSON.parse(props.bookingData.city).id,
       ...props.bookingData,
