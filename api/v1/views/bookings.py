@@ -12,18 +12,21 @@ from flask import make_response, jsonify, abort, request
 def fetchUserBookings(user_id, user_type):
     """
         Retrieves all the bookings a user was involved in
-        based of user id and user type
+        based on user id and user type
     """
     if user_type.lower() not in ['musician', 'client']:
         return make_response(jsonify({"error": "Invalid User type"}), 400)
 
+    # Retrieve user from database
     user = storage.get(User, user_id)
 
+    # If no user with requested id, raise 404 error
     if not user:
         abort(404)
 
     userBookings = []
 
+    # Create a list containing the dictionary representation of all user bookings
     if user_type.lower() == 'musician':
         bookings = user.musicianBookings
     else:
