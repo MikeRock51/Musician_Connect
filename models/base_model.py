@@ -22,10 +22,13 @@ class BaseModel():
 
     def __init__(self, *args, **kwargs):
         """BaseModel object constructor"""
+        # Allows for creating a new instance from a dictionary
         if kwargs:
             for key, value in kwargs.items():
+                # Skips __class__ key, value if encountered
                 if key != '__class__':
                     if key in ['updatedAt', 'createdAt']:
+                        # Create a datetime object from an iso strring
                         setattr(self, key, datetime.fromisoformat(value))
                     else:
                         setattr(self, key, value)
@@ -34,11 +37,13 @@ class BaseModel():
         self.updatedAt = datetime.now()
 
     def __str__(self):
+        """Returns a string representation of an instance"""
         return ("[{}] ({}) {}".format
             (type(self).__name__, self.id, self.__dict__))
 
     def save(self):
-        """Updates the updated_at attribute with current datetime"""
+        """Saves the new instances to storage"""
+        # Update updatedAt attribute to current datetime
         self.updatedAt = datetime.now()
         storage.new(self)
         storage.save()
@@ -46,26 +51,36 @@ class BaseModel():
 
     def toDict(self):
         """Generates a dictionary representation of an instance"""
+        # Create a copy of instance
         instance = copy(self.__dict__)
+        # Add a new attribute to store the type of self
         instance['__class__'] = type(self).__name__
+        # Convert createdAt/updatedAt attributes to iso strings
         instance['createdAt'] = instance['createdAt'].isoformat()
         instance['updatedAt'] = instance['updatedAt'].isoformat()
-        
+
+        # Remove sqlalchemy-generated state attribute        
         if instance.get('_sa_instance_state'):
             del (instance['_sa_instance_state'])
 
+        # Set user-specific attributes
         if type(self).__name__ == 'User':
             from models.city import City
 
             bookings = []
 
+            # Add city name to the dictionary representation of a User
             instance['city'] = storage.get(City, instance['city_id']).name
             if self.userType.lower() == 'musician':
                 instruments = []
+                # Create a list of dictionary representations of instruments
+                # played by a musician
                 for instrument in self.instruments:
                     instruments.append(instrument.toDict())
+                # Save instrument list to musician dictionary
                 instance['instruments'] = instruments
 
+                # Create a list of dictionary representation of user bookings
                 for booking in self.musicianBookings:
                     bookings.append(booking.toDict())
             else:
