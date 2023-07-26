@@ -39,7 +39,7 @@ class BaseModel():
     def __str__(self):
         """Returns a string representation of an instance"""
         return ("[{}] ({}) {}".format
-            (type(self).__name__, self.id, self.__dict__))
+                (type(self).__name__, self.id, self.__dict__))
 
     def save(self):
         """Saves the new instances to storage"""
@@ -47,7 +47,6 @@ class BaseModel():
         self.updatedAt = datetime.now()
         storage.new(self)
         storage.save()
-
 
     def toDict(self):
         """Generates a dictionary representation of an instance"""
@@ -59,7 +58,7 @@ class BaseModel():
         instance['createdAt'] = instance['createdAt'].isoformat()
         instance['updatedAt'] = instance['updatedAt'].isoformat()
 
-        # Remove sqlalchemy-generated state attribute        
+        # Remove sqlalchemy-generated state attribute
         if instance.get('_sa_instance_state'):
             del (instance['_sa_instance_state'])
 
@@ -84,7 +83,7 @@ class BaseModel():
                 for booking in self.musicianBookings:
                     bookings.append(booking.toDict())
             else:
-                # Create a list of dictionary representation of client bookings 
+                # Create a list of dictionary representation of client bookings
                 for booking in self.clientBookings:
                     bookings.append(booking.toDict())
             # Save booking list to user dictionary
