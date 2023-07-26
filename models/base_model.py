@@ -80,20 +80,25 @@ class BaseModel():
                 # Save instrument list to musician dictionary
                 instance['instruments'] = instruments
 
-                # Create a list of dictionary representation of user bookings
+                # Create a list of dictionary representation of musician bookings
                 for booking in self.musicianBookings:
                     bookings.append(booking.toDict())
             else:
+                # Create a list of dictionary representation of client bookings 
                 for booking in self.clientBookings:
                     bookings.append(booking.toDict())
+            # Save booking list to user dictionary
             instance['bookings'] = bookings
 
+        # Set state-specific attributes
         if type(self).__name__ == 'State':
             cities = []
 
+            # Create a list of dictionary representation of the cities of a state
             for city in self.cities:
                 cities.append(city.toDict())
 
+            # Save city list to dictionary, sorted by city name
             instance['cities'] = sorted(cities, key=lambda x: x['name'])
 
         return instance
