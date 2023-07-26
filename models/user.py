@@ -9,6 +9,7 @@ from sqlalchemy.orm import relationship
 
 defaultImage = "https://cdn-icons-png.flaticon.com/512/4123/4123763.png"
 
+# Many to many relationship between a musician user and instrument
 musicianInstruments = Table('musicianInstruments', Base.metadata,
                             Column('user_id', String(60), ForeignKey(
                                 'users.id'), nullable=False, primary_key=True),

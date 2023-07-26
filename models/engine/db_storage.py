@@ -21,7 +21,7 @@ class DBStorage:
             .format(user, pwd, host, db), pool_pre_ping=True)
 
     def reload(self):
-        """Creates all table in the database"""
+        """Creates all table in the database and establishes a new session"""
         allModels = self.allModels() # Import models
         from models.base_model import Base
 

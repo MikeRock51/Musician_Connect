@@ -11,4 +11,5 @@ class State(BaseModel, Base):
     __tablename__ = "states"
 
     name = Column(String(128), nullable=False)
+    # One to many relationship between a state and it's cities
     cities = relationship('City', backref='state', cascade='all, delete')
