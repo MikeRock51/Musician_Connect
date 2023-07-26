@@ -70,10 +70,12 @@ def createUser():
     requiredKeys = ['firstName', 'lastName', 'email',
                     'city_id', 'userType', 'phone', 'password']
 
+    # Vaidate that all required fields are present
     for key in requiredKeys:
         if key not in userData:
             return make_response(jsonify({"error": f"Missing {key}"}), 400)
 
+    # Create a list of instrument objects
     if 'instruments' in userData:
         instruments = []
         for id in userData['instruments']:
@@ -95,11 +97,14 @@ def createUser():
         dpFile.save('static/images/', secureDpName)
         # dpFile.save(os.path.join(app_views.root_path, UPLOAD_FOLDER, secureDpName))
 
+    # Hash user password
     hashedPassword = bcrypt.hashpw(userData.get(
         'password').encode('utf-8'), bcrypt.gensalt())
     userData['password'] = str(hashedPassword, 'utf-8')
 
+    # Create the user object
     newUser = User(**userData)
+    # Save user object to database
     newUser.save()
 
     return make_response(jsonify(newUser.toDict()), 201)
@@ -120,12 +125,15 @@ def authenticateUser():
 
     user = storage.getEmailUser(authData.get('email'))
 
+    # Raise a 404 error if user does not exist
     if not user:
         abort(404)
 
+    
     dbPassword = user.password.encode('utf-8')
     authPassword = authData.get('password').encode('utf-8')
 
+    # Check if password match
     if bcrypt.checkpw(authPassword, dbPassword):
         user = user.toDict()
         user['loggedIn'] = True
@@ -150,20 +158,6 @@ def updateUser(user_id):
 
     for key, value in userData.items():
         if key not in ignoredKeys:
-            if key == 'profilePicture':
-                dpFile = request.files['profilePicture']
-            if dpFile and dpFile.filename != '':
-                if not validateFileSize(dpFile):
-                    return make_response(jsonify({"error": "File too large"}), 400)
-                if not allowedFile(dpFile.filename):
-                    return make_response(jsonifiy({"error": "Format not supported"}), 400)
-
-                secureDpName = secure_filename(dpFile.filename)
-                setattr(user, key, secureDpName)
-                UPLOAD_FOLDER = f"{url_for('static')}/images"
-                dpFile.save(os.path.join(app_views.root_path,
-                            UPLOAD_FOLDER, secureDpName))
-
             setattr(user, key, value)
 
     user.save()
