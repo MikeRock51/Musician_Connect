@@ -22,17 +22,19 @@ class DBStorage:
 
     def reload(self):
         """Creates all table in the database"""
-        allModels = self.allModels()
+        allModels = self.allModels() # Import models
         from models.base_model import Base
 
+        # Creates all tables defined in Base if they don't yet exist
         Base.metadata.create_all(self.__engine)
 
+        # Start a database session
         session_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
+        # Create a scoped session to prevent interference between sessions
         self.__session = scoped_session(session_factory)
 
-
     def allModels(self):
-        """Returns all application models"""
+        """Imports and returns all application models"""
         from models.user import User, musicianInstruments
         from models.review import Review
         from models.city import City
@@ -51,7 +53,7 @@ class DBStorage:
 
     def all(self, obj=None):
         """Fetches all objects from the database"""
-        classes = self.allModels()
+        classes = self.allModels() # Import models
         
         objects = {}
 
@@ -99,30 +101,38 @@ class DBStorage:
 
     def get(self, cls, id):
         """Returns an instance of the object with given id"""
-        classes = self.allModels()
+        classes = self.allModels() # Import all models
 
+        # Check if cls is not a supported type
         if cls not in classes.values():
             return None
+
+        # Retrieve all instances of cls
         allInstances = self.all(cls)
+        # Filter and return the requested instance
         for instance in allInstances.values():
             if instance.id == id:
                 return instance
 
     def getEmailUser(self, email):
         """Returns an instance of the user with the given email"""
-        User = self.allModels()['User']
+        User = self.allModels()['User'] # Import User model
 
+        # Retrieve all users
         users = self.all(User)
+        # Filter and return the user with the requested email
         for user in users.values():
             if user.email == email:
                 return user
 
     def count(self, cls):
         """Returns the number of instances of an object in storage"""
-        classes = self.allModels()
+        classes = self.allModels() # Import all models
 
+        # Check if cls is not a supported type
         if cls not in classes.values():
             return None
+
         return len(self.all(cls)) 
 
     def close(self):
