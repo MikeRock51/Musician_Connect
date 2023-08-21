@@ -71,7 +71,7 @@ function Register(props) {
   }
 
   function handleSubmit(userData) {
-    const userPostUrl = "http://127.0.0.1:7000/api/v1/users";
+    const userPostUrl = "http://0.0.0.0:7000/api/v1/users";
     const requiredFields = [
       "firstName",
       "lastName",
