@@ -7,8 +7,8 @@ User=ubuntu
 Group=ubuntu
 WorkingDirectory=/home/ubuntu/Musician_Connect
 ExecStart=/home/ubuntu/.local/bin/gunicorn --bind 0.0.0.0:7000 --workers 3 api.v1.app:app
-StandardOutput=file:/tmp/basecamp-access.log
-StandardError=file:/tmp/basecamp-error.log
+StandardOutput=file:/tmp/mcc-access.log
+StandardError=file:/tmp/mcc-error.log
 Restart=always
 Environment="MCC_SQL_USER=mcc_dev"
 Environment="MCC_SQL_PWD=mcc_dev_pwd"

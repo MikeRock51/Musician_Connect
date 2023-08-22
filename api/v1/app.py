@@ -8,8 +8,8 @@ from api.v1.views import app_views
 
 
 app = Flask(__name__)  # Intialize flask application
-app.register_blueprint(app_views)  # Register app blueprint
 cors = CORS(app, resources={r"/api/v1/*": {"origins": "*"}})  # Allow cross-origin access
+app.register_blueprint(app_views)  # Register app blueprint
 
 
 @app.teardown_appcontext  # Runs after every request
